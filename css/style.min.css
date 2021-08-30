@@ -64,6 +64,10 @@ section {
 .shadow {
   box-shadow: 0 10px 30px 0 rgba(67, 80, 98, 0.24), 0 2px 4px 0 rgba(67, 80, 98, 0.1) !important; }
 
+#resume {
+  width: 100%;
+}
+
 #header-navbar {
   position: absolute;
   top: 0;
