@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!--
-     - Roxy: Bootstrap template by GettTemplates.com
-     - https://gettemplates.co/roxy
-    -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Portfolio - Vikram Mishra</title>
@@ -31,8 +26,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
 </head>
-<body style="overflow-x: hidden;" data-spy="scroll" data-target="#navbar" class="">
-    <nav id="header-navbar" class="navbar navbar-expand-lg py-4">
+<body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
+    <div class="boxed-page">
+        <nav id="header-navbar" class="navbar navbar-expand-lg py-4">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center text-white" href="/">
             <h3 class="font-weight-bolder mb-0">Vikram Mishra</h3>
@@ -43,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="portfolio.html">Portfolio</a>
@@ -88,15 +84,13 @@
     </div>
     
 </div>
-<div class="jumbotron d-flex align-items-center">
+<div class="jumbotron d-flex align-items-center" style="background-image: url(img/)">
   <div class="container text-center">
-    <!--<h1 class="display-1 mb-4">Vikram<br>Design</h1>-->
-    <h1 class="display-1 mb-4">Portfolio</h1>
+    <h1 class="display-1 mb-4">Portfolio</h1><br>
+    <h2 class="display-2"> <a href="#blog" style="color: white"> ⬇</a></h2>
+
   </div>
-  <div class="rectangle-1"></div>
-  <div class="rectangle-3"></div>
-  <div class="rectangle-transparent-1"></div>
-  <div class="rectangle-transparent-2"></div>
+  
   <div class="circle-1"></div>
   <div class="circle-2"></div>
   <div class="circle-3"></div>
@@ -112,7 +106,8 @@
   <div class="triangle triangle-4">
     <img src="img/obj_triangle.png" alt="">
   </div>
-</div>  <!-- Features Section-->
+</div>  
+<!-- Features Section-->
 <section id="blog" class="bg-grey">
     <div class="container">
         <div class="section-content">
@@ -178,7 +173,7 @@
                                         <a href="chess.html"><h4>Schnell</h4></a>
                                     </div>
                                     <div class="blog-desc">
-                                        <p>A chess set designed for car enthusiasts and automotive companies that like to express their design forms and aesthetic through showpieces in their offices and dealerships</p>
+                                        <p>A chess set designed for automotive companies to express their design aesthetic through showpieces in their offices and dealerships</p>
                                     </div>
                                     
                             </div>
@@ -233,6 +228,7 @@
                         <div class="col-md-4 offset-md-right-2 col-sm-6" data-aos="fade-left">
                             <h4 class="mb-4">Design Abstraction</h4>
                             <p>Exploring the concept of Balance through 2D art</p>
+                            <a target="_blank" style="outline-style: solid; outline-color: #ea3bc6" class="btn" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a>
                             <!--<div class="progress mb-3">
                                 <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">HTML5 95%</div>
                             </div>-->
