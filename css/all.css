@@ -170,6 +170,7 @@ input[type=submit].white,
 .btn.white {
 	background: #fff;
 	color: #6e6e6e;
+	opacity: 0.8;
 }
 button.black,
 input[type=submit].black,
@@ -305,12 +306,15 @@ a:hover{text-decoration:underline;}
 }
 .bg {
 	position: absolute;
-	background: url(../images/transparent.png);
+	background: url(../images/transparent2.png);
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 100;
+}
+.bg:hover{
+
 }
 .slider li {
 	background-size: cover !important;
@@ -556,12 +560,13 @@ div.selector select {
 .bar {
 	width: 100%;
 	margin: 0 0 10px;
-	background: #444;
+	background: #000;
 }
 .bar-frame {
 	max-width: 1170px;
 	margin: 0 auto;
 	padding: 18px 20px;
+
 }
 .breadcrumbs {
 	width:100%;
@@ -824,7 +829,7 @@ div.selector select {
     width:100%;
     overflow:hidden;
     display:table-footer-group;
-    background:#444;
+    background:#000;
 }
 #footer .footer-holder {
     height:1%;
@@ -835,9 +840,10 @@ div.selector select {
 	max-width: 1170px;
 	margin: 0 auto;
 	padding: 45px 20px 20px;
-	color: #a5a5a5;
+	color: #fff;
 }
-#footer a {color: #a5a5a5;}
+#footer a {color: #fff;}
+#footer p {color: #fff;}
 #footer .col-holder {
 	overflow: hidden;
 	margin: 0 0 0 -2%;
@@ -864,7 +870,7 @@ div.selector select {
 	color: #fff;
 	padding: 0 15px;
 	display: inline-block;
-	background: #444;
+	background: #000;
 	font: 18px/22px 'novecento_sans_widemedium', Arial, Helvetica, sans-serif;
 }
 .social {
@@ -894,7 +900,7 @@ div.selector select {
 }
 .footer-bottom {
 	width: 100%;
-	background: #3f3f3f;
+	background: #000;
 	color: #7d7d7d;
 	text-align: center;
 }
@@ -989,4 +995,73 @@ div.selector select {
 		background: url(../images/btn_mobile_menu@x2.png) no-repeat;
 		background-size:31px 31px;
 	}
+}
+.portfolio-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 65%;
+	border-radius: 10px;
+	margin-top:10px;
+	transition: all .5s ease-in-out;
+}
+.portfolio-img:hover { 
+transform: scale(1.1); 
+}
+.reveal{
+  position: relative;
+  opacity: 0;
+}
+.reveal.active{
+  opacity: 1;
+}
+.active.fade-bottom {
+  animation: fade-bottom 0.7s ease-in;
+}
+.active.fade-left {
+  animation: fade-left 0.4s ease-in;
+}
+.active.fade-right {
+  animation: fade-right 0.7s ease-in;
+}
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.grow { 
+transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+	transform: scale(1.2); 
+}
+.white-text {
+	color: white;
 }

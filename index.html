@@ -15,6 +15,23 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<script type="text/javascript">
+		function reveal() {
+		  var reveals = document.querySelectorAll(".reveal");
+		  for (var i = 0; i < reveals.length; i++) {
+		    var windowHeight = window.innerHeight;
+		    var elementTop = reveals[i].getBoundingClientRect().top;
+		    var elementVisible = 150;
+		    if (elementTop < windowHeight - elementVisible) {
+		      reveals[i].classList.add("active");
+		    } else {
+		      reveals[i].classList.remove("active");
+		    }
+		  }
+		}
+		window.addEventListener("scroll", reveal);
+		reveal();
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -46,7 +63,7 @@
 							<div class="slide-info">
 								<h1>vikram.design</h1>
 								<p></p>
-								<a class="btn white big" href="about.html">About me</a>
+								<!--<a class="btn white big" href="about.html">About me</a>-->
 							</div>
 						</div>
 					</li>
@@ -54,41 +71,41 @@
 			</section>
 			<section id="main">
 				<div class="boxes">
-					<div class="box">
+					<div class="box reveal fade-bottom">
+						<a href="eureka.html">
+							<span class="bg"></span>
+							<img src="images/pendrive_1117.jpg" alt="" />
+							<div class="box-info grow">
+								<div class="box-info-holder">
+									<span class="title"><span>Industrial Design</span></span>
+									<h2>Automated Watering</h2>
+									<span class="btn white normal">Eureka</span>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="box reveal fade-bottom">
 						<a href="furniture.html">
 							<span class="bg"></span>
 							<img src="images/Delta_Hero.jpg" alt="" />
-							<div class="box-info">
+							<div class="box-info grow">
 								<div class="box-info-holder">
 									<span class="title"><span>Wood Work</span></span>
-									<h2>Simple Furniture</h2>
+									<h2>Simple Furniture<br></h2>
 									<span class="btn white normal">Δ Stool</span>
 								</div>
 							</div>
 						</a>
 					</div>
-					<div class="box">
+					<div class="box reveal fade-bottom">
 						<a href="cooler.html">
 							<span class="bg"></span>
 							<img src="images/cooler_hero.jpg" alt="" />
-							<div class="box-info">
+							<div class="box-info grow">
 								<div class="box-info-holder">
 									<span class="title"><span>Elecrtronics</span></span>
-									<h2>The Cooler Robot</h2>
-									<span class="btn white normal">See more</span>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="box">
-						<a href="eureka.html">
-							<span class="bg"></span>
-							<img src="images/pendrive_1117.jpg" alt="" />
-							<div class="box-info">
-								<div class="box-info-holder">
-									<span class="title"><span>Industrial Design</span></span>
-									<h2>Automated Watering Assistant</h2>
-									<span class="btn white normal">Eureka</span>
+									<h2>Cooler Robot</h2>
+									<span class="btn white normal">How cool?</span>
 								</div>
 							</div>
 						</a>
@@ -106,12 +123,12 @@
 						</fieldset>
 					</form>
 				</div>-->
-				<div class="ParallaxVideo">
+				<!--<div class="ParallaxVideo">
 				  <video preload="auto" muted="muted" loop="loop" autoplay="autoplay">
 				  <source src="images/knife_render.mp4" type="video/mp4">
 				  <source src="images/knife_render.webm" type="video/webm">
 				  </video>
-				</div>
+				</div>-->
 			</section>
 		</div>
 		<footer id="footer">
