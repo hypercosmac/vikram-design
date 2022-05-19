@@ -1069,3 +1069,6 @@ transition: all .2s ease-in-out;
 .white-text {
 	color: white;
 }
+#about-hero {
+	border-radius: 20px;
+}
