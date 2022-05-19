@@ -15,6 +15,25 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<script type="text/javascript">
+		function reveal() {
+		  var reveals = document.querySelectorAll(".reveal");
+		  for (var i = 0; i < reveals.length; i++) {
+		    var windowHeight = window.innerHeight;
+		    var elementTop = reveals[i].getBoundingClientRect().top;
+		    var elementVisible = 100;
+		    if (elementTop < windowHeight - elementVisible) {
+		      reveals[i].classList.add("active");
+		    } else {
+		      reveals[i].classList.remove("active");
+		    }
+		  }
+		}
+		window.addEventListener("scroll", reveal);
+		window.addEventListener("load", reveal);
+		reveal();
+		
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -42,24 +61,25 @@
 			<section class="bar">
 				<div class="bar-frame">
 					<ul class="breadcrumbs">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">Cooler Robot</a></li>
+						<li><a href="eureka.html">Automated Watering</a></li>
+						<li><a href="#">Delta Stool</a></li>
+						<li><a href="cooler.html">Cooler Robot</a></li>
 					</ul>
 				</div>
 			</section>
-			<img id="project-start" src="portfolio_img/cooler_page1.jpg" width="100%">
-			<img src="portfolio_img/cooler_page2.jpg" width="100%">
-			<!--<img src="portfolio_img/cooler_page3.jpg" width="100%">-->
-			<img src="portfolio_img/cooler_page4.jpg" width="100%">
-			<img src="portfolio_img/cooler_page5.jpg" width="100%">
-			<img src="portfolio_img/cooler_page6.jpg" width="100%">
-			<img src="portfolio_img/cooler_page7.jpg" width="100%">
-			<img src="portfolio_img/cooler_page8.jpg" width="100%">
-			<img src="portfolio_img/cooler_page9.jpg" width="100%">
-			<img src="portfolio_img/cooler_page10.jpg" width="100%">
-			<img src="portfolio_img/cooler_page11.jpg" width="100%">
-			<img src="portfolio_img/cooler_page12.jpg" width="100%">
-			<img src="portfolio_img/cooler_page13.jpg" width="100%">
+			<img id="project-start" class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page1.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page2.jpg">
+			<!--<imgclass="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page3.jpg">-->
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page4.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page5.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page6.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page7.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page8.jpg">
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page9.jpg">
+			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page10.jpg">
+			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page11.jpg">
+			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page12.jpg">
+			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page13.jpg">
 		</div>
 		<footer id="footer">
 			<div class="footer-holder">
@@ -68,7 +88,7 @@
 						<div class="col-holder">
 							<div class="col">
 								<div class="heading">
-									<h3></h3>
+									<h3><a class="white-text" href="furniture.html">< Furniture</a></h3>
 								</div>
 								
 							</div>
@@ -84,7 +104,7 @@
 							</div>
 							<div class="col col-contact">
 								<div class="heading">
-									<h3></h3>
+									<h3><a class="white-text" href="eureka.html">Automated Watering ></a></h3>
 								</div>
 								<ul class="social">
 									<!--<li class="linkedin"><a href="#">LinkedIn</a></li>-->

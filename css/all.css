@@ -1004,7 +1004,11 @@ div.selector select {
 	border-radius: 10px;
 	margin-top:10px;
 	transition: all .5s ease-in-out;
+	filter: drop-shadow(1px 1px 10px #808080);
 }
+@media screen and (max-width: 820px){
+	.portfolio-img{ width: 99vw; margin-top: 5px; padding: 0; }
+	}
 .portfolio-img:hover { 
 transform: scale(1.1); 
 }
