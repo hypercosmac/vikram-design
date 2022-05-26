@@ -21,7 +21,7 @@
 		  for (var i = 0; i < reveals.length; i++) {
 		    var windowHeight = window.innerHeight;
 		    var elementTop = reveals[i].getBoundingClientRect().top;
-		    var elementVisible = 150;
+		    var elementVisible = 50;
 		    if (elementTop < windowHeight - elementVisible) {
 		      reveals[i].classList.add("active");
 		    } else {
@@ -30,8 +30,18 @@
 		  }
 		}
 		window.addEventListener("scroll", reveal);
+		window.addEventListener("load", reveal);
 		reveal();
 	</script>
+	<style type="text/css">
+		.parallax{
+			background-image: url(images/background8.jpg);
+			background-attachment: fixed;
+		    background-position: center;
+		  	background-repeat: no-repeat;
+		  	background-size: cover;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -39,7 +49,7 @@
 			<header id="header">
 				<span class="logo"><a href="index.html">vikram.design</a></span>
 				<ul class="tools-nav tools-nav-mobile">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="#main">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="resume.html">Resume</a></li>
 					<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a>
@@ -48,7 +58,7 @@
 				<a class="menu_trigger" href="#">menu</a>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="#main">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="resume.html">Resume</a></li>
 							<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a></li>
@@ -58,7 +68,7 @@
 			</header>
 			<section class="promo">
 				<ul class="">
-					<li style="background: url(images/background.jpg) no-repeat 50% 50%;">
+					<li class="parallax">
 						<div class="slide-holder">
 							<div class="slide-info">
 								<h1>vikram.design</h1>

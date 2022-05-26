@@ -1072,3 +1072,11 @@ transition: all .2s ease-in-out;
 #about-hero {
 	border-radius: 20px;
 }
+.img1{
+	background-image: url(images/background.jpg);
+	min-height: 500px;
+	background-attachment: fixed;
+    background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}
