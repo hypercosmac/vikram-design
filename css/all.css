@@ -1880,3 +1880,29 @@ transition: all .2s ease-in-out;
     left: 100%;
   }
 }
+.text1 {
+    color: white;
+    
+    position: relative;
+    animation: text 3s 1;
+}
+
+
+@keyframes text {
+    5% {
+        
+        margin-bottom: -40px;
+    }
+
+    40% {
+    	color: rgb(1, 254, 1);
+        letter-spacing: 15px;
+        margin-bottom: -40px;
+    }
+
+    
+    80% {
+        letter-spacing: 5px;
+        margin-bottom: -40px;
+    }
+}
