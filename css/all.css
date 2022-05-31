@@ -1886,7 +1886,11 @@ transition: all .2s ease-in-out;
     position: relative;
     animation: text 3s 1;
 }
-
+@media screen and (max-width: 820px){
+	.text1 {
+		animation: textmob 3s 1;
+	}
+}
 
 @keyframes text {
     10% {
@@ -1906,3 +1910,19 @@ transition: all .2s ease-in-out;
         margin-bottom: -20px;
     }
 }
+@keyframes textmob {
+    10% {
+        
+        margin-bottom: -20px;
+    }
+
+    40% {
+    	color: rgb(1, 254, 1);
+        letter-spacing: 2px;
+    }
+
+    
+    70% {
+        letter-spacing: 1px;
+    }
+ }
