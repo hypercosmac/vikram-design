@@ -1889,20 +1889,20 @@ transition: all .2s ease-in-out;
 
 
 @keyframes text {
-    5% {
+    10% {
         
-        margin-bottom: -40px;
+        margin-bottom: -20px;
     }
 
     40% {
     	color: rgb(1, 254, 1);
         letter-spacing: 15px;
-        margin-bottom: -40px;
+        margin-bottom: -20px;
     }
 
     
     80% {
         letter-spacing: 5px;
-        margin-bottom: -40px;
+        margin-bottom: -20px;
     }
 }
