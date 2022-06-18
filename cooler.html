@@ -34,6 +34,54 @@
 		reveal();
 		
 	</script>
+	<style type="text/css">
+		.fadein {
+			position: relative;
+	      top: 0;
+	      left: 0;
+	      margin-left: auto;
+		margin-right: auto;
+		width: 65%;
+		
+		margin-top:10px;
+		}
+		.fadein img {
+		    
+		    -webkit-animation-name: fade;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-duration: 10s;
+		    animation-name: fade;
+		    animation-iteration-count: infinite;
+		    animation-duration: 7s;
+		}
+
+		@-webkit-keyframes fade {
+		    0% {opacity: 0;}
+		    20% {opacity: 1;}
+		    33% {opacity: 1;}
+		    53% {opacity: 0;}
+		    100% {opacity: 0;}
+		}
+		@keyframes fade {
+		    0% {opacity: 0;}
+		    20% {opacity: 1;}
+		    33% {opacity: 1;}
+		    53% {opacity: 0;}
+		    100% {opacity: 0;}
+		}
+
+		#f1 {
+		}
+		#f2 {
+		    -webkit-animation-delay: -6s;
+		}
+		#f3 {
+		    -webkit-animation-delay: -4s;
+		}
+		#f4 {
+		    -webkit-animation-delay: -2s;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -61,24 +109,30 @@
 			<section class="bar">
 				<div class="bar-frame">
 					<ul class="breadcrumbs">
-						<li><a href="furniture.html">Delta Stool</a></li>
-						<li>Cooler Robot</li>
 						<li><a href="eureka.html">Automated Watering</a></li>
+						<li>Cooler Robot</li>
+						<li><a href="furniture.html">Delta Stool</a></li>
 					</ul>
 				</div>
 			</section>
 			<img id="project-start" class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page1.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page2.jpg">
-			<!--<imgclass="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page3.jpg">-->
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page3.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page4.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page5.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page6.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page7.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page8.jpg">
 			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/cooler_page9.jpg">
+			<div class="fadein">
+				<img id="f4" class="portfolio-img-animation" src="portfolio_img/Cooler_option4.jpg">
+			    <img id="f3" class="portfolio-img-animation" src="portfolio_img/Cooler_option3.jpg">
+			    <img id="f2" class="portfolio-img-animation" src="portfolio_img/Cooler_option2.jpg">
+			    <img id="f1" class="portfolio-img-animation" src="portfolio_img/Cooler_option1.jpg">
+			</div>
+			<img class="portfolio-img reveal fade-bottom" src="portfolio_img/animation_fore.png">
 			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page10.jpg">
 			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page11.jpg">
-			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_page12.jpg">
 			<img class="portfolio-img reveal fade-bottom"src="portfolio_img/cooler_gif.gif">
 		</div>
 		<footer id="footer">
@@ -88,7 +142,7 @@
 						<div class="col-holder">
 							<div class="col">
 								<div class="heading">
-									<h3><a class="white-text" href="furniture.html">< ∆ Stool</a></h3>
+									<h3><a class="white-text" href="eureka.html">< Automated Watering</a></h3>
 								</div>
 								
 							</div>
@@ -104,7 +158,7 @@
 							</div>
 							<div class="col col-contact">
 								<div class="heading">
-									<h3><a class="white-text" href="eureka.html">Automated Watering ></a></h3>
+									<h3><a class="white-text" href="furniture.html">∆ Stool ></a></h3>
 								</div>
 								<ul class="social">
 									<!--<li class="linkedin"><a href="#">LinkedIn</a></li>-->

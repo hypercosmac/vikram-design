@@ -996,6 +996,17 @@ div.selector select {
 		background-size:31px 31px;
 	}
 }
+.portfolio-img-animation {
+	display: block;
+	position:absolute;
+    top:0;
+	width: 100%;
+	border-radius: 10px;
+	filter: drop-shadow(1px 1px 10px #808080);
+}
+@media screen and (max-width: 820px){
+	.portfolio-img-animation{ width: 99vw; margin-top: 5px; padding: 0; }
+	}
 .portfolio-img {
 	display: block;
 	margin-left: auto;
