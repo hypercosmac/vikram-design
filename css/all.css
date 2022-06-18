@@ -1004,9 +1004,21 @@ div.selector select {
 	border-radius: 10px;
 	filter: drop-shadow(1px 1px 10px #808080);
 }
+.fadein {
+		position: relative;
+	  top: 0;
+	  left: 0;
+	  margin-left: auto;
+	margin-right: auto;
+	width: 65%;
+
+	margin-top:10px;
+}
 @media screen and (max-width: 820px){
-	.portfolio-img-animation{ width: 99vw; margin-top: 5px; padding: 0; }
-	}
+	.portfolio-img-animation{ width: 99vw; margin-top: 5px; padding: 0; 
+		filter: drop-shadow(0px 0px 0px #808080);}
+	.fadein{width: 99vw; margin-top: 0px; padding: 0;}
+}
 .portfolio-img {
 	display: block;
 	margin-left: auto;
@@ -1018,7 +1030,8 @@ div.selector select {
 	filter: drop-shadow(1px 1px 10px #808080);
 }
 @media screen and (max-width: 820px){
-	.portfolio-img{ width: 99vw; margin-top: 5px; padding: 0; }
+	.portfolio-img{ width: 99vw; margin-top: 5px; padding: 0; 
+		filter: drop-shadow(0px 0px 0px #808080);}
 	}
 .portfolio-img:hover { 
 transform: scale(1.1); 
@@ -1090,6 +1103,17 @@ transition: all .2s ease-in-out;
 }
 #about-hero {
 	border-radius: 20px;
+}
+.render-hero-video{
+	width: 100%;
+	border-radius: 5px;
+}
+.render-process{
+	display: block;
+	margin-left: auto;
+  	margin-right: auto;
+ 	width: 100%;
+ 	border-radius: 5px;
 }
 .row {
   margin-left: auto;
