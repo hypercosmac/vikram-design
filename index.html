@@ -81,6 +81,22 @@
 			text-align:center;
 			border-radius:4px;
 		}
+		.float{
+			position:fixed;
+			width:60px;
+			height:60px;
+			bottom:40px;
+			
+			background-color:#0C9;
+			color:#FFF;
+			border-radius:50px;
+			text-align:center;
+			box-shadow: 2px 2px 3px #999;
+		}
+
+		.my-float{
+			margin-top:22px;
+		}
 	</style>
 </head>
 <body>
@@ -110,21 +126,67 @@
 					</nav>
 				</div>
 			</header>
+			<a href="#main" class="float">
+				<i class="fa fa-plus my-float">down</i>
+			</a>
 			<section class="promo">
 				<ul class="">
 					<li class="parallax">
 						<div class="slide-holder">
 							<div class="slide-info">
-								<h1 class="text1">vikram.design</h1>
+								<h2 class="text1">Design Portfolio</h2>
 								<p></p>
-								<!--<a class="btn white big" href="about.html">About me</a>-->
+								<!--<a class="btn white" href="https://www.linkedin.com/in/vikram-mishra/">Jump to LinkedIn</a>-->
+								<a class="btn white" href="#main">Jump to Projects</a>
 							</div>
 						</div>
 					</li>
 				</ul>
 			</section>
 			<section id="main">
-				<h3>Industrial Design Portfolio</h3><br><br>
+				<h3>Projects and Experience</h3><br><br>
+				<div class="boxes">
+					<div class="box reveal fade-bottom">
+						<a href="isurvey/index.html">
+							<span class="bg"></span>
+							<img src="images/isurvey_hero.jpeg" alt="" />
+							<div class="box-info grow">
+								<div class="box-info-holder">
+									<span class="title"><span>Entrepreneurship</span></span>
+									<h2>Weedless Robotics</h2>
+									<!--<span class="btn white normal">Δ Stool</span>-->
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="box reveal fade-bottom-c2">
+						<a href="#main">
+							<span class="bg"></span>
+							<img src="images/currency_hero.png" alt="" />
+							<div class="box-info grow-small">
+								<div class="box-info-holder">
+									<span class="title"><span>Computer Vision</span></span>
+									<h2>Currency Verifier</h2>
+									<h4>Coming Soon</h4>
+									<!--<span class="btn white normal">Eureka</span>-->
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="box reveal fade-bottom-c3">
+						<a href="osfur.html">
+							<span class="bg"></span>
+							<img src="images/osfur_hero.jpg" alt="" />
+							<div class="box-info grow">
+								<div class="box-info-holder">
+									<span class="title"><span>Wood Work</span></span>
+									<h2>Windsor Stool</h2>
+									<!--<span class="btn white normal">How cool?</span>-->
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
 				<div class="boxes">
 					<div class="box reveal fade-bottom">
 						<a href="furniture.html">
