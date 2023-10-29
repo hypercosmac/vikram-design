@@ -1967,4 +1967,85 @@ transition: all .2s ease-in-out;
     70% {
         letter-spacing: 1px;
     }
- }
+}
+
+:root {
+  --white-color:                #FFFFFF;
+  --primary-color:              #609256;
+  --section-bg-color:           #fff2f2;
+  --dark-color:                 #000000;
+  --grey-color:                 #d0d1d1;
+  --p-color:                    #717275;
+}
+
+.custom-circle-image {
+  border-radius: 100px;
+  width: 55px;
+  height: 55px;
+}
+
+.custom-circle-image.team-image {
+  width: 85px;
+  height: 85px;
+}
+.team {
+  background: var(--grey-color);
+}
+
+.team-thumb {
+  background: var(--white-color);
+  position: relative;
+  border-radius: .25rem;
+  padding: 42px 32px;
+}
+
+.team-info {
+  width: 100%;
+}
+
+.custom-modal-btn {
+  background: var(--grey-color);
+  color: var(--white-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 32px;
+  width: 42px;
+  height: 42px;
+}
+
+.modal-body {
+  padding: 4rem;
+}
+
+.modal-header {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+}
+
+.modal-header .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+  margin: 32px;
+}
+
+#cart-modal .modal-header .btn-close {
+  z-index: 2;
+  margin: 22px;
+}
+
+#cart-modal .modal-header {
+  border-bottom: 0;
+  padding: 0;
+}
+
+#cart-modal .modal-footer {
+  padding: 2rem 4rem;
+}
+.section-padding {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
