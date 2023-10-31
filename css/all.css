@@ -1989,18 +1989,21 @@ transition: all .2s ease-in-out;
   height: 85px;
 }
 .team {
-  background: var(--grey-color);
 }
 
 .team-thumb {
   background: var(--white-color);
   position: relative;
-  border-radius: .25rem;
+  /*border-radius: .25rem;*/
   padding: 42px 32px;
+  display: inline-flex;
+
 }
 
 .team-info {
-  width: 100%;
+  /*width: 100%;*/
+  text-align: center;
+  padding-left: 10px;
 }
 
 .custom-modal-btn {
