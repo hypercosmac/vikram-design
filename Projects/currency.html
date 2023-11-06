@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Currency Authenticator - VikramDesign</title>
+	<!--
+
+    Template 2104 Sloopa
+
+	http://www.tooplate.com/view/2104-sloopa
+
+    -->
+  <!-- load CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">        <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">                                            <!-- https://getbootstrap.com/ -->
+  <link rel="stylesheet" href="css/fontawesome-all.min.css">                                      <!-- Font awesome -->
+  <link rel="stylesheet" href="css/tooplate-style.css">
+  
+
+  <script>
+    var renderPage = true;
+
+    if (navigator.userAgent.indexOf('MSIE') !== -1
+      || navigator.appVersion.indexOf('Trident/') > 0) {
+      /* Microsoft Internet Explorer detected in. */
+      alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+      renderPage = false;
+    }
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- Loader -->
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
+
+  <div class="tm-container">
+    <div class="tm-container-inner">
+      <section class="tm-first-section">
+        <div class="col-xs-12 tm-bg-black-alpha tm-text-white text-center tm-site-header-box">
+          <h1 class="mb-4">Currency Authenticator</h1>
+          <p class="mb-0 tm-site-tagline">Computer Vision</p>
+        </div>
+      </section>
+      <div class="col-lg-12 col-12">
+                            <div class="tab-content mt-2" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-youtube" role="tabpanel" aria-labelledby="pills-youtube-tab">
+
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/nTdb26Zc1w0?si=cA7_ZpljqsmG4SpX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
+                                                <h4 class="mb-3">Watch a Live Demo</h4>
+
+                                                <p>The machine is made for indivduals with low or no vision to aid with verification and identification of currency notes.</p>
+
+                                                <p>This prototype was made to work with Indian currency. It used two cameras along with 3 different light modes to accurately verify the currency notes inserted in the machine.</p>
+
+                                                <p>I chose to use a Raspberry Pi 4 for this prototype as it was a Proof of Concept - The performance could further be improved through adding a Neural Compute Stick to this set up.</p>
+
+                                                <div class="mt-2 mt-lg-auto">
+                                                    <a href="https://youtu.be/nTdb26Zc1w0" class="custom-link mb-2">
+                                                        Link to Video
+                                                        <i class="bi-arrow-right ms-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                                    <div class="row">
+                                        <div class="col-lg-7 col-12">
+                                            <img src="images/IMG_3915.jpeg" class="img-fluid" alt="">
+                                        </div>
+
+                                        <div class="col-lg-5 col-12">
+                                            <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
+                                                <h4 class="mb-3">1000+ <span>Acres</span> <br>Farmland in <span>Cincinnati</span></h4>
+
+                                                <p>Adam's biggest problem that we can solve is reducing expenditure on Fertilizers by identifying stand count over short intervals after seeds begin to sprout to identify which parts of his farm need highest amounts of fertilizers.</p>
+
+                                                <p>Adam's expenditure of fertilizers exceeds $100 per acre every year, an analysis and smarter fertilizer distribution can save $10,000+ per year while maintaining crop yields.</p>
+
+                                                <div class="mt-2 mt-lg-auto">
+                                                    <a href="#solution" class="custom-link mb-2">
+                                                        Explored solution: iSight
+                                                        <i class="bi-arrow-right ms-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="pills-skill" role="tabpanel" aria-labelledby="pills-skill-tab">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-12">
+                                            <img src="images/Richard.jpeg" class="img-fluid" alt="">
+                                        </div>
+
+                                        <div class="col-lg-5 col-12">
+                                            <div class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5">
+                                                <h4 class="mb-3">Scale Organic Farming</h4>
+
+                                                <p>Richard needs a scalable way to practice organic farming to utilize his entire aerable land of 100 acres instead of his current field of 1 acre.</p>
+
+                                                <p>Richard was an early adopter and tester of an <a href="https://farm.bot/">AgTech product for automating farming: <u>FarmBot</u></a> but does not continue to use it since it was not a scalable solution.</p>
+                                                <div class="skill-thumb mt-3">
+
+                                                    <strong>Branding</strong>
+                                                        <span class="float-end">90%</span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                                                            </div>
+
+                                                    <strong>Design & Stragety</strong>
+                                                        <span class="float-end">70%</span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                                                            </div>
+
+                                                    <strong>Online Platform</strong>
+                                                        <span class="float-end">80%</span>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                                            </div>
+
+                                                </div>
+                                                
+                                                <div class="mt-2 mt-lg-auto">
+                                                    <a href="#solution" class="custom-link mb-2">
+                                                        Explored Solution: CropMantis
+                                                        <i class="bi-arrow-right ms-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                            </div>
+                        </div>
+      
+      
+      <section class="tm-third-section">
+        <div class="tm-bg-black-alpha tm-text-white tm-third-section-box">
+          <h4 class="tm-text-light-green mb-4">Background</h4>
+          <p class="mb-4">I was 17 years old when I did this project and was a great learning experience and stepping stone in my technology journey. This also kickstarted my interest in computer vision! I did this project in a team of 4 people and all of it would not possible without their support.</p>
+          <a href="#role" class="btn btn-secondary tm-align-self-center">What exactly did I do?</a>
+        </div>
+      </section>
+      <section class="tm-text-section tm-text-section-pad-2">
+        <div id="role" class="container">
+          <div class="row mb-md-4 mb-sm-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+              <h2 class="mb-4 tm-text-blue">My Role</h2>
+              <p>Being in a small team all of us experimented in all domains of the project<br>
+              </p>
+            </div>
+          </div>
+          <div class="row tm-space-even">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-sm-4 mb-md-0 mb-4 tm-info-box">
+              <i class="fas fa-3x fa-microchip p-5 w-100 tm-text-blue text-center mb-sm-0 mb-md-4"></i>
+              <h5>Hardware Design</h5>
+              <p class="mb-4">Building in the physical world has always been enjoyable to me! I modified a metal box with an integrated UV light and backlight with additional electronics to create this prototype.</p>
+              <a href="../isurvey/index.html" class="btn btn-info">Reapplied Skills in CropMantis</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-sm-4 mb-md-0 mb-4 tm-info-box">
+              <i class="fas fa-3x fa-laptop p-5 w-100 tm-text-blue text-center mb-sm-0 mb-md-4"></i>
+              <h5>Software</h5>
+              <p class="mb-4">I used Python programming on the Raspberry Pi 4 to control all of the lights in the box, capturing images, playing back audio response as well as running our custom TensorFlow models.</p>
+              <a href="../resume.html" class="btn btn-info">Go to Resume</a>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-sm-4 mb-md-0 mb-4 tm-info-box">
+              <i class="fas fa-3x fa-video p-5 w-100 tm-text-blue text-center mb-sm-0 mb-md-4"></i>
+              <h5>Computer Vision</h5>
+              <p class="mb-4">Through this project I learnt how to train custom object detection models which we used to detect all of the security features visible on currency notes in different lighting conditions.</p>
+              <a href="../index.html" class="btn btn-info">Back to VikramDesign</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tm-fifth-section">
+        <div class="container">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-text-white tm-font-400">
+            <p class="mb-3">Thanks for Visiting!
+            </p>
+            <a href="https://vikramdesign.com" class="btn btn-secondary tm-align-self-center">Back to VikramDesign</a>
+          </div>
+          <footer class="row tm-text-white">
+            <p class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-0 text-center tm-footer-text">
+              Copyright &copy;
+              <span class="tm-current-year">2023</span> <a style="color: white;" href="https://vikramdesign.com">VikramDesign</a>
+              
+            </p>
+          </footer>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- load JS -->
+  <script src="js/jquery-3.2.1.slim.min.js"></script> <!-- https://jquery.com/ -->
+  <script>
+    includeHTML();
+
+    /* DOM is ready
+    ------------------------------------------------*/
+    $(function () {
+
+      if (renderPage) {
+        $('body').addClass('loaded');
+      }
+
+      $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+    });
+
+  </script>
+</body>
+</html>

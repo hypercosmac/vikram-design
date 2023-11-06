@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
 	<link media="screen" rel="stylesheet" type="text/css" href="css/screen.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -35,10 +36,27 @@
 		
 	</script>
 	<style type="text/css">
-		
+		.float{
+			position:fixed;
+			width:60px;
+			height:60px;
+			bottom:40px;
+			right:40px;
+			background-color: #939799;
+			color:#FFF;
+			border-radius:50px;
+			text-align:center;
+		}
+
+		.my-float{
+			margin-top:11px;
+		}
 	</style>
 </head>
 <body>
+	<a href="index.html" class="float">
+		<i class="fa fa-2x fa-angle-left my-float"></i>
+	</a>
 	<div id="wrapper">
 		<div class="wrapper-holder">
 			<header id="header">
@@ -73,44 +91,6 @@
 			</section>
 			<iframe src="OSFUR/index.html" width="100%" height="100%" style="border:none;"></iframe>
 		</div>
-		<footer id="footer">
-			<div class="footer-holder">
-				<div class="footer-frame">
-					<div class="footer-content">
-						<div class="col-holder">
-							<div class="col">
-								<div class="heading">
-									<h3><a class="white-text" href="cooler.html">< Cooler Robot</a></h3>
-								</div>
-								
-							</div>
-							<div class="col">
-								<div class="heading">
-									<h3>Contact</h3>
-								</div>
-								<address>
-									<p><strong>Vikram Mishra</strong></p>
-									<p>+1 (513) 815-1799</p>
-									<p>Cincinnati, Ohio</p>
-									<p><a href="mailto:mishravm@mail.uc.edu">mishravm@mail.uc.edu</a></p>
-							</div>
-							<div class="col col-contact">
-								<div class="heading">
-									<h3><a class="white-text" href="eureka.html">Automated Watering ></a></h3>
-								</div>
-								<ul class="social">
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="footer-bottom">
-						<div class="holder">
-							<p>© 2023 vikram.design</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>	
 	</div>
 	
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
