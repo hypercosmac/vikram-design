@@ -13,7 +13,8 @@ https://www.tooplate.com/view/2127-little-fashion
 :root {
   --white-color:                #FFFFFF;
   --primary-color:              #609256;
-  --section-bg-color:           #fff2f2;
+  --primary-light-color:        #81a879;
+  --section-bg-color:           #f6f6f6;
   --dark-color:                 #000000;
   --grey-color:                 #d0d1d1;
   --p-color:                    #717275;
@@ -163,7 +164,7 @@ a:hover {
 
 .lead {
   font-size: 1.5rem;
-  font-weight: var(--font-weight-thin);
+  /*font-weight: var(--font-weight-thin);*/
 }
 
 b,
@@ -812,7 +813,7 @@ button:focus:not(:focus-visible) {
 }
 
 .custom-modal-btn {
-  background: var(--grey-color);
+  background: var(--primary-light-color);
   color: var(--white-color);
   position: absolute;
   top: 0;
