@@ -1,366 +1,43 @@
-<!DOCTYPE html>
-<!--[if lte IE 8]> <html class="oldie" lang="en"> <![endif]-->
-<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
-<head>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-KQ2DTRR');</script>
-	<!-- End Google Tag Manager -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="format-detection" content="telephone=no">
-	<title>Vikram Mishra - Home</title>
-	<link rel="stylesheet" href="css/fancySelect.css" />
-	<link rel="stylesheet" href="css/uniform.css" />
-	<link rel="stylesheet" href="css/all.css" />
-	<link media="screen" rel="stylesheet" type="text/css" href="css/screen.css" />
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<script type="text/javascript">
-		function reveal() {
-		  var reveals = document.querySelectorAll(".reveal");
-		  for (var i = 0; i < reveals.length; i++) {
-		    var windowHeight = window.innerHeight;
-		    var elementTop = reveals[i].getBoundingClientRect().top;
-		    var elementVisible = 50;
-		    if (elementTop < windowHeight - elementVisible) {
-		      reveals[i].classList.add("active");
-		    } else {
-		      reveals[i].classList.remove("active");
-		    }
-		  }
-		}
-		window.addEventListener("scroll", reveal);
-		window.addEventListener("load", reveal);
-		reveal();
-	</script>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8505110363248163"
-     crossorigin="anonymous"></script>
-	<style type="text/css">
-		.parallax{
-			background-image: url(images/background10.jpg);
-			background-attachment: fixed;
-		    background-position: center;
-		  	background-repeat: no-repeat;
-		  	background-size: cover;
-		}
-		.parallax2{
-			background-image: url(images/work_background.jpg);
-			background-attachment: fixed;
-		    background-position: center;
-		  	background-repeat: no-repeat;
-		  	background-size: cover;
-		}
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title>full screen iframe</title> 
+	<style type="text/css"> 
+		html { 
+			overflow: auto; 
+		} 
 		
-		h3{
-			text-align: center;
-		}
-		.ach{
-			display: block;
-  			margin-left: auto;
-		  	margin-right: auto;
-		 	width: 100%;
-		 	border-radius: 4px;
-		}
-		.text-container{
-			position: relative;
-			text-align: center;
-			color: gray;
-		}
-		.img-text{
-			position: relative; 
-			left: 50%;
-			transform: translateX(-50%);
-		}
-		#button{
-			width: 100%;
-			background-color: #17395C;
-			border: none;
-			color: white;
-			padding: 15px 1px;
-			text-decoration: none;
-			display: inline-block;
-			text-align:center;
-			border-radius:4px;
-		}
-		.float{
-			position:fixed;
-			width:60px;
-			height:60px;
-			bottom:40px;
-			
-			background-color:#0C9;
-			color:#FFF;
-			border-radius:50px;
-			text-align:center;
-			box-shadow: 2px 2px 3px #999;
-		}
+		html, 
+		body, 
+		div, 
+		iframe { 
+			margin: 0px; 
+			padding: 0px; 
+			height: 100%; 
+			border: none; 
+		} 
+		
+		iframe { 
+			display: block; 
+			width: 100%; 
+			border: none; 
+			overflow-y: auto; 
+			overflow-x: hidden; 
+		} 
+	</style> 
+</head> 
 
-		.my-float{
-			margin-top:22px;
-		}
-	</style>
-</head>
-<body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ2DTRR"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			<header id="header">
-				<span class="logo"><a href="index.html">vikram.design</a></span>
-				<ul class="tools-nav tools-nav-mobile">
-					<li><a href="#main">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a>-->
-				</ul>
-				<div class="bar-holder">
-				<a class="menu_trigger" href="#">menu</a>
-					<nav id="nav">
-						<ul>
-							<li><a href="#main">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="resume.html">Resume</a></li>
-							<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a></li>-->
-						</ul>
-					</nav>
-				</div>
-			</header>
-			<!--<a href="#main" class="float">
-				<i class="fa fa-plus my-float">down</i>
-			</a>-->
-			<section class="promo">
-				<ul class="">
-					<li class="parallax">
-						<div class="slide-holder">
-							<div class="slide-info">
-								<h2 class="text1">Design Portfolio</h2>
-								<p></p>
-								<!--<a class="btn white" href="https://www.linkedin.com/in/vikram-mishra/">Jump to LinkedIn</a>-->
-								<a class="btn white" href="#main">Jump to Projects</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</section>
-			<section id="main">
-				<h3>Projects and Experience</h3><br><br>
-				<div class="boxes">
-					<div class="box reveal fade-bottom">
-						<a href="zaptrack/index.html">
-							<span class="bg"></span>
-							<img src="images/isurvey_hero.jpeg" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Entrepreneurship</span></span>
-									<h2>ZapTrack</h2>
-									<!--<span class="btn white normal">Δ Stool</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="box reveal fade-bottom-c2">
-						<a href="Projects/currency.html">
-							<span class="bg"></span>
-							<img src="images/currency_hero.png" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Computer Vision</span></span>
-									<h2>Currency Verifier</h2>
-									<!--<span class="btn white normal">Eureka</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="box reveal fade-bottom-c3">
-						<a href="osfur.html">
-							<span class="bg"></span>
-							<img src="images/osfur_hero.jpg" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Wood Work</span></span>
-									<h2>Windsor Stool</h2>
-									<!--<span class="btn white normal">How cool?</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="boxes">
-					<div class="box reveal fade-bottom">
-						<a href="furniture.html">
-							<span class="bg"></span>
-							<img src="images/Delta_Hero.jpg" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Wood Work</span></span>
-									<h2>Delta Stool</h2>
-									<!--<span class="btn white normal">Δ Stool</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="box reveal fade-bottom-c2">
-						<a href="eureka.html">
-							<span class="bg"></span>
-							<img src="images/Eureka.jpg" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Design Produciton</span></span>
-									<h2>Automated Watering</h2>
-									<!--<span class="btn white normal">Eureka</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="box reveal fade-bottom-c3">
-						<a href="cooler.html">
-							<span class="bg"></span>
-							<img src="images/cooler_hero.jpg" alt="" />
-							<div class="box-info grow">
-								<div class="box-info-holder">
-									<span class="title"><span>Elecrtronics</span></span>
-									<h2>Cooler Robot</h2>
-									<!--<span class="btn white normal">How cool?</span>-->
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<!--<br><h3>Rendering Gallery</h3>
-				<div class="row">
-			      <div class="col l4 m6 s12 grow-small">
-			      		<a class="text-container" target="" href="knife.html">
-			      			<video class="ach" preload="auto" muted="muted" loop="loop" autoplay="autoplay">
-								<source src="images/knife.mp4" type="video/mp4">
-				      			<source src="images/knife.webm" type="video/webm">
-			      			</video>
-			      			
-							<div class="img-text"><h5><br>Kitchen Knife</h5></div>
-						</a>
-				  </div>-->
-				  <!--<div class="col l4 m6 s12 grow-small">
-			      		<a class="text-container" target="_blank" href="https://twitter.com/inventurek12/status/1110839435816509441">
-							<img class="ach" src="images/AI_Fair.jpeg" alt="" />
-							<div class="img-text"><h5>International AI Fair Beijing</h5></div>
-						</a>
-				  </div>-->
-			      <!--<div class="col l4 m6 s12 grow-small">
-			      	<br><br><br>
-			      		<a id="button" target="_blank" href="https://ring.sensio-ai.in/"> View Smart Ring CO-OP on Client Website
-						</a>
-				  </div>
-				  
-			 </div>
-			</section>-->
-			<div class="s12">
-                <h3>Ask me about my other experiences</h3>
-            </div>
-            <br>
-			<section id="Experience" class="team section-padding parallax2">
-                <div class="container">
-                    <div style="background-color: white; opacity: 90%;" class="row">
+<body> 
+	<iframe src="https://vikramdesign.framer.website/"
+			frameborder="0"
+			marginheight="0"
+			marginwidth="0"
+			width="100%"
+			height="100%"
+			scrolling="auto"> 
+</iframe> 
 
-                        <div class="col l4 m6 s12 grow-small">
-                            <div class="team-thumb d-flex align-items-center">
-                                <img src="images/uw_logo.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+</body> 
 
-                                <div class="team-info">
-                                	<br>
-                                    <h5 class="m0">University of Wuppertal</h5>
-                                    <strong class="text-muted">Exchange 2023</strong>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col l4 m6 s12 grow-small">
-                            <div class="team-thumb d-flex align-items-center">
-                                <img src="images/pg_logo.jpeg" class="img-fluid custom-circle-image team-image me-4" alt="">
-
-                                <div class="team-info">
-                                	<br>
-                                    <h5 class="mb-0">Internships at P&G</h5>
-                                    <strong class="text-muted">2022 and 2023</strong>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col l4 m6 s12 grow-small">
-                            <div class="team-thumb d-flex align-items-center">
-                                <img src="images/sensio_logo.jpg" class="img-fluid custom-circle-image team-image m4" alt="">
-
-                                <div class="team-info">
-                                	<br>
-                                    <h5 class="m0">Internship at SensIO</h5>
-                                    <strong class="text-muted">2022</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-		</div>
-		<footer id="footer">
-			<div class="footer-holder">
-				<div class="footer-frame">
-					<div class="footer-content">
-						<div class="col-holder">
-							<div class="col">
-								<div> <!--class="heading">-->
-									<h3></h3>
-								</div>
-								
-							</div>
-							<div class="col">
-								<div class="heading">
-									<h3>Contact</h3>
-								</div>
-								<address>
-									<p><strong>Vikram Mishra</strong></p>
-									<p>+1 (513) 815-1799</p>
-									<p>Cincinnati, OH</p>
-									<p><a href="mailto:mishravm@mail.uc.edu">mishravm@mail.uc.edu</a></p>
-								</address>
-								<ul class="social">
-									<li class="linkedin"><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
-								</ul>									
-							</div>
-							<div class="col col-contact">
-								<!--<div class="heading">
-									<h3>Connect</h3>
-								</div>
-								<ul class="social">
-									<li class="linkedin"><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
-								</ul>
-							</div>-->
-						</div>
-					</div>
-					<div class="footer-bottom">
-						<div class="holder">
-							<p>© 2023 VikramDesign</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>	
-	</div>
-	
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
-	<script type="text/javascript" src="js/jquery.placeholder.js"></script>
-	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-	<script type="text/javascript" src="js/fancySelect.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+</html> 
