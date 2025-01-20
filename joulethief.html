@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joule Thief Project | Portfolio</title>
+    <!-- Base styles -->
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/fancySelect.css">
+    <link rel="stylesheet" href="css/uniform.css">
+    <link rel="stylesheet" href="css/screen.css">
+    <!-- Project specific styles -->
+    <link rel="stylesheet" href="css/project.css">
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header id="header">
+        <span class="logo"><a href="index.html">Vikram Mishra</a></span>
+        <ul class="tools-nav tools-nav-mobile">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resume.html">Resume</a></li>
+        </ul>
+        <a class="menu_trigger" href="#">menu</a>
+        <div class="bar-holder">
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="project-hero section">
+        <div class="project-hero__container bd-grid">
+            <div class="project-hero__data">
+                <span class="project-hero__subtitle">Featured Project</span>
+                <h1 class="project-hero__title">Joule Thief Lamp</h1>
+                <p class="project-hero__description">
+                    An accessible lamp powered by residual energy from discarded batteries, 
+                    designed to provide light for those without reliable electricity access.
+                </p>
+                <div class="project-hero__info">
+                    <div class="info-item">
+                        <i class='bx bx-time'></i>
+                        <span>April 2019 - November 2019</span>
+                    </div>
+                    <div class="info-item">
+                        <i class='bx bx-group'></i>
+                        <span>Group Project - Team Lead</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="challenge section">
+        <div class="bd-grid">
+            <div class="section-header">
+                <h2 class="section__title">The Challenge</h2>
+                <div class="section__line"></div>
+            </div>
+            <p class="section__text">
+                During a visit to Cottolengo Special School, I witnessed students struggling with frequent 
+                power cuts. Children had to have dinner in the dark and were scared to use the restroom at night. 
+                This experience revealed a broader challenge: 1.2 billion people worldwide lack access to reliable electricity.
+            </p>
+            <div class="impact-card">
+                <h3>Impact Areas</h3><br>
+                <ul class="impact-list">
+                    <li><i class='bx bx-bulb'></i>  Students unable to study after dark</li><br>
+                    <li><i class='bx bx-shield'></i>  Safety concerns in dormitories and pathways</li><br>
+                    <li><i class='bx bx-food-menu'></i>  Difficulty during essential activities like dining</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution section bg-grid">
+        <div class="bd-grid">
+            <div class="section-header">
+                <h2 class="section__title">The Solution</h2>
+                <div class="section__line"></div>
+            </div>
+            
+            <div class="solution__grid">
+                <div class="solution__content">
+                    <p class="section__text">
+                        After extensive research and 12 failed attempts, we developed a working prototype 
+                        using the Joule Thief circuit - an elegant solution that could power LEDs using 
+                        nearly depleted batteries that would otherwise be discarded.
+                    </p>
+                    
+                    <div class="feature-cards">
+                        <div class="feature-card">
+                            <i class='bx bxs-battery-charging feature-icon'></i>
+                            <h3>Efficient Power Usage</h3>
+                            <p>Works with voltages down to 0.4V, utilizing residual energy from 70% down to 13% battery capacity</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class='bx bx-bulb feature-icon'></i>
+                            <h3>Optimal Brightness</h3>
+                            <p>Achieves maximum LED brightness even with nearly depleted batteries</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class='bx bx-recycle feature-icon'></i>
+                            <h3>Sustainable Design</h3>
+                            <p>Uses recycled materials where possible, partnering with battery recycling programs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="specs-card">
+                    <h3>Technical Specifications</h3>
+                    <div class="specs-section">
+                        <h4>Circuit Components</h4>
+                        <ul>
+                            <li>1kΩ resistor</li>
+                            <li>2N3904 transistor</li>
+                            <li>LTL-307EE LED</li>
+                            <li>10uH permeability ferrite core</li>
+                        </ul>
+                    </div>
+                    <div class="specs-section">
+                        <h4>Performance Metrics</h4>
+                        <ul>
+                            <li>Minimum working voltage: 0.4V</li>
+                            <li>Operating time: 72 hours on two depleted AA batteries</li>
+                            <li>Energy efficiency: Uses battery from 70% to 13% capacity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact section">
+        <div class="bd-grid">
+            <div class="section-header">
+                <h2 class="section__title">Impact & Future</h2>
+                <div class="section__line"></div>
+            </div>
+            
+            <p class="section__text">
+                The project demonstrated the importance of persistence in design, taking 13 attempts 
+                to achieve success. It also highlighted how technical solutions can address significant 
+                social challenges, while emphasizing the value of user feedback in the design process.
+            </p>
+
+            <div class="future-card">
+                <h3>Future Developments</h3>
+                <ul class="future-list">
+                    <li>
+                        <i class='bx bx-right-arrow-alt'></i>
+                        <span>Increasing light output for larger spaces while maintaining efficiency</span>
+                    </li>
+                    <li>
+                        <i class='bx bx-right-arrow-alt'></i>
+                        <span>Improving light diffusion for better coverage</span>
+                    </li>
+                    <li>
+                        <i class='bx bx-right-arrow-alt'></i>
+                        <span>Scaling production using sustainable materials</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer section">
+        <div class="footer__container bd-grid">
+            <div class="footer__data">
+                <h2 class="footer__title">Let's Connect</h2><br>
+                <p class="footer__text">Feel free to reach out for collaborations or just a friendly hello</p><br>
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/in/vikram-mishra" class="footer__social-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/hypercosmac" class="footer__social-link"><i class='bx bxl-github'></i></a>
+                    <a href="https://twitter.com/hypercosmac" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/fancySelect.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
