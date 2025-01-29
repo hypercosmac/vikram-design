@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exploring how Trajectory Conditional Flow Matching is revolutionizing autonomous vehicle navigation and robotics planning">
+    <title>Appropriate Appropriations - Trajectory Planning Revolution</title>
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/screen.css">
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Vikram Mishra">
+    <meta name="keywords" content="autonomous vehicles, robotics, trajectory planning, T-CFM, flow matching, AI navigation">
+    <meta property="og:title" content="The Future of Robot Navigation: Flow Matching vs. Diffusion">
+    <meta property="og:description" content="Exploring how Trajectory Conditional Flow Matching is revolutionizing autonomous vehicle navigation and robotics planning">
+    <meta property="og:image" content="../images/robot-navigation-hero.png">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 2.75rem;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.6rem;
+            color: #34495e;
+            font-weight: 300;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+            border-left: 4px solid #ffd700;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .emphasis {
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .tech-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .tech-column {
+            padding: 1rem;
+        }
+
+        .tech-column:hover {
+            transform: translateY(-5px);
+        }
+
+        .future-vision {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%);
+            border: none;
+        }
+
+        .article-hero-image {
+            width: 100%;
+            
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 0.5rem 0;
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 2rem 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-hero-image {
+                height: 250px;
+            }
+        }
+
+        /* Adjusted Section Spacing */
+        .article-section {
+            margin: 3rem 0;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eaeaea;
+            position: relative;
+        }
+
+        .article-section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: #2c3e50;
+        }
+
+        /* Enhanced Typography */
+        p {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        /* Refined Technical Intro */
+        .technical-intro {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .technical-intro:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animated Side Elements */
+        .side-animation {
+            position: fixed;
+            top: 50%;
+            right: 8rem;
+            width: 80px;
+            height: 400px;
+            pointer-events: none;
+            opacity: 0.8;
+            z-index: 10;
+            transform: translateY(-50%);
+            will-change: transform;
+            overflow: visible;
+        }
+
+        .tesla-car {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            background-image: url('../images/tesla-icon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform-origin: center;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            z-index: 3;
+            transform: translateY(0);
+        }
+
+        .trajectory-path {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom,
+                rgba(52, 152, 219, 0.2) 0%,
+                rgba(52, 152, 219, 0.15) 50%,
+                rgba(52, 152, 219, 0.05) 100%
+            );
+            transform-origin: center;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            filter: blur(2px);
+        }
+
+        .trajectory-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 15px,
+                rgba(52, 152, 219, 0.15) 15px,
+                rgba(52, 152, 219, 0.15) 30px
+            );
+            opacity: 0.9;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+            filter: blur(1.5px);
+        }
+
+        .trajectory-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(
+                circle at center,
+                rgba(52, 152, 219, 0.1) 0%,
+                rgba(52, 152, 219, 0) 70%
+            );
+            pointer-events: none;
+            transform: scale(1.5);
+            border-radius: 50%;
+            filter: blur(8px);
+        }
+
+        /* Section Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced List Styling */
+        .real-world-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 2rem 0;
+        }
+
+        .real-world-list li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .real-world-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .real-world-list .highlight {
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.05) 100%);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Refined Section Styling */
+        .highlight-box, .technical-intro, .tech-comparison {
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
+            border-left: 4px solid #ffd700;
+        }
+
+        /* Adjusted Image Sizes */
+        .article-hero-image.comparison-graph {
+            max-height: 400px;
+            width: auto;
+            margin: 2rem auto;
+            display: block;
+        }
+
+        /* Enhanced Tesla Animation */
+        .tesla-icon {
+            width: 30px;
+            height: 20px;
+            background-color: #333;
+            mask: url('../images/tesla-icon.svg') no-repeat center;
+            -webkit-mask: url('../images/tesla-icon.svg') no-repeat center;
+            opacity: 0.8;
+        }
+
+        /* Footer Styling */
+        footer {
+            width: 100%;
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 4rem 0 2rem 0;
+            margin-top: 6rem;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer-holder {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .footer-meta .article-meta {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .col-holder {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            padding: 2rem 0;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .col h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 2rem;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .col p {
+            margin: 0.25rem 0;
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        .col address {
+            font-style: normal;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .col address p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .col address a {
+            color: #34495e;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .col address a:hover {
+            color: #3498db;
+        }
+
+        .social {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social li {
+            margin: 0;
+        }
+
+        .social a {
+            color: #34495e;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 4px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social a:hover {
+            color: #3498db;
+            background: #ecf0f1;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #eaeaea;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 3rem 0 1.5rem 0;
+            }
+
+            .footer-holder {
+                padding: 0 1.5rem;
+            }
+
+            .footer-meta {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .col-holder {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-container">
+        <article>
+            <header class="article-header">
+                <h1 class="article-title">The Future of Robot Navigation: Flow Matching vs. Diffusion</h1>
+                <p class="article-subtitle">
+                    How a new approach to trajectory planning could make autonomous robots 100 times faster at making decisions
+                </p>
+            </header>
+
+            <!-- Hero Image -->
+            <img src="../images/robot-navigation-hero.png" 
+                 alt="Autonomous vehicle navigating through city traffic" 
+                 class="article-hero-image">
+            <p class="image-caption">Next-generation autonomous vehicles using T-CFM for real-time navigation</p>
+
+            <div class="article-content">
+                <div class="technical-intro">
+                    <p>
+                        Autonomous vehicle navigation stands at a pivotal moment of transformation. While current systems rely on time-consuming iterative processes, a groundbreaking approach called Trajectory Conditional Flow Matching (T-CFM) is challenging the status quo. This innovation promises to slash decision-making time from hundreds of milliseconds to near-instantaneous responses, fundamentally changing how robots navigate our world.
+                    </p>
+                </div>
+
+                <div class="article-section">
+                    <div class="highlight-box">
+                        <p>
+                            <span class="emphasis">The Technical Challenge:</span> Traditional diffusion-based trajectory planning requires approximately 200 sampling steps per trajectory, resulting in computational latency of 100-200ms. In autonomous navigation scenarios where reaction times below 50ms are critical, this computational overhead presents a significant bottleneck for system performance and safety metrics.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="article-section">
+                    <h2>The State of Autonomous Navigation</h2>
+                    <p>
+                        Today's autonomous vehicles, like those developed by Waymo, rely heavily on diffusion models - a type of AI that gradually refines its predictions through hundreds of small steps. Think of it like an artist starting with a rough sketch and slowly adding details until the final picture emerges. While this approach produces reliable results, it's computationally intensive and time-consuming.
+                    </p>
+                </div>
+
+                <div class="article-section">
+                    <div class="tech-comparison">
+                        <div class="tech-column">
+                            <h3>Traditional Diffusion Models</h3>
+                            <ul>
+                                <li>Requires 200+ sampling steps</li>
+                                <li>High computational overhead</li>
+                                <li>Slower real-time response</li>
+                                <li>More energy intensive</li>
+                            </ul>
+                        </div>
+                        <div class="tech-column">
+                            <h3>Flow Matching (T-CFM)</h3>
+                            <ul>
+                                <li>Single-step trajectory generation</li>
+                                <li>100x faster sampling speed</li>
+                                <li>Immediate decision making</li>
+                                <li>Energy efficient</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-section">
+                    <h2>Enter Flow Matching: A Paradigm Shift</h2>
+                    <p>
+                        Trajectory Conditional Flow Matching (T-CFM) represents a fundamental shift in how robots plan their movements. Instead of the gradual refinement approach of diffusion models, T-CFM learns a time-varying vector field - essentially a map of all possible movements at once. This allows robots to generate high-quality trajectories in a single step, rather than hundreds of iterative steps.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p>
+                            The breakthrough: T-CFM achieves up to <span class="emphasis">100 times faster</span> sampling speeds compared to diffusion models, without sacrificing accuracy. This means autonomous vehicles can react almost instantaneously to changing conditions.
+                        </p>
+                    </div>
+                    <img src="../images/comparison-diagram.png" 
+                         alt="Comparison between diffusion and flow matching approaches" 
+                         class="article-hero-image comparison-graph">
+                    <p class="image-caption">Performance comparison: T-CFM vs Traditional Diffusion Models from https://arxiv.org/html/2403.10809v1</p>
+                </div>
+                <div class="article-section">
+                    <h2>Real-World Applications</h2>
+                    <ul class="real-world-list">
+                        <li>
+                            <span class="highlight">Enhanced Urban Navigation</span> - Autonomous vehicles that respond instantly to complex city environments
+                        </li>
+                        <li>
+                            <span class="highlight">Multi-Agent Coordination</span> - Better prediction and coordination between multiple autonomous systems
+                        </li>
+                        <li>
+                            <span class="highlight">Energy Optimization</span> - Reduced computational overhead leading to significant power savings
+                        </li>
+                        <li>
+                            <span class="highlight">Safety Improvements</span> - Faster reaction times in critical situations
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="article-section">
+                    <div class="future-vision">
+                        <h2>The Orbital Safety Net</h2>
+                        <p>
+                            But what if we could add another layer of safety? Imagine a network of low-orbit satellites providing real-time oversight of autonomous vehicle operations. These satellites could:
+                        </p>
+                        <ul>
+                            <li>Provide wide-area traffic monitoring and prediction</li>
+                            <li>Detect potential hazards before they're visible to ground-level sensors</li>
+                            <li>Coordinate multiple autonomous vehicles across large areas</li>
+                            <li>Serve as a backup navigation system when ground-based GPS fails</li>
+                        </ul>
+                        <p>
+                            This orbital infrastructure could work in harmony with T-CFM, providing additional context and safety verification for autonomous navigation decisions. While ground-based systems handle immediate trajectory planning, satellite oversight could offer strategic guidance and emergency intervention capabilities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="article-section">
+                    <h2>Looking Ahead</h2>
+                    <p>
+                        The combination of T-CFM's rapid decision-making capabilities with satellite-based oversight could revolutionize how autonomous vehicles operate. We're moving toward a future where robots can navigate complex environments with both the speed of human reflexes and the reliability of machine precision.
+                    </p>
+
+                    <p>
+                        As we continue to develop these technologies, the goal remains clear: creating autonomous systems that are not just faster and more efficient, but fundamentally safer and more reliable than current alternatives. The revolution in trajectory planning isn't just about better algorithms - it's about building a comprehensive infrastructure that can support the autonomous future we're racing toward.
+                    </p>
+                </div>
+
+                <div class="article-section fade-in-section">
+                    <h2>Unconventional Horizons</h2>
+                    <p>
+                        While T-CFM represents a quantum leap in navigation technology, it's just the beginning. Imagine autonomous vehicles that don't just avoid obstacles, but predict and choreograph complex multi-vehicle maneuvers like a synchronized dance. Picture robots that learn from each other's experiences in real-time, creating a collective intelligence that grows exponentially with each interaction.
+                    </p>
+                    <p>
+                        The next frontier might not be on our roads at all - consider autonomous systems operating in four-dimensional space-time, plotting trajectories that bend our traditional understanding of movement and navigation. These aren't just incremental improvements; they're revolutionary concepts that could reshape our entire approach to autonomous navigation.
+                    </p>
+                </div>   
+            </div>
+        </article>
+    </div>
+
+    <!-- SVG Filters -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true" focusable="false">
+        <defs>
+            <filter id="liquid-filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="liquid" />
+                <feComposite in="SourceGraphic" in2="liquid" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Side Animation Container -->
+    <div class="side-animation">
+        <div class="tesla-car"></div>
+        <div class="trajectory-path">
+            <div class="trajectory-lines"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in sections on scroll
+            const sections = document.querySelectorAll('.fade-in-section');
+            
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Tesla car animation
+            const sideAnimation = document.querySelector('.side-animation');
+            const teslaCar = document.querySelector('.tesla-car');
+            const trajectoryPath = document.querySelector('.trajectory-path');
+            const trajectoryLines = document.querySelector('.trajectory-lines');
+            
+            let lastScrollY = window.scrollY;
+            let lastFrameTime = 0;
+
+            function updateAnimation(currentTime) {
+                if (!lastFrameTime) lastFrameTime = currentTime;
+                const deltaTime = (currentTime - lastFrameTime) / 1000;
+                lastFrameTime = currentTime;
+
+                const scrollY = window.scrollY;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+                
+                // Move car from top to bottom based on scroll
+                const carY = scrollProgress * 280;  // Leave some space at bottom
+                teslaCar.style.transform = `translateY(${carY}px)`;
+                
+                // Wave effect for trajectory
+                const waveX = Math.sin(currentTime * 0.001) * 10;
+                trajectoryPath.style.transform = `translateX(${waveX}px)`;
+                
+                lastScrollY = scrollY;
+                requestAnimationFrame(updateAnimation);
+            }
+
+            // Start animation loop
+            requestAnimationFrame(updateAnimation);
+        });
+    </script>
+
+    <footer>
+        <div class="footer-holder">
+            <div class="footer-content">
+                <div class="footer-meta">
+                    <div class="article-meta">
+                        Published: January 29, 2025
+                        <br>
+                        Vikram Mishra
+                    </div>
+                    <div class="social">
+                        <li><a href="https://x.com/hypercosmac" target="_blank">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/in/vikram-mishra/" target="_blank">LinkedIn</a></li>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
