@@ -107,7 +107,7 @@
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px), (min-width: 768px) and (max-width: 1200px) {
             .article-container {
                 padding: 2rem 1rem;
             }
@@ -118,6 +118,10 @@
 
             .article-hero-image {
                 height: 250px;
+            }
+
+            .side-animation {
+                display: none; /* Hide the car animation on medium and small screens */
             }
         }
 
