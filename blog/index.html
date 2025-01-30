@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vikram Mishra's Blog - Exploring the intersection of technology, robotics, and wild ideas">
+    <title>Vikram's Blog - Where Technology Meets Imagination</title>
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/fancySelect.css" />
+    <link rel="stylesheet" href="../css/uniform.css" />
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .featured-post {
+            position: relative;
+            margin-bottom: 4rem;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .featured-content {
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, #ffffff 100%);
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .post-category {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .post-title {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .post-excerpt {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 2rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px; /* Increased radius for a softer look */
+            font-weight: 400; /* Lighter font weight for minimalism */
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for a more modern depth */
+            backdrop-filter: blur(80px); /* Increased blur effect for a more modern look */
+        }
+
+        .read-more:hover {
+            transform: translateY(-2px) scale(1.05); /* Added scale effect */
+            background: #1abc9c; /* Changed background color on hover */
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .wild-ideas {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+        }
+
+        .wild-ideas h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .idea-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .idea-card {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .idea-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .idea-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .idea-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(100px, -100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                padding: 1rem;
+            }
+
+            .featured-image {
+                height: 300px;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .idea-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dropdown-toggle::after {
+            content: '▾';
+            display: inline-block;
+            margin-left: 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="wrapper-holder">
+            <header id="header">
+                <span class="logo"><a href="../index.html">Vikram Mishra</a></span>
+                <ul class="tools-nav tools-nav-mobile">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="index.html" class="dropdown-toggle">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="flow-matching.html">Flow Matching</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="menu_trigger" href="#">menu</a>
+                <div class="bar-holder">
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li class="dropdown">
+                                <a href="index.html" class="dropdown-toggle">Blog</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="flow-matching.html">Flow Matching</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="blog-container">
+                <article class="featured-post" onclick="window.location.href='flow-matching.html';" style="cursor: pointer;">
+                    <div class="floating-elements">
+                        <div class="floating-element" style="top: 20%; left: 10%;"></div>
+                        <div class="floating-element" style="top: 60%; left: 80%;"></div>
+                        <div class="floating-element" style="top: 40%; left: 50%;"></div>
+                    </div>
+                    <img src="../images/robot-navigation-hero.png" alt="Autonomous vehicle navigating through city traffic" class="featured-image">
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <span class="post-category">Robotics & AI</span>
+                            <span>January 29, 2025</span>
+                        </div>
+                        <h1 class="post-title">The Future of Robot Navigation: Flow Matching vs. Diffusion</h1>
+                        <p class="post-excerpt">
+                            Discover how Trajectory Conditional Flow Matching (T-CFM) is revolutionizing autonomous navigation, making robots 100 times faster at decision-making. Explore the intersection of cutting-edge AI and practical robotics in this deep dive into the future of autonomous systems.
+                        </p>
+                        <div class="wild-ideas">
+                            <h3>Explore The Possibilities</h3>
+                            <div class="idea-grid">
+                                <div class="idea-card">
+                                    <div class="idea-icon">🌐</div>
+                                    <div class="idea-title">Orbital Safety Net</div>
+                                    <p>Satellite networks providing real-time oversight for autonomous vehicles</p>
+                                </div>
+                                <div class="idea-card">
+                                    <div class="idea-icon">🏗️</div>
+                                    <div class="idea-title">4D Construction</div>
+                                    <p>Autonomous machines operating in integrated space-time</p>
+                                </div>
+                                <div class="idea-card">
+                                    <div class="idea-icon">🤖</div>
+                                    <div class="idea-title">Collective Intelligence</div>
+                                    <p>Robots learning and growing through shared experiences</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="flow-matching.html" class="read-more">
+                            Read Full Article
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <img id="tesla-icon" src="../images/tesla-icon.png" alt="Tesla Icon" style="display: none; position: absolute; width: 50px; height: auto; z-index: 1000;">
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="../js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../js/fancySelect.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add interactive floating elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            
+            floatingElements.forEach((element, index) => {
+                element.style.animation = `float ${15 + index * 5}s infinite linear`;
+                element.style.animationDelay = `${index * 2}s`;
+            });
+
+            // Add hover effect for idea cards
+            const ideaCards = document.querySelectorAll('.idea-card');
+            
+            ideaCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px)';
+                    card.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+
+            const readMoreButton = document.querySelector('.read-more');
+            const teslaIcon = document.getElementById('tesla-icon');
+
+            readMoreButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                // Get the button's position
+                const buttonRect = readMoreButton.getBoundingClientRect();
+                const buttonX = buttonRect.left + window.scrollX + buttonRect.width / 2;
+                const buttonY = buttonRect.top + window.scrollY + buttonRect.height / 2;
+
+                // Set the initial position of the Tesla icon
+                teslaIcon.style.left = `${buttonX}px`;
+                teslaIcon.style.top = `${buttonY}px`;
+                teslaIcon.style.display = 'block';
+
+                // Start the animation
+                setTimeout(() => {
+                    teslaIcon.style.transition = 'transform 0.5s ease-in-out';
+                    teslaIcon.style.transform = 'translate(calc(100vw - 60px), -100vh)'; // Move to top right
+                }, 1); // Small delay to ensure the icon is positioned before animation
+
+                // Navigate to the linked page after the animation
+                setTimeout(() => {
+                    window.location.href = readMoreButton.getAttribute('href');
+                }, 1000); // Match this duration with the animation duration
+            });
+        });
+    </script>
+</body>
+</html>

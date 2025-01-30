@@ -7,6 +7,8 @@
     <title>Appropriate Appropriations - Trajectory Planning Revolution</title>
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/fancySelect.css" />
+    <link rel="stylesheet" href="../css/uniform.css" />
     <!-- Additional SEO Meta Tags -->
     <meta name="author" content="Vikram Mishra">
     <meta name="keywords" content="autonomous vehicles, robotics, trajectory planning, T-CFM, flow matching, AI navigation">
@@ -477,143 +479,274 @@
                 justify-content: center;
             }
         }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            padding: 0.5rem 1rem;
+            display: block;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Mobile Dropdown */
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 0;
+                margin-left: 1rem;
+            }
+
+            .dropdown-menu a {
+                padding: 0.5rem 0;
+            }
+        }
+
+        /* Breadcrumbs Styling */
+        .breadcrumbs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            background: linear-gradient(to right, #000000, #1a242e, #000000); /* Gradient background */
+        }
+
+        .breadcrumbs li {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumbs li:not(:last-child)::after {
+            content: '/';
+            margin-left: 0.5rem;
+            color: #666;
+        }
+
+        .breadcrumbs a {
+            color: #ffffff; /* Changed to white */
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="article-container">
-        <article>
-            <header class="article-header">
-                <h1 class="article-title">The Future of Robot Navigation: Flow Matching vs. Diffusion</h1>
-                <p class="article-subtitle">
-                    How a new approach to trajectory planning could make autonomous robots 100 times faster at making decisions
-                </p>
+    <div id="wrapper">
+        <div class="wrapper-holder">
+            <header id="header">
+                <span class="logo"><a href="../index.html">Vikram Mishra</a></span>
+                <ul class="tools-nav tools-nav-mobile">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="index.html" class="dropdown-toggle">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="flow-matching.html">Flow Matching</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="menu_trigger" href="#">menu</a>
+                <div class="bar-holder">
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li class="dropdown">
+                                <a href="index.html" class="dropdown-toggle">Blog</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="flow-matching.html">Flow Matching</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
-
-            <!-- Hero Image -->
-            <img src="../images/robot-navigation-hero.png" 
-                 alt="Autonomous vehicle navigating through city traffic" 
-                 class="article-hero-image">
-            <p class="image-caption">Next-generation autonomous vehicles using T-CFM for real-time navigation</p>
-
-            <div class="article-content">
-                <div class="technical-intro">
-                    <p>
-                        Autonomous vehicle navigation stands at a pivotal moment of transformation. While current systems rely on time-consuming iterative processes, a groundbreaking approach called Trajectory Conditional Flow Matching (T-CFM) is challenging the status quo. This innovation promises to slash decision-making time from hundreds of milliseconds to near-instantaneous responses, fundamentally changing how robots navigate our world.
-                    </p>
-                </div>
-
-                <div class="article-section">
-                    <div class="highlight-box">
-                        <p>
-                            <span class="emphasis">The Technical Challenge:</span> Traditional diffusion-based trajectory planning requires approximately 200 sampling steps per trajectory, resulting in computational latency of 100-200ms. In autonomous navigation scenarios where reaction times below 50ms are critical, this computational overhead presents a significant bottleneck for system performance and safety metrics.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="article-section">
-                    <h2>The State of Autonomous Navigation</h2>
-                    <p>
-                        Today's autonomous vehicles, like those developed by Waymo, rely heavily on diffusion models - a type of AI that gradually refines its predictions through hundreds of small steps. Think of it like an artist starting with a rough sketch and slowly adding details until the final picture emerges. While this approach produces reliable results, it's computationally intensive and time-consuming.
-                    </p>
-                </div>
-
-                <div class="article-section">
-                    <div class="tech-comparison">
-                        <div class="tech-column">
-                            <h3>Traditional Diffusion Models</h3>
-                            <ul>
-                                <li>Requires 200+ sampling steps</li>
-                                <li>High computational overhead</li>
-                                <li>Slower real-time response</li>
-                                <li>More energy intensive</li>
-                            </ul>
-                        </div>
-                        <div class="tech-column">
-                            <h3>Flow Matching (T-CFM)</h3>
-                            <ul>
-                                <li>Single-step trajectory generation</li>
-                                <li>100x faster sampling speed</li>
-                                <li>Immediate decision making</li>
-                                <li>Energy efficient</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="article-section">
-                    <h2>Enter Flow Matching: A Paradigm Shift</h2>
-                    <p>
-                        Trajectory Conditional Flow Matching (T-CFM) represents a fundamental shift in how robots plan their movements. Instead of the gradual refinement approach of diffusion models, T-CFM learns a time-varying vector field - essentially a map of all possible movements at once. This allows robots to generate high-quality trajectories in a single step, rather than hundreds of iterative steps.
-                    </p>
-
-                    <div class="highlight-box">
-                        <p>
-                            The breakthrough: T-CFM achieves up to <span class="emphasis">100 times faster</span> sampling speeds compared to diffusion models, without sacrificing accuracy. This means autonomous vehicles can react almost instantaneously to changing conditions.
-                        </p>
-                    </div>
-                    <img src="../images/comparison-diagram.png" 
-                         alt="Comparison between diffusion and flow matching approaches" 
-                         class="article-hero-image comparison-graph">
-                    <p class="image-caption">Performance comparison: T-CFM vs Traditional Diffusion Models from https://arxiv.org/html/2403.10809v1</p>
-                </div>
-                <div class="article-section">
-                    <h2>Real-World Applications</h2>
-                    <ul class="real-world-list">
-                        <li>
-                            <span class="highlight">Enhanced Urban Navigation</span> - Autonomous vehicles that respond instantly to complex city environments
-                        </li>
-                        <li>
-                            <span class="highlight">Multi-Agent Coordination</span> - Better prediction and coordination between multiple autonomous systems
-                        </li>
-                        <li>
-                            <span class="highlight">Energy Optimization</span> - Reduced computational overhead leading to significant power savings
-                        </li>
-                        <li>
-                            <span class="highlight">Safety Improvements</span> - Faster reaction times in critical situations
-                        </li>
+            <section class="bar">
+                <div class="bar-frame">
+                    <ul class="breadcrumbs">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="flow-matching.html">Flow Matching</a></li>
                     </ul>
                 </div>
+            </section>
 
-                <div class="article-section">
-                    <div class="future-vision">
-                        <h2>The Orbital Safety Net</h2>
-                        <p>
-                            But what if we could add another layer of safety? Imagine a network of low-orbit satellites providing real-time oversight of autonomous vehicle operations. These satellites could:
+            <div class="article-container">
+                <article>
+                    <header class="article-header">
+                        <h1 class="article-title">The Future of Robot Navigation: Flow Matching vs. Diffusion</h1>
+                        <p class="article-subtitle">
+                            How a new approach to trajectory planning could make autonomous robots 100 times faster at making decisions
                         </p>
-                        <ul>
-                            <li>Provide wide-area traffic monitoring and prediction</li>
-                            <li>Detect potential hazards before they're visible to ground-level sensors</li>
-                            <li>Coordinate multiple autonomous vehicles across large areas</li>
-                            <li>Serve as a backup navigation system when ground-based GPS fails</li>
-                        </ul>
-                        <p>
-                            This orbital infrastructure could work in harmony with T-CFM, providing additional context and safety verification for autonomous navigation decisions. While ground-based systems handle immediate trajectory planning, satellite oversight could offer strategic guidance and emergency intervention capabilities.
-                        </p>
+                    </header>
+
+                    <!-- Hero Image -->
+                    <img src="../images/robot-navigation-hero.png" 
+                         alt="Autonomous vehicle navigating through city traffic" 
+                         class="article-hero-image">
+                    <p class="image-caption">Next-generation autonomous vehicles using T-CFM for real-time navigation</p>
+
+                    <div class="article-content">
+                        <div class="technical-intro">
+                            <p>
+                                Autonomous vehicle navigation stands at a pivotal moment of transformation. While current systems rely on time-consuming iterative processes, a groundbreaking approach called Trajectory Conditional Flow Matching (T-CFM) is challenging the status quo. This innovation promises to slash decision-making time from hundreds of milliseconds to near-instantaneous responses, fundamentally changing how robots navigate our world.
+                            </p>
+                        </div>
+
+                        <div class="article-section">
+                            <div class="highlight-box">
+                                <p>
+                                    <span class="emphasis">The Technical Challenge:</span> Traditional diffusion-based trajectory planning requires approximately 200 sampling steps per trajectory, resulting in computational latency of 100-200ms. In autonomous navigation scenarios where reaction times below 50ms are critical, this computational overhead presents a significant bottleneck for system performance and safety metrics.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="article-section">
+                            <h2>The State of Autonomous Navigation</h2>
+                            <p>
+                                Today's autonomous vehicles, like those developed by Waymo, rely heavily on diffusion models - a type of AI that gradually refines its predictions through hundreds of small steps. Think of it like an artist starting with a rough sketch and slowly adding details until the final picture emerges. While this approach produces reliable results, it's computationally intensive and time-consuming.
+                            </p>
+                        </div>
+
+                        <div class="article-section">
+                            <div class="tech-comparison">
+                                <div class="tech-column">
+                                    <h3>Traditional Diffusion Models</h3>
+                                    <ul>
+                                        <li>Requires 200+ sampling steps</li>
+                                        <li>High computational overhead</li>
+                                        <li>Slower real-time response</li>
+                                        <li>More energy intensive</li>
+                                    </ul>
+                                </div>
+                                <div class="tech-column">
+                                    <h3>Flow Matching (T-CFM)</h3>
+                                    <ul>
+                                        <li>Single-step trajectory generation</li>
+                                        <li>100x faster sampling speed</li>
+                                        <li>Immediate decision making</li>
+                                        <li>Energy efficient</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-section">
+                            <h2>Enter Flow Matching: A Paradigm Shift</h2>
+                            <p>
+                                Trajectory Conditional Flow Matching (T-CFM) represents a fundamental shift in how robots plan their movements. Instead of the gradual refinement approach of diffusion models, T-CFM learns a time-varying vector field - essentially a map of all possible movements at once. This allows robots to generate high-quality trajectories in a single step, rather than hundreds of iterative steps.
+                            </p>
+
+                            <div class="highlight-box">
+                                <p>
+                                    The breakthrough: T-CFM achieves up to <span class="emphasis">100 times faster</span> sampling speeds compared to diffusion models, without sacrificing accuracy. This means autonomous vehicles can react almost instantaneously to changing conditions.
+                                </p>
+                            </div>
+                            <img src="../images/comparison-diagram.png" 
+                                 alt="Comparison between diffusion and flow matching approaches" 
+                                 class="article-hero-image comparison-graph">
+                            <p class="image-caption">Performance comparison: T-CFM vs Traditional Diffusion Models from https://arxiv.org/html/2403.10809v1</p>
+                        </div>
+                        <div class="article-section">
+                            <h2>Real-World Applications</h2>
+                            <ul class="real-world-list">
+                                <li>
+                                    <span class="highlight">Enhanced Urban Navigation</span> - Autonomous vehicles that respond instantly to complex city environments
+                                </li>
+                                <li>
+                                    <span class="highlight">Multi-Agent Coordination</span> - Better prediction and coordination between multiple autonomous systems
+                                </li>
+                                <li>
+                                    <span class="highlight">Energy Optimization</span> - Reduced computational overhead leading to significant power savings
+                                </li>
+                                <li>
+                                    <span class="highlight">Safety Improvements</span> - Faster reaction times in critical situations
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="article-section">
+                            <div class="future-vision">
+                                <h2>The Orbital Safety Net</h2>
+                                <p>
+                                    But what if we could add another layer of safety? Imagine a network of low-orbit satellites providing real-time oversight of autonomous vehicle operations. These satellites could:
+                                </p>
+                                <ul>
+                                    <li>Provide wide-area traffic monitoring and prediction</li>
+                                    <li>Detect potential hazards before they're visible to ground-level sensors</li>
+                                    <li>Coordinate multiple autonomous vehicles across large areas</li>
+                                    <li>Serve as a backup navigation system when ground-based GPS fails</li>
+                                </ul>
+                                <p>
+                                    This orbital infrastructure could work in harmony with T-CFM, providing additional context and safety verification for autonomous navigation decisions. While ground-based systems handle immediate trajectory planning, satellite oversight could offer strategic guidance and emergency intervention capabilities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="article-section">
+                            <h2>Looking Ahead</h2>
+                            <p>
+                                The combination of T-CFM's rapid decision-making capabilities with satellite-based oversight could revolutionize how autonomous vehicles operate. We're moving toward a future where robots can navigate complex environments with both the speed of human reflexes and the reliability of machine precision.
+                            </p>
+
+                            <p>
+                                As we continue to develop these technologies, the goal remains clear: creating autonomous systems that are not just faster and more efficient, but fundamentally safer and more reliable than current alternatives. The revolution in trajectory planning isn't just about better algorithms - it's about building a comprehensive infrastructure that can support the autonomous future we're racing toward.
+                            </p>
+                        </div>
+
+                        <div class="article-section fade-in-section">
+                            <h2>Unconventional Horizons</h2>
+                            <p>
+                                While T-CFM represents a leap in navigation technology, it's just the beginning. Imagine autonomous vehicles that don't just avoid obstacles, but predict and choreograph complex multi-vehicle maneuvers like a synchronized dance. Picture robots that learn from each other's experiences in real-time, creating a collective intelligence that grows exponentially with each interaction.
+                            </p>
+                            <p>
+                                The next frontier might not be on our roads at all - consider autonomous construction machines operating in integrated space-time, plotting work sequences that bend our traditional understanding of site coordination and build processes. These aren't just smarter excavators or cranes; they're revolutionary systems that could reshape our entire approach to construction orchestration. Instead of seeing a building site as a series of separate spatial zones and temporal phases, these machines perceive and operate within a unified four-dimensional construction manifold. A concrete pump doesn't just move through space - it coordinates its position and timing relative to concrete trucks, formwork installation, and curing schedules. An autonomous crane doesn't simply swing through three dimensions - it looks more like a robotic arm that weaves through a spacetime fabric of scheduled lifts, staged materials, and evolving structural geometries..
+                            </p>
+                        </div>   
                     </div>
-                </div>
-
-                <div class="article-section">
-                    <h2>Looking Ahead</h2>
-                    <p>
-                        The combination of T-CFM's rapid decision-making capabilities with satellite-based oversight could revolutionize how autonomous vehicles operate. We're moving toward a future where robots can navigate complex environments with both the speed of human reflexes and the reliability of machine precision.
-                    </p>
-
-                    <p>
-                        As we continue to develop these technologies, the goal remains clear: creating autonomous systems that are not just faster and more efficient, but fundamentally safer and more reliable than current alternatives. The revolution in trajectory planning isn't just about better algorithms - it's about building a comprehensive infrastructure that can support the autonomous future we're racing toward.
-                    </p>
-                </div>
-
-                <div class="article-section fade-in-section">
-                    <h2>Unconventional Horizons</h2>
-                    <p>
-                        While T-CFM represents a leap in navigation technology, it's just the beginning. Imagine autonomous vehicles that don't just avoid obstacles, but predict and choreograph complex multi-vehicle maneuvers like a synchronized dance. Picture robots that learn from each other's experiences in real-time, creating a collective intelligence that grows exponentially with each interaction.
-                    </p>
-                    <p>
-                        The next frontier might not be on our roads at all - consider autonomous construction machines operating in integrated space-time, plotting work sequences that bend our traditional understanding of site coordination and build processes. These aren't just smarter excavators or cranes; they're revolutionary systems that could reshape our entire approach to construction orchestration. Instead of seeing a building site as a series of separate spatial zones and temporal phases, these machines perceive and operate within a unified four-dimensional construction manifold. A concrete pump doesn't just move through space - it coordinates its position and timing relative to concrete trucks, formwork installation, and curing schedules. An autonomous crane doesn't simply swing through three dimensions - it looks more like a robotic arm that weaves through a spacetime fabric of scheduled lifts, staged materials, and evolving structural geometries..
-                    </p>
-                </div>   
+                </article>
             </div>
-        </article>
+        </div>
     </div>
 
     <!-- SVG Filters -->
@@ -710,5 +843,12 @@
             </div>
         </div>
     </footer>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="../js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../js/fancySelect.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>
