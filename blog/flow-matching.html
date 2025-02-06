@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Exploring how Trajectory Conditional Flow Matching is revolutionizing autonomous vehicle navigation and robotics planning">
     <title>The New Trajectory Planning</title>
     <link rel="stylesheet" href="../css/all.css">
@@ -19,9 +19,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <style>
         .article-container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2rem;
             background: #ffffff;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             border-radius: 12px;
@@ -93,10 +93,9 @@
 
         .article-hero-image {
             width: 100%;
-            
-            object-fit: cover;
+            height: auto;
             border-radius: 12px;
-            margin: 0.5rem 0;
+            margin: 1rem 0;
         }
 
         .image-caption {
@@ -109,18 +108,18 @@
 
         @media (max-width: 768px) {
             .article-container {
-                padding: 1.5rem;
+                padding: 1rem;
                 border-radius: 0;
                 box-shadow: none;
             }
 
             .article-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
                 line-height: 1.2;
             }
 
             .article-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
 
             .article-hero-image {
@@ -140,6 +139,23 @@
 
             .side-animation {
                 display: none;
+            }
+
+            .tech-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-box, 
+            .technical-intro, 
+            .tech-comparison {
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+
+            .breadcrumbs {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
             }
         }
 
@@ -188,12 +204,12 @@
         .side-animation {
             position: fixed;
             top: 50%;
-            right: 8rem;
+            right: 0;
             width: 80px;
-            height: 400px;
+            height: 800px;
             pointer-events: none;
             opacity: 0.8;
-            z-index: 10;
+            z-index: 1;
             transform: translateY(-50%);
             will-change: transform;
             overflow: visible;
@@ -590,6 +606,24 @@
         .breadcrumbs a:hover {
             text-decoration: underline;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+                width: 100%;
+            }
+
+            .side-animation {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -646,7 +680,7 @@
                     <img src="../images/robot-navigation-hero.png" 
                          alt="Autonomous vehicle navigating through city traffic" 
                          class="article-hero-image">
-                    <p class="image-caption">Next-generation autonomous vehicles will use T-CFM for trajectory planning. Image: Midjourney</p>
+                    <p class="image-caption">Next-generation autonomous vehicles would use T-CFM for trajectory planning. Image: Midjourney</p>
 
                     <div class="article-content">
                         <div class="technical-intro">
@@ -818,7 +852,7 @@
                 const scrollProgress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
                 
                 // Move car from top to bottom based on scroll
-                const carY = scrollProgress * 280;  // Leave some space at bottom
+                const carY = scrollProgress * 700;  // Leave some space at bottom
                 teslaCar.style.transform = `translateY(${carY}px)`;
                 
                 // Wave effect for trajectory
