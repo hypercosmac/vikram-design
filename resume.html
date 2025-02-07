@@ -39,7 +39,12 @@
 			background: rgba(255, 255, 255, 0.9);
 			backdrop-filter: blur(10px);
 		}
-
+		.header-logo a {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #333;
+			text-decoration: none;
+		}
 		/* Main content layout */
 		.resume-container {
 			padding-top: 120px;
@@ -305,13 +310,12 @@
 	<div id="wrapper">
 		<div class="wrapper-holder">
 			<header id="header">
-				<span class="logo"><a href="index.html">vikram.design</a></span>
+				<span class="header-logo"><a href="index.html">Vikram Mishra</a></span>
 				<a href="#" class="menu_trigger">☰</a>
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="about.html">About</a></li>
-						<li><a href="resume.html">Resume</a></li>
 						<li><a href="blog/index.html">Blog</a></li>
 						<li><a target="_blank" href="Vikram_Mishra_Resume.pdf">Download Resume</a></li>
 					</ul>
@@ -348,7 +352,7 @@
 							</li>
 							<li class="skill-item">
 								<div class="skill-name">CAD Modeling</div>
-								<div class="skill-description">Proficient in SolidWorks, Fusion 360, and parametric modeling</div>
+								<div class="skill-description">Proficient in SolidWorks, Fusion 360, and Blender</div>
 							</li>
 						</ul>
 					</div>
@@ -445,37 +449,41 @@
 					</div>
 				</div>
 
-				<div class="resume-link">
+				<!--<div class="resume-link">
 					<a href="Vikram_Mishra_Resume.pdf" target="_blank">View Traditional Resume</a>
-				</div>
+				</div>-->
 			</div>
 			</section>
 		</div>
 		<footer id="footer">
-			<div class="footer-content">
-				<div class="col-holder">
-					<div class="col">
-						<div class="heading">
-							<h3>Contact</h3>
+			<div class="footer-holder">
+				<div class="footer-frame">
+					<div class="footer-content" style="text-align: center;">
+						<div class="col-holder" style="display: flex; justify-content: center; flex-wrap: wrap;">
+							<div class="col" style="margin: 0 1rem;">
+								<div class="heading">
+									<h3>Contact</h3>
+								</div>
+								<address>
+									<p><strong>Vikram Mishra</strong></p>
+									<p>+1 (513) 815-1799</p>
+									<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
+								</address>
+							</div>
+							<div class="col" style="margin: 0 1rem;">
+								<div class="heading">
+									<h3>Socials</h3>
+								</div>
+								<ul class="social" style="list-style: none; padding: 0; display: flex; gap: 1rem;">
+									<li><a target="_blank" href="https://x.com/hypercosmac">Twitter</a></li>
+									<li><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
+								</ul>
+							</div>
 						</div>
-						<address>
-							<p><strong>Vikram Mishra</strong></p>
-							<p>+1 (513) 815-1799</p>
-							<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
-						</address>
 					</div>
-					<div class="col">
-						<div class="heading">
-							<h3>Socials</h3>
-						</div>
-						<ul class="social">
-							<li><a target="_blank" href="https://x.com/hypercosmac">Twitter</a></li>
-							<li><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
-						</ul>
+					<div class="footer-bottom" style="text-align: center;">
+						<p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
 					</div>
-				</div>
-				<div class="footer-bottom">
-					<p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
 				</div>
 			</div>
 		</footer>	
@@ -519,5 +527,6 @@
 		}
 	});
 	</script>
+	<script src="header.js" defer></script>
 </body>
 </html>

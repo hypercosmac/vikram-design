@@ -28,6 +28,13 @@
 			backdrop-filter: blur(10px);
 		}
 
+		.header-logo a {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #333;
+			text-decoration: none;
+		}
+
 		.toolkit-container {
 			max-width: 1200px;
 			margin: 0 auto;
@@ -194,12 +201,15 @@
 <body>
 	<div id="wrapper">
 		<header id="header">
+			<span class="header-logo"><a href="index.html">Vikram Mishra</a></span>
+			<a href="#" class="menu_trigger">☰</a>
 			<nav id="nav">
 				<ul>
 					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="resume.html">Resume</a></li>
 					<li><a href="blog/index.html">Blog</a></li>
+					<li><a target="_blank" href="Vikram_Mishra_Resume.pdf">Download Resume</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -357,5 +367,6 @@
 		observer.observe(section);
 	});
 	</script>
+	<script src="header.js" defer></script>
 </body>
 </html> 
