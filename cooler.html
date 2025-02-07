@@ -3,11 +3,10 @@
 <!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="format-detection" content="telephone=no">
-	<title>Cooler Robot - Vikram.Design</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cooler Robot - Vikram Mishra</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/fancySelect.css" />
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
@@ -35,8 +34,33 @@
 		
 	</script>
 	<style type="text/css">
+		
+		/* Content Spacing */
+		#main {
+			padding-top: 80px;
+		}
+
+		@media (max-width: 767px) {
+			#main {
+				padding-top: 60px;
+			}
+		}
+
+		/* Portfolio Image Styles */
+		.portfolio-img, .portfolio-img-animation {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 2rem auto;
+		}
+
+		@media (max-width: 767px) {
+			.portfolio-img, .portfolio-img-animation {
+				margin: 1rem auto;
+			}
+		}
+
 		.fadein img {
-		    
 		    -webkit-animation-name: fade;
 		    -webkit-animation-iteration-count: infinite;
 		    -webkit-animation-duration: 10s;
@@ -60,46 +84,33 @@
 		    100% {opacity: 0;}
 		}
 
-		#f1 {
+		#f1 {}
+		#f2 { -webkit-animation-delay: -6s; }
+		#f3 { -webkit-animation-delay: -4s; }
+		#f4 { -webkit-animation-delay: -2s; }
+
+		/* Breadcrumbs Mobile Styles */
+		.breadcrumbs {
+			font-size: 13px;
+			letter-spacing: 0;
+			text-transform: lowercase;
 		}
-		#f2 {
-		    -webkit-animation-delay: -6s;
-		}
-		#f3 {
-		    -webkit-animation-delay: -4s;
-		}
-		#f4 {
-		    -webkit-animation-delay: -2s;
+
+		@media (max-width: 767px) {
+			.breadcrumbs {
+				font-size: 12px;
+			}
 		}
 	</style>
 </head>
 <body>
+	<div id="header-placeholder"></div>
 	<div id="wrapper">
 		<div class="wrapper-holder">
-			<header id="header">
-				<span class="logo"><a href="index.html">vikram.design</a></span>
-				<ul class="tools-nav tools-nav-mobile">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a>-->
-				</ul>
-				<a class="menu_trigger" href="#">menu</a>
-				<div class="bar-holder">
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="resume.html">Resume</a></li>
-							<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a></li>-->
-						</ul>
-					</nav>
-				</div>
-			</header>
 			<section class="bar">
 				<div class="bar-frame">
 					<ul class="breadcrumbs">
-						<li><a href="osfur.html">OSFÜR</a></li>
+						<li><a href="OSFUR/index.html">OSFÜR</a></li>
 						<li><a href="eureka.html">Automated Watering</a></li>
 						<li>Cooler Robot</li>
 						<li><a href="furniture.html">Delta Stool</a></li>
@@ -144,8 +155,8 @@
 								<address>
 									<p><strong>Vikram Mishra</strong></p>
 									<p>+1 (513) 815-1799</p>
-									<p>Cincinnati, Ohio</p>
-									<p><a href="mailto:mishravm@mail.uc.edu">mishravm@mail.uc.edu</a></p>
+									<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
+								</address>
 							</div>
 							<div class="col col-contact">
 								<div class="heading">
@@ -159,7 +170,7 @@
 					</div>
 					<div class="footer-bottom">
 						<div class="holder">
-							<p>© 2022 vikram.design</p>
+							<p>© <script>document.write(new Date().getFullYear())</script> vikram.design</p>
 						</div>
 					</div>
 				</div>
@@ -173,5 +184,6 @@
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/fancySelect.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script src="header.js"></script>
 </body>
 </html>

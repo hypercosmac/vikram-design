@@ -219,10 +219,12 @@ a:hover{text-decoration:underline;}
     display:table-row;
 }
 #header {
-	max-width: 1170px;
+	max-width: 100%;
 	margin: 0 auto;
 	padding: 50px 20px 45px;
 	position:relative;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
 }
 .menu_trigger{
 	width: 31px;
@@ -242,6 +244,8 @@ a:hover{text-decoration:underline;}
 	overflow: hidden;
 	display: block;
 	margin: 0 0 43px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
 }
 .logo a {
 	display: block;
@@ -264,10 +268,10 @@ a:hover{text-decoration:underline;}
 	padding: 0 0 0 55px;
 }
 #nav ul a {
-	color: #6e6e6e;
+	color: #333;
 	font-size: 14px;
 	line-height: 16px;
-	text-transform: uppercase;
+	font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .tools-nav {
 	float: right;
@@ -281,7 +285,7 @@ a:hover{text-decoration:underline;}
 	margin: 0 0 0 82px;
 }
 .tools-nav a {
-	color: #6e6e6e;
+	color: #333;
 }
 .tools-nav .login {
 	background: url(../images/ico_login.png) no-repeat 0 50%;

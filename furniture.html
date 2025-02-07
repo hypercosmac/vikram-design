@@ -3,11 +3,10 @@
 <!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="format-detection" content="telephone=no">
-	<title>Delta Stool - Vikram.Design</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Furniture Design - Vikram Mishra</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/fancySelect.css" />
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
@@ -32,45 +31,94 @@
 		window.addEventListener("scroll", reveal);
 		window.addEventListener("load", reveal);
 		reveal();
-		
 	</script>
 	<style type="text/css">
-		.parallax{
+		
+		/* Portfolio Image Styles */
+		.portfolio-img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 2rem auto;
+		}
+
+		@media (max-width: 767px) {
+			.portfolio-img {
+				margin: 1rem auto;
+			}
+		}
+
+		/* Breadcrumbs Mobile Styles */
+		.breadcrumbs {
+			font-size: 13px;
+			letter-spacing: 0;
+			text-transform: lowercase;
+		}
+
+		@media (max-width: 767px) {
+			.breadcrumbs {
+				font-size: 12px;
+			}
+		}
+
+		/* Parallax Styles */
+		.parallax {
 			background-image: url(portfolio_img/Delta_page1.jpg);
 			background-attachment: fixed;
-		    background-position: center;
-		  	background-repeat: no-repeat;
-		  	background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 80vh;
+			margin: 0;
+			position: relative;
+			z-index: 1;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		@media (max-width: 767px) {
+			.parallax {
+				background-attachment: scroll;
+				height: 40vh;
+				background-size: contain;
+				background-position: top center;
+				background-color: black;
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+		/* Reveal Animation */
+		.reveal {
+			opacity: 0;
+			transition: opacity 0.8s ease;
+		}
+
+		.reveal.active {
+			opacity: 1;
+		}
+
+		.fade-bottom {
+			transform: translateY(20px);
+			transition: all 0.8s ease;
+		}
+
+		.fade-bottom.active {
+			transform: translateY(0);
 		}
 	</style>
+	<link href="https://fonts.googleapis.com/" rel="preconnect">
+	<link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="anonymous">
+	<script src="header.js" defer></script>
 </head>
 <body>
+	<div id="header-placeholder"></div>
 	<div id="wrapper">
 		<div class="wrapper-holder">
-			<header id="header">
-				<span class="logo"><a href="index.html">vikram.design</a></span>
-				<ul class="tools-nav tools-nav-mobile">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="resume.html">Resume</a></li>
-					<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a>-->
-				</ul>
-				<a class="menu_trigger" href="#">menu</a>
-				<div class="bar-holder">
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="resume.html">Resume</a></li>
-							<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a></li>-->
-						</ul>
-					</nav>
-				</div>
-			</header>
 			<section class="bar">
 				<div class="bar-frame">
 					<ul class="breadcrumbs">
-						<li><a href="osfur.html">OSFÜR</a></li>
+						<li><a href="OSFUR/index.html">OSFÜR</a></li>
 						<li><a href="cooler.html">Cooler Robot</a></li>
 						<li>Delta Stool</li>
 						<li><a href="eureka.html">Automated Watering</a></li>
@@ -119,8 +167,7 @@
 								<address>
 									<p><strong>Vikram Mishra</strong></p>
 									<p>+1 (513) 815-1799</p>
-									<p>Cincinnati, Ohio</p>
-									<p><a href="mailto:mishravm@mail.uc.edu">mishravm@mail.uc.edu</a></p>
+									<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
 							</div>
 							<div class="col col-contact">
 								<div class="heading">
@@ -133,7 +180,7 @@
 					</div>
 					<div class="footer-bottom">
 						<div class="holder">
-							<p>© 2022 vikram.design</p>
+							<p>© <script>document.write(new Date().getFullYear())</script> vikram.design</p>
 						</div>
 					</div>
 				</div>
@@ -147,5 +194,54 @@
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/fancySelect.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const menuTrigger = document.querySelector('.menu_trigger');
+		const nav = document.getElementById('nav');
+
+		if (menuTrigger && nav) {
+			menuTrigger.addEventListener('click', function(e) {
+				e.preventDefault();
+				nav.classList.toggle('active');
+				this.textContent = nav.classList.contains('active') ? '×' : '☰';
+			});
+
+			// Close menu when clicking outside
+			document.addEventListener('click', function(e) {
+				if (!nav.contains(e.target) && !menuTrigger.contains(e.target)) {
+					nav.classList.remove('active');
+					menuTrigger.textContent = '☰';
+				}
+			});
+
+			// Close menu after clicking a link
+			nav.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', function() {
+					nav.classList.remove('active');
+					menuTrigger.textContent = '☰';
+				});
+			});
+		}
+
+		// Handle reveal animation
+		function reveal() {
+			var reveals = document.querySelectorAll(".reveal");
+			for (var i = 0; i < reveals.length; i++) {
+				var windowHeight = window.innerHeight;
+				var elementTop = reveals[i].getBoundingClientRect().top;
+				var elementVisible = 100;
+				if (elementTop < windowHeight - elementVisible) {
+					reveals[i].classList.add("active");
+				} else {
+					reveals[i].classList.remove("active");
+				}
+			}
+		}
+
+		window.addEventListener("scroll", reveal);
+		reveal();
+	});
+	</script>
 </body>
 </html>

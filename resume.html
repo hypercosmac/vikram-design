@@ -12,60 +12,310 @@
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
 	<link media="screen" rel="stylesheet" type="text/css" href="css/screen.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8505110363248163"
 	crossorigin="anonymous"></script>
 	<style type="text/css">
-		#resumeimg{
-			display: block;
-  			margin-left: auto;
-		  	margin-right: auto;
-		 	width: 100%;
-		}
-		#ach-head{
-			text-align: center;
-			color: black;
-			margin-top: 60px;
-		}
-		.ach{
-			display: block;
-  			margin-left: auto;
-		  	margin-right: auto;
-		 	width: 100%;
-		 	border-radius: 10px;
-		}
-		.text-container{
-			 position: relative;
-			  text-align: center;
-			  color: gray;
-		}
-		.img-text{
-			position: relative; 
-			left: 50%;
-			transform: translateX(-50%);
+		/* Base styles */
+		body {
+			font-family: 'Space Grotesk', sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: #fff;
+			margin: 0;
+			padding: 0;
 		}
 
+		/* Header styles */
+		#header {
+			padding: 2rem;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 1000;
+			background: rgba(255, 255, 255, 0.9);
+			backdrop-filter: blur(10px);
+		}
+
+		/* Main content layout */
+		.resume-container {
+			padding-top: 120px;
+			min-height: 100vh;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		/* Introduction Section */
+		.intro-section {
+			padding: 4rem 2rem;
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.intro-title {
+			font-size: 4rem;
+			font-weight: 300;
+			margin-bottom: 2rem;
+			letter-spacing: -0.02em;
+		}
+
+		.intro-text {
+			font-size: 1.5rem;
+			font-weight: 300;
+			color: #666;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		/* Skills Grid */
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 4rem;
+			padding: 4rem 2rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.skill-category {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: all 0.8s ease;
+		}
+
+		.skill-category.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.category-title {
+			font-size: 1.2rem;
+			font-weight: 500;
+			margin-bottom: 2rem;
+			position: relative;
+		}
+
+		.category-title::after {
+			content: "";
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+			width: 40px;
+			height: 2px;
+			background: #333;
+		}
+
+		.skill-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.skill-item {
+			margin-bottom: 1.5rem;
+			font-weight: 300;
+		}
+
+		.skill-name {
+			font-size: 1.1rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.skill-description {
+			font-size: 0.9rem;
+			color: #666;
+			line-height: 1.4;
+		}
+
+		/* Traditional Resume Link */
+		.resume-link {
+			text-align: center;
+			padding: 4rem 2rem;
+			background: #f9f9f9;
+			margin-top: 4rem;
+		}
+
+		.resume-link a {
+			font-size: 1.2rem;
+			color: #333;
+			text-decoration: none;
+			padding: 1rem 2rem;
+			border: 1px solid #333;
+			transition: all 0.3s ease;
+		}
+
+		.resume-link a:hover {
+			background: #333;
+			color: #fff;
+		}
+
+		/* Vertical Line */
+		.vertical-line {
+			position: fixed;
+			top: 50%;
+			right: 2rem;
+			transform: translateY(-50%);
+			width: 1px;
+			height: 200px;
+			background: linear-gradient(
+				to bottom,
+				transparent,
+				#333 20%,
+				#333 80%,
+				transparent
+			);
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.intro-title {
+				font-size: 3rem;
+			}
+
+			.intro-text {
+				font-size: 1.2rem;
+			}
+
+			.skills-grid {
+				grid-template-columns: 1fr;
+				gap: 3rem;
+				padding: 2rem;
+			}
+
+			.vertical-line {
+				display: none;
+			}
+		}
+
+		/* Navigation */
+		#nav ul {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		#nav ul li a {
+			color: #333;
+			text-decoration: none;
+			font-size: 1rem;
+			font-weight: 400;
+			transition: opacity 0.3s ease;
+		}
+
+		#nav ul li a:hover {
+			opacity: 0.7;
+		}
+
+		/* Footer */
+		#footer {
+			width: 100% !important;
+			overflow: hidden !important;
+			display: table-footer-group !important;
+			background: #000 !important;
+			text-align: center !important; /* Center text */
+		}
+		
+		.footer-content {
+			max-width: 1170px !important;
+			margin: 0 auto !important; /* Center the footer content */
+			padding: 45px 20px 20px !important;
+			color: #fff !important;
+		}
+
+		#footer .col-holder {
+			overflow: hidden !important;
+			margin: 0 auto !important; /* Center the column holder */
+		}
+
+		#footer .col {
+			float: none !important; /* Remove float */
+			display: inline-block !important; /* Use inline-block for centering */
+			width: auto !important; /* Allow auto width */
+			margin: 0 2% !important; /* Adjust margin for spacing */
+			text-align: center !important; /* Center text */
+		}
+
+		.col address {
+			font-style: normal;
+			color: #fff;
+			margin: 0;
+			text-align: center;
+		}
+
+		.col address p {
+			margin: 0.5rem 0;
+			font-size: 0.9rem;
+			line-height: 1.5;
+		}
+
+		.social {
+			display: flex;
+			gap: 2rem;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			justify-content: center;
+		}
+
+		.social a {
+			color: #fff;
+			text-decoration: none;
+			transition: opacity 0.3s ease;
+			font-size: 0.9rem;
+		}
+
+		.footer-bottom {
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			margin-top: 4rem;
+			padding-top: 2rem;
+			text-align: center;
+		}
+
+		.footer-bottom p {
+			color: rgba(255, 255, 255, 0.7);
+			margin: 0;
+			font-size: 0.9rem;
+		}
+
+		.toolkit-link {
+			display: inline-block;
+			margin-top: 0.5rem;
+			color: #333;
+			text-decoration: none;
+			font-size: 0.9rem;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.toolkit-link:hover {
+			transform: translateX(5px);
+			opacity: 0.7;
+		}
 	</style>
 </head>
 <body>
+	<div id="header-placeholder"></div>
 	<div id="wrapper">
 		<div class="wrapper-holder">
 			<header id="header">
 				<span class="logo"><a href="index.html">vikram.design</a></span>
-				<a class="menu_trigger" href="#">menu</a>
-				<div class="bar-holder">
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="resume.html">Resume</a></li>
-							<!--<li><a href="Mishra_Vikram_2022_Portfolio.pdf">Download Portfolio</a></li>-->
-							<li><a target="_blank" href="Vikram_Mishra_Resume.pdf">Download Resume</a></li>
-						</ul>
-					</nav>
-				</div>
+				<a href="#" class="menu_trigger">☰</a>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="resume.html">Resume</a></li>
+						<li><a href="blog/index.html">Blog</a></li>
+						<li><a target="_blank" href="Vikram_Mishra_Resume.pdf">Download Resume</a></li>
+					</ul>
+				</nav>
 			</header>
 			<section class="bar">
 				<div class="bar-frame">
@@ -75,68 +325,157 @@
 				</div>
 			</section>
 			<section id="main">
-			<div class="row">
-			      <div class="col l6 m12 s12"><a target="_blank" href="Vikram_Mishra_Resume.pdf"><img id="resumeimg" src="images/Resume_2024.jpg" class="grow-small" alt="Image of Resume - Link to download in navigation bar"></a></div>
-			      <!--<div class="col l4 m12 s12"><h5 id="ach-head">Learn More</h5></div>
-			      <div class="col l4 m4 s12 grow-small">
-			      		<a class="text-container" target="_blank" href="http://inventurechangemaker.com/changemaker-2019-season-3/">
-							<img class="ach" src="images/changemaker.jpeg" alt="" />
-							<div class="img-text"><h5>Changemaker Challenge</h5></div>
-						</a>
-				  </div>
-				  <div class="col l4 m4 s12 grow-small">
-			      		<a class="text-container" target="_blank" href="https://twitter.com/inventurek12/status/1110839435816509441">
-							<img class="ach" src="images/AI_Fair.jpeg" alt="" />
-							<div class="img-text"><h5>International AI Fair Beijing</h5></div>
-						</a>
-				  </div>
-			      <div class="col l4 m4 s12 grow-small">
-			      		<a class="text-container" target="_blank" href="https://docs.google.com/presentation/d/1ar9m1j3J9VgSK3KZuS-oB8xHZDsfglzSFMdgeeTj5mg/edit?usp=sharing">
-							<img class="ach" src="images/teenturks2.jpg" alt="" />
-							<div class="img-text"><h5>TeenTurks 2019</h5></div>
-						</a>
-				  </div>-->
-				  
-			 </div>
+			<div class="resume-container">
+				<div class="intro-section">
+					<h1 class="intro-title">Skills & Capabilities</h1>
+					<p class="intro-text">
+						I combine design thinking with technical expertise to create innovative solutions 
+						that bridge the physical and digital worlds.
+					</p>
+				</div>
+
+				<div class="skills-grid">
+					<div class="skill-category">
+						<h2 class="category-title">Design & Prototyping</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">Industrial Design</div>
+								<div class="skill-description">Creating user-centered products with a focus on form, function, and manufacturability</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Rapid Prototyping</div>
+								<div class="skill-description">Expertise in 3D printing, CNC machining, and iterative prototyping methods</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">CAD Modeling</div>
+								<div class="skill-description">Proficient in SolidWorks, Fusion 360, and parametric modeling</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="skill-category">
+						<h2 class="category-title">Technology & Development</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">Robotics & Automation</div>
+								<div class="skill-description">Building autonomous systems and smart devices for real-world applications</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Programming</div>
+								<div class="skill-description">Python, Arduino, and embedded systems programming for hardware integration</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">AI Integration</div>
+								<div class="skill-description">Implementing and fine-tuning machine learning models in physical products</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="skill-category">
+						<h2 class="category-title">Electrical Engineering</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">PCB Design</div>
+								<div class="skill-description">Designing PCBs with protection circuits and EMI considerations using KiCad</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Circuit Protection</div>
+								<div class="skill-description">Implementation of TVS diodes and other protection components for robust automotive applications</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">IoT Integration</div>
+								<div class="skill-description">ESP32-based wireless connectivity solutions with custom firmware development</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="skill-category">
+						<h2 class="category-title">Software Development</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">Rapid Prototyping</div>
+								<div class="skill-description">Fast iteration using modern AI-powered tools like Cursor and V0 for efficient development</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Robotics Software</div>
+								<div class="skill-description">Data collection pipelines, model training, and visualization for robotic systems</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">ML Deployment</div>
+								<div class="skill-description">Implementation and deployment of trained models for automated systems and robotics</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="skill-category">
+						<h2 class="category-title">Creative Tools</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">Adobe Creative Suite</div>
+								<div class="skill-description">Visual design and digital content creation across multiple platforms</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">UI/UX Design</div>
+								<div class="skill-description">Creating intuitive interfaces for hardware and software products</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Digital Fabrication</div>
+								<div class="skill-description">Experience with laser cutting, CNC routing, and additive manufacturing</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="skill-category">
+						<h2 class="category-title">Project Management</h2>
+						<ul class="skill-list">
+							<li class="skill-item">
+								<div class="skill-name">Product Development</div>
+								<div class="skill-description">Leading projects from concept to production-ready designs</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Team Leadership</div>
+								<div class="skill-description">Managing cross-functional teams and coordinating with stakeholders</div>
+							</li>
+							<li class="skill-item">
+								<div class="skill-name">Design Strategy</div>
+								<div class="skill-description">Developing product strategies aligned with business goals</div>
+								<a href="toolkit.html" class="toolkit-link">view my toolkit ↗</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="resume-link">
+					<a href="Vikram_Mishra_Resume.pdf" target="_blank">View Traditional Resume</a>
+				</div>
+			</div>
 			</section>
 		</div>
 		<footer id="footer">
-			<div class="footer-holder">
-				<div class="footer-frame">
-					<div class="footer-content">
-						<div class="col-holder">
-							<div class="col">
-								<div class="heading">
-									<h3></h3>
-								</div>
-								
-							</div>
-							<div class="col">
-								<div class="heading">
-									<h3>Contact</h3>
-								</div>
-								<address>
-									<p><strong>Vikram Mishra</strong></p>
-									<p>+1 (513) 815-1799</p>
-									<p></p>
-									<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
-							</div>
-							<div class="col col-contact">
-								<div class="heading">
-									<h3>Socials</h3>
-								</div>
-								<ul class="social">
-									<li class="Twitter"><a target="_blank" href="https://x.com/hypercosmac">Twitter</a></li>
-									<li class="linkedin"><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
-								</ul>
-							</div>
+			<div class="footer-content">
+				<div class="col-holder">
+					<div class="col">
+						<div class="heading">
+							<h3>Contact</h3>
 						</div>
+						<address>
+							<p><strong>Vikram Mishra</strong></p>
+							<p>+1 (513) 815-1799</p>
+							<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
+						</address>
 					</div>
-					<div class="footer-bottom">
-						<div class="holder">
-							<p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
+					<div class="col">
+						<div class="heading">
+							<h3>Socials</h3>
 						</div>
+						<ul class="social">
+							<li><a target="_blank" href="https://x.com/hypercosmac">Twitter</a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
+						</ul>
 					</div>
+				</div>
+				<div class="footer-bottom">
+					<p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
 				</div>
 			</div>
 		</footer>	
@@ -148,5 +487,37 @@
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/fancySelect.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
+	<script>
+	// Intersection Observer for skill categories
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	});
+
+	// Observe all skill categories
+	document.querySelectorAll('.skill-category').forEach(category => {
+		observer.observe(category);
+	});
+
+	// Mobile menu functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const menuTrigger = document.querySelector('.menu_trigger');
+		const nav = document.getElementById('nav');
+
+		if (menuTrigger) {
+			menuTrigger.addEventListener('click', function(e) {
+				e.preventDefault();
+				nav.classList.toggle('active');
+			});
+		}
+	});
+	</script>
 </body>
 </html>
