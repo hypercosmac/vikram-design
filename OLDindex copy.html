@@ -14,12 +14,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>Vikram Mishra - AI & Engineering Portfolio</title>
+	<title>Vikram Mishra - Home</title>
 	<link rel="stylesheet" href="css/fancySelect.css" />
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
 	<link media="screen" rel="stylesheet" type="text/css" href="css/screen.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -44,258 +43,67 @@
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8505110363248163"
      crossorigin="anonymous"></script>
 	<style type="text/css">
-		body {
-			font-family: 'Inter', sans-serif;
-			color: #333;
-			line-height: 1.6;
-			background-color: #fafafa;
-		}
-		
-		.hero {
+		.parallax{
 			background-image: url(images/background10.jpg);
 			background-attachment: fixed;
 		    background-position: center;
 		  	background-repeat: no-repeat;
 		  	background-size: cover;
-		    height: 80vh;
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    text-align: center;
-		    color: white;
+		}
+		.parallax2{
+			background-image: url(images/work_background.jpg);
+			background-attachment: fixed;
+		    background-position: center;
+		  	background-repeat: no-repeat;
+		  	background-size: cover;
 		}
 		
-		.hero-content {
-			max-width: 800px;
-			padding: 0 20px;
-		}
-		
-		.hero h1 {
-			font-size: 3.5rem;
-			font-weight: 700;
-			margin-bottom: 1rem;
-		}
-		
-		.hero p {
-			font-size: 1.5rem;
-			margin-bottom: 2rem;
-			font-weight: 300;
-		}
-		
-		.btn {
-			display: inline-block;
-			padding: 12px 30px;
-			background-color: transparent;
-			color: white;
-			border: 2px solid white;
-			text-decoration: none;
-			font-weight: 500;
-			transition: all 0.3s ease;
-			margin: 0 10px;
-		}
-		
-		.btn:hover {
-			background-color: white;
-			color: #333;
-		}
-		
-		.section-title {
+		h3{
 			text-align: center;
-			font-size: 2.5rem;
-			margin: 3rem 0;
-			font-weight: 600;
 		}
-		
-		.projects {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 2rem;
+		.ach{
+			display: block;
+  			margin-left: auto;
+		  	margin-right: auto;
+		 	width: 100%;
+		 	border-radius: 4px;
 		}
-		
-		.project-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-			gap: 2rem;
-		}
-		
-		.project-card {
-			background-color: white;
-			border-radius: 8px;
-			overflow: hidden;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-		
-		.project-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		}
-		
-		.project-image {
-			height: 200px;
-			overflow: hidden;
-		}
-		
-		.project-image img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transition: transform 0.3s ease;
-		}
-		
-		.project-card:hover .project-image img {
-			transform: scale(1.05);
-		}
-		
-		.project-content {
-			padding: 1.5rem;
-		}
-		
-		.project-category {
-			font-size: 0.9rem;
-			color: #666;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			margin-bottom: 0.5rem;
-		}
-		
-		.project-title {
-			font-size: 1.5rem;
-			font-weight: 600;
-			margin-bottom: 1rem;
-			color: #222;
-		}
-		
-		.project-description {
-			font-size: 1rem;
-			color: #666;
-			margin-bottom: 1.5rem;
-		}
-		
-		.experience-section {
-			background-color: #f3f3f3;
-			padding: 4rem 0;
-		}
-		
-		.experience-container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 2rem;
-		}
-		
-		.experience-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 2rem;
-		}
-		
-		.experience-card {
-			background-color: white;
-			padding: 2rem;
-			border-radius: 8px;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-			display: flex;
-			align-items: center;
-		}
-		
-		.experience-logo {
-			width: 80px;
-			height: 80px;
-			margin-right: 1.5rem;
-		}
-		
-		.experience-logo img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-		}
-		
-		.experience-info h3 {
-			font-size: 1.2rem;
-			font-weight: 600;
-			margin-bottom: 0.5rem;
-		}
-		
-		.experience-info p {
-			font-size: 0.9rem;
-			color: #666;
-		}
-		
-		footer {
-			background-color: #222;
-			color: white;
-			padding: 3rem 0;
-		}
-		
-		.footer-container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 2rem;
-			display: flex;
-			justify-content: space-between;
-		}
-		
-		.footer-info h3 {
-			font-size: 1.5rem;
-			margin-bottom: 1rem;
-		}
-		
-		.footer-info p {
-			margin-bottom: 0.5rem;
-		}
-		
-		.footer-info a {
-			color: white;
-			text-decoration: none;
-		}
-		
-		.footer-info a:hover {
-			text-decoration: underline;
-		}
-		
-		.social-links a {
-			display: inline-block;
-			margin-right: 1rem;
-			color: white;
-			text-decoration: none;
-		}
-		
-		.copyright {
+		.text-container{
+			position: relative;
 			text-align: center;
-			padding-top: 2rem;
-			margin-top: 2rem;
-			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			color: gray;
 		}
-		
-		/* Responsive adjustments */
-		@media (max-width: 768px) {
-			.hero h1 {
-				font-size: 2.5rem;
-			}
+		.img-text{
+			position: relative; 
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		#button{
+			width: 100%;
+			background-color: #17395C;
+			border: none;
+			color: white;
+			padding: 15px 1px;
+			text-decoration: none;
+			display: inline-block;
+			text-align:center;
+			border-radius:4px;
+		}
+		.float{
+			position:fixed;
+			width:60px;
+			height:60px;
+			bottom:40px;
 			
-			.hero p {
-				font-size: 1.2rem;
-			}
-			
-			.section-title {
-				font-size: 2rem;
-			}
-			
-			.project-grid {
-				grid-template-columns: 1fr;
-			}
-			
-			.experience-grid {
-				grid-template-columns: 1fr;
-			}
-			
-			.footer-container {
-				flex-direction: column;
-			}
-			
-			.footer-info {
-				margin-bottom: 2rem;
-			}
+			background-color:#0C9;
+			color:#FFF;
+			border-radius:50px;
+			text-align:center;
+			box-shadow: 2px 2px 3px #999;
+		}
+
+		.my-float{
+			margin-top:22px;
 		}
 	</style>
 </head>

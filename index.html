@@ -1,57 +1,1196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vikram Mishra - Industrial Designer & Entrepreneur</title>
-    <meta name="description" content="Vikram Mishra is a dynamic entrepreneur and industrial designer leading the charge in revolutionizing organic farming through cutting-edge robotics and automation.">
-    <meta name="keywords" content="Vikram Mishra, industrial design, entrepreneurship, AgTech, robotics, automation, organic farming">
-    <meta name="author" content="Vikram Mishra">
-    <meta property="og:title" content="Vikram Mishra - Industrial Designer & Entrepreneur">
-    <meta property="og:description" content="Vikram Mishra is a dynamic entrepreneur and industrial designer leading the charge in revolutionizing organic farming through cutting-edge robotics and automation.">
-    <meta property="og:image" content="https://vikramdesign.com/images/ProfilePic.jpeg">
-    <meta property="og:url" content="https://vikramdesign.com">
-    <meta property="og:site_name" content="Vikram Mishra">
-    <link rel="icon" href="images/favicon.jpeg" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vikram Mishra | AI & Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --dark: #090909;
+            --light: #ffffff;
+            --accent: #0066ff;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: var(--font-body);
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1;
+        }
+
+        .marble-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 80%);
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: marbleFloat 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes marbleFloat {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-5%, 5%); }
+            50% { transform: translate(5%, -5%); }
+            75% { transform: translate(-5%, -5%); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--light), transparent);
+            margin: 0 auto;
+            animation: scrollIndicate 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollIndicate {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            50.1% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: var(--dark);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .work-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .work-background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.04);
+            white-space: nowrap;
+            z-index: 1;
+            font-family: var(--font-display);
+            pointer-events: none;
+            letter-spacing: -0.03em;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(10%);
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        .work-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2), transparent);
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .work-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            letter-spacing: -0.02em;
+        }
+
+        .work-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .work-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            max-width: 90%;
+            display: none;
+        }
+
+        .see-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .see-more .arrow {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .work-item:hover .work-image {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .work-item:hover .work-background-text {
+            opacity: 0;
+        }
+
+        .work-item:hover .work-info {
+            background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0.3), transparent);
+        }
+
+        .work-item:hover .see-more {
+            opacity: 1;
+        }
+
+        .work-item:hover .see-more .arrow {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 1200px) {
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
+            }
+
+            .work-title {
+                font-size: 1.3rem;
+            }
+
+            .work-subtitle {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 6rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: var(--light);
+            font-weight: 400;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 4rem 0;
+            position: relative;
+            overflow: visible;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline {
+            position: relative;
+            width: min(1000px, 90vw);
+            height: min(1000px, 90vw);
+            margin: 0 auto;
+        }
+
+        .timeline-wheel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .segment-content {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            transform-origin: center;
+            z-index: 2;
+        }
+
+        .timeline-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .segment-content:hover {
+            background: rgba(0, 102, 255, 0.2);
+            transform: scale(1.05);
+            z-index: 3;
+        }
+
+        .segment-content:hover .timeline-details {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .timeline-year {
+            color: var(--accent);
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            color: var(--light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            max-width: 140px;
+            line-height: 1.2;
+        }
+
+        .timeline-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(0, 102, 255, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .timeline-center h2 {
+            color: var(--light);
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                width: min(600px, 95vw);
+                height: min(600px, 95vw);
+            }
+
+            .segment-content {
+                width: 120px;
+                height: 120px;
+            }
+
+            .timeline-year {
+                font-size: 1.2rem;
+            }
+
+            .timeline-title {
+                font-size: 0.8rem;
+                max-width: 100px;
+            }
+
+            .timeline-center {
+                width: 150px;
+                height: 150px;
+            }
+
+            .timeline-center h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            min-height: 100vh;
+            padding: 8rem 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--dark);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .expertise-card {
+            background: rgba(255,255,255,0.03);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .expertise-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .expertise-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-5px);
+        }
+
+        .expertise-card:hover::before {
+            opacity: 1;
+        }
+
+        .expertise-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-family: var(--font-display);
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .expertise-item {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+            opacity: 0.8;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .expertise-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .expertise-item:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .expertise-item:hover::before {
+            transform: translateX(3px);
+        }
+
+        .skill-detail {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.5rem;
+            display: none;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .expertise-item:hover .skill-detail {
+            display: block;
+        }
+
+        .resume-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--light);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .resume-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .resume-button:hover {
+            border-color: var(--accent);
+        }
+
+        .resume-button:hover::before {
+            transform: translateX(0);
+        }
+
+        .resume-button .arrow {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .resume-button:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 0;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* Header/Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(9, 9, 9, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--light);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        /* Experience Carousel */
+        .experience-section {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 4rem;
+            color: var(--light);
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            margin-top: 2rem;
+        }
+
+        .logo-carousel {
+            display: flex;
+            gap: 4rem;
+            padding: 2rem 0;
+            animation: scroll 15s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .logo-carousel img {
+            height: 2.5rem;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0.7) brightness(1.8);
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .logo-carousel img:hover {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .timeline-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 102, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            color: var(--light);
+        }
+
+        /* Update footer margin */
+        .footer {
+            margin-top: 0;
         }
     </style>
-    <!-- Non-visible content for SEO -->
-    <div style="display: none;">
-        <p>Vikram Mishra is a dynamic entrepreneur and industrial designer who has seamlessly transitioned from student to AgTech innovator. As the CEO and co-founder of ZAPTrack, Vikram is leading the charge in revolutionizing organic farming through cutting-edge robotics and automation.</p>
-        <p>Background and Education</p>
-        <p>Vikram's journey in innovation began early, founding his first startup at the age of 13. He is currently completing his Bachelor of Science in Industrial Design at the University of Cincinnati, where he is also a Next Innovation Scholar.</p>
-        <p>Professional Experience</p>
-        <p>ZAPTrack Leadership</p>
-        <p>As the Chief Executive Officer of ZAPTrack since April 2024, Vikram is spearheading the development of AgTech robots designed to automate organic food production.</p>
-        <p>Previous Ventures</p>
-        <p>Prior to ZAPTrack, Vikram explored various facets of technology and design:</p>
-        <ul>
-            <li>Weedless Robotics, experimenting with autonomous weeding robots and custom-built drones equipped with AI algorithms for field analysis.</li>
-            <li>Hardware Consultant for Founders, Inc., scaling prototype production for AI-embedded toys.</li>
-            <li>Internships at P&G and Sensio Enterprises, providing hands-on experience in industrial design and design for manufacturing.</li>
-        </ul>
-        <p>Vision and Impact</p>
-        <p>Vikram's mission with ZAPTrack is to scale organic farming through robotics, addressing the challenges faced by mid-size organic farmers.</p>
-        <p>Skills and Expertise</p>
-        <ul>
-            <li>Industrial and Product Design</li>
-            <li>Entrepreneurship and Startup Leadership</li>
-            <li>AgTech and Robotics</li>
-            <li>AI and Machine Learning Applications in Agriculture</li>
-            <li>Prototype Development and Scaling</li>
-        </ul>
-        <p>Vikram Mishra represents a new generation of innovators who are leveraging their diverse skills to tackle global challenges at the intersection of technology and sustainability.</p>
-    </div>
 </head>
 <body>
-    <iframe src="https://vikramdesign.framer.website/" style="width:100%; height:100vh; border:none;"></iframe>
+    <div class="noise"></div>
+    <div class="marble-effect"></div>
+    
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">Vikram Mishra</a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="blog/index.html" class="nav-link">Blog</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Vikram Mishra</h1>
+                <p>Crafting intelligent systems at the intersection of AI, product design, and engineering</p>
+            </div>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <section class="projects-section">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="work-grid">
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <!--<div class="work-background-text">DroneAI</div>-->
+                        <img src="images/Hero/drone.png" alt="DroneAI Project" class="work-image">
+                        <div class="work-info">
+                            <h3 class="work-title">DroneAI</h3>
+                            <div class="work-subtitle">Voice-controlled drone system integrating advanced language and vision models for defense and emergency response.</div>
+                            <a href="https://youtu.be/EfKhe1qsbOk" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <!--<div class="work-background-text">ZapTrack</div>-->
+                        <img src="images/Hero/zaptrack.png" alt="ZapTrack Project" class="work-image">
+                        <div class="work-info">
+                            <h3 class="work-title">ZapTrack</h3>
+                            <div class="work-subtitle">Autonomous Weeding robots and a platform to deploy solutions for disease detection, real-time analysis of crops, and precision farming</div>
+                            <a href="https://zaptrack.us/" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <img src="images/Hero/compass.png" alt="Compass Wearable" class="work-image">
+                        <div class="work-info">
+                            <h3 class="work-title">Compass Wearable</h3>
+                            <div class="work-subtitle">An AI-powered wearable companion that keeps track of your interactions with the world and helps you remember everything</div>
+                            <a href="https://shop.compasswearable.com/" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+            <br>
+            <div class="work-grid">
+                
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <!--<div class="work-background-text">ZapTrack</div>-->
+                        <img src="images/Hero/cooler.png" alt="The Cooler Robot" class="work-image">
+                        <div class="work-info">
+                            <h3 class="work-title">The Cooler Robot</h3>
+                            <div class="work-subtitle">Autonomous home robots that keeps your drinks cold and follows you around the house</div>
+                            <a href="cooler-robot.html" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <img src="images/Hero/pace.png" alt="Pace Stool" class="work-image">
+                        <!--<div class="work-info">
+                            <h3 class="work-title">Pace Stool</h3>
+                            <div class="work-subtitle"></div>
+                            <a href="https://shop.compasswearable.com/" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>-->
+                        <a href="pace-stool.html" target="_blank" class="see-more"><span class="arrow"></span></a>
+                    </div>
+                </article>
+                <article class="work-item">
+                    <div class="work-image-container">
+                        <!--<div class="work-background-text">DroneAI</div>-->
+                        <img src="images/Hero/delta1.png" alt="Delta Stool" class="work-image">
+                        <div class="work-info">
+                            <h3 class="work-title">Delta Stool</h3>
+                            <div class="work-subtitle">Furniture design for a comfortable and ergonomic seating experience</div>
+                            <a href="delta.html" target="_blank" class="see-more">View Project <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="experience-section">
+            <h2 class="experience-title">Experience</h2>
+            <div class="carousel-container">
+                <div class="logo-carousel">
+                    <!-- First set of logos -->
+                    <img src="images/logos/zaptrack.png" alt="ZapTrack">
+                    <img src="images/logos/pg.png" alt="P&G">
+                    <img src="images/logos/compass.png" alt="Compass">
+                    <img src="images/logos/magical.png" alt="Magical Toys">
+                    <img src="images/logos/sensio.png" alt="Sensio">
+                    <img src="images/logos/buildspace.png" alt="Buildspace">
+                    <!-- Duplicate set for seamless scrolling -->
+                    <img src="images/logos/zaptrack.png" alt="ZapTrack">
+                    <img src="images/logos/pg.png" alt="P&G">
+                    <img src="images/logos/compass.png" alt="Compass">
+                    <img src="images/logos/magical.png" alt="Magical Toys">
+                    <img src="images/logos/sensio.png" alt="Sensio">
+                    <img src="images/logos/buildspace.png" alt="Buildspace">
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="timeline">
+                <div class="timeline-wheel">
+                    <!-- Timeline segments will be dynamically generated -->
+                </div>
+                <div class="timeline-center">
+                    <h2>Journey</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="expertise-section">
+            <h2 class="section-title">Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3 class="expertise-title">Design & Prototyping</h3>
+                    <ul class="expertise-list">
+                        <li class="expertise-item">Industrial Design
+                            <div class="skill-detail">Creating user-centered products with a focus on form, function, and manufacturability</div>
+                        </li>
+                        <li class="expertise-item">Rapid Prototyping
+                            <div class="skill-detail">Expertise in 3D printing, CNC machining, and iterative prototyping methods</div>
+                        </li>
+                        <li class="expertise-item">CAD Modeling
+                            <div class="skill-detail">Proficient in SolidWorks, Fusion 360, and Blender</div>
+                        </li>
+                        <li class="expertise-item">Digital Fabrication
+                            <div class="skill-detail">Experience with laser cutting, CNC routing, and additive manufacturing</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3 class="expertise-title">Technology & Development</h3>
+                    <ul class="expertise-list">
+                        <li class="expertise-item">Robotics & Automation
+                            <div class="skill-detail">Building autonomous systems and smart devices for real-world applications</div>
+                        </li>
+                        <li class="expertise-item">AI Integration
+                            <div class="skill-detail">Implementing and fine-tuning machine learning models in physical products</div>
+                        </li>
+                        <li class="expertise-item">Programming
+                            <div class="skill-detail">Python, Arduino, and embedded systems programming for hardware integration</div>
+                        </li>
+                        <li class="expertise-item">Machine Learning
+                            <div class="skill-detail">Training and implementation of machine learning models for computer vision and robotics</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3 class="expertise-title">Electrical Engineering</h3>
+                    <ul class="expertise-list">
+                        <li class="expertise-item">PCB Design
+                            <div class="skill-detail">Designing PCBs with protection circuits and EMI considerations using KiCad</div>
+                        </li>
+                        <li class="expertise-item">Circuit Protection
+                            <div class="skill-detail">Implementation of TVS diodes and other protection components for robust automotive applications</div>
+                        </li>
+                        <li class="expertise-item">IoT Integration
+                            <div class="skill-detail">ESP32-based wireless connectivity solutions with custom firmware development</div>
+                        </li>
+                        <li class="expertise-item">Embedded Systems
+                            <div class="skill-detail">Development of firmware and hardware solutions for microcontroller-based systems</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="resume.html" class="resume-button">
+                    More Details <span class="arrow">→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://x.com/hypercosmac" target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com/in/vikram-mishra/" target="_blank">LinkedIn</a>
+            <a href="mailto:vikram@zaptrack.us">Email</a>
+        </div>
+        <p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineData = [
+                {
+                    year: 2025,
+                    title: "DroneAI",
+                    details: [
+                        "Voice-controlled drone system",
+                        "Advanced language and vision models",
+                        "Defense and emergency response applications"
+                    ],
+                    tag: "AI & Robotics",
+                    link: "https://autonomousdroneintelligence.com/"
+                },
+                {
+                    year: 2024,
+                    title: "ZapTrack & Compass",
+                    details: [
+                        "Founded ZapTrack - Autonomous weeding robots",
+                        "Developed Compass - AI conversation necklace",
+                        "Privacy-first wearable technology"
+                    ],
+                    tag: "Entrepreneurship",
+                    link: "https://zaptrack.us"
+                },
+                {
+                    year: 2023,
+                    title: "AgTech Customer Discovery",
+                    details: [
+                        "Conducted farmer interviews",
+                        "Researched agricultural technology solutions",
+                        "Developed market insights",
+                        "Identified key industry pain points"
+                    ],
+                    tag: "Research",
+                    link: "zaptrack/index.html"
+                },
+                {
+                    year: 2022,
+                    title: "Procter & Gamble",
+                    details: [
+                        "Led prototype development of 4 upstream concepts",
+                        "Developed mechanical prototypes",
+                        "Conducted consumer testing",
+                        "Engineering standard verifications"
+                    ],
+                    tag: "Corporate",
+                    link: "https://us.pg.com/"
+                },
+                {
+                    year: 2021,
+                    title: "Sensio Smart Ring",
+                    details: [
+                        "Designed modular smart ring",
+                        "Explored material options",
+                        "Created product renders"
+                    ],
+                    tag: "Startup Work Experience",
+                    link: "https://www.orbytring.com/"
+                },
+                {
+                    year: 2020,
+                    title: "National Entrepreneurship Competition",
+                    details: [
+                        "Led social impact project",
+                        "Won national competition",
+                        "Implemented innovative solutions"
+                    ],
+                    tag: "Achievement",
+                    link: "https://www.facebook.com/photo.php?fbid=1101012190069041&id=125586547611615&set=a.1098430960327164&_rdr"
+                },
+                {
+                    year: 2019,
+                    title: "New York Academy of Sciences",
+                    details: [
+                        "International collaboration",
+                        "Research on global challenges",
+                        "Academic recognition"
+                    ],
+                    tag: "Research",
+                    link: "nyas.html"
+                },
+                {
+                    year: 2018,
+                    title: "Built an e-bike",
+                    details: [
+                        "Large motors exoerience",
+                        "Electronics and mechanical design",
+                        "Interfacing with sensors and actuators"
+                    ],
+                    tag: "Mechanical Design",
+                    link: "https://youtu.be/_ENM8ZIg7T8"
+                },
+                {
+                    year: 2017,
+                    title: "Autonomous Transport Vehicle",
+                    details: [
+                        "Built Arduino-based vehicle",
+                        "Received Honeywell mentorship",
+                        "Published mobile apps on Google Play"
+                    ],
+                    tag: "Innovation",
+                    link: "https://youtu.be/YL59cKh2F_Q"
+                },
+                {
+                    year: 2016,
+                    title: "First IoT Project",
+                    details: [
+                        "Created connected device",
+                        "Learned embedded systems",
+                        "Started tech journey"
+                    ],
+                    tag: "Beginning",
+                    link: ""
+                }
+            ];
+
+            const timeline = document.querySelector('.timeline-wheel');
+            const totalYears = timelineData.length;
+            const angleStep = (360 / totalYears);
+            const container = document.querySelector('.timeline');
+            const radius = (Math.min(container.offsetWidth, container.offsetHeight) / 2) * 0.7;
+
+            timelineData.forEach((data, index) => {
+                const angle = (index * angleStep - 90) * (Math.PI / 180);
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+
+                const content = document.createElement('div');
+                content.className = 'segment-content';
+                content.style.left = `calc(50% + ${x}px - 80px)`;
+                content.style.top = `calc(50% + ${y}px - 80px)`;
+
+                content.innerHTML = `
+                    <div class="timeline-year">${data.year}</div>
+                    <div class="timeline-title">${data.title}</div>
+                    <div class="timeline-details">
+                        <div class="timeline-title">${data.title}</div>
+                        <ul>
+                            ${data.details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                        <div class="timeline-tag">${data.tag}</div>
+                    </div>
+                `;
+
+                if (data.link) {
+                    content.addEventListener('click', () => {
+                        window.location.href = data.link;
+                    });
+                }
+
+                timeline.appendChild(content);
+            });
+
+            // Create decorative rings
+            [0.85, 0.7, 0.55].forEach(scale => {
+                const ring = document.createElement('div');
+                ring.className = 'timeline-ring';
+                ring.style.width = `${radius * 2 * scale}px`;
+                ring.style.height = `${radius * 2 * scale}px`;
+                timeline.appendChild(ring);
+            });
+
+            // Update positions on resize
+            window.addEventListener('resize', () => {
+                const newRadius = (Math.min(container.offsetWidth, container.offsetHeight) / 2) * 0.7;
+                
+                document.querySelectorAll('.segment-content').forEach((content, index) => {
+                    const angle = (index * angleStep - 90) * (Math.PI / 180);
+                    const x = Math.cos(angle) * newRadius;
+                    const y = Math.sin(angle) * newRadius;
+                    content.style.left = `calc(50% + ${x}px - 80px)`;
+                    content.style.top = `calc(50% + ${y}px - 80px)`;
+                });
+
+                document.querySelectorAll('.timeline-ring').forEach((ring, index) => {
+                    const scale = [0.85, 0.7, 0.55][index];
+                    ring.style.width = `${newRadius * 2 * scale}px`;
+                    ring.style.height = `${newRadius * 2 * scale}px`;
+                });
+            });
+
+            // Expertise cards animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.expertise-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Make project cards clickable
+            document.querySelectorAll('.work-item').forEach(item => {
+                const link = item.querySelector('.see-more').getAttribute('href');
+                const isNewTab = item.querySelector('.see-more').getAttribute('target') === '_blank';
+                
+                item.addEventListener('click', (e) => {
+                    // Don't trigger if clicking the "see more" link directly
+                    if (!e.target.closest('.see-more')) {
+                        if (isNewTab) {
+                            window.open(link, '_blank');
+                        } else {
+                            window.location.href = link;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-</html>
+</html> 

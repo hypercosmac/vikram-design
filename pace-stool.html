@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pace Stool - Modern Craftsmanship Meets Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #121212;
+            --light: #ffffff;
+            --accent: #c19a6b;
+            --warm: #8b4513;
+            --tech: #a0522d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(9, 9, 9, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--light);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+            opacity: 0.25;
+            object-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            opacity: 0.8;
+        }
+
+        /* Story Sections */
+        .story-section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .story-image {
+            grid-column: span 7;
+            position: relative;
+        }
+
+        .story-content {
+            grid-column: span 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            filter: brightness(105%);
+            transition: transform 0.3s ease;
+        }
+
+        .story-step {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .story-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 6rem 0;
+            align-items: center;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem;
+            border-radius: 12px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .timeline-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .timeline-image {
+            width: 100%;
+            border-radius: 12px;
+            filter: brightness(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-image:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-image {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-image {
+            grid-column: 2;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -44px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -44px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin: 3rem 0;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-image,
+            .timeline-item:nth-child(even) .timeline-image {
+                grid-column: 1;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .timeline-content p {
+                font-size: 1rem;
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+            }
+        }
+
+        /* Add smooth reveal animation */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tech Specs */
+        .tech-specs {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .spec-label {
+            color: var(--accent);
+            width: 120px;
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        /* Project Navigation */
+        .project-nav {
+            padding: 4rem 2rem;
+            background: rgba(255,255,255,0.02);
+            margin-top: 4rem;
+        }
+
+        .project-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .project-nav-link {
+            flex: 1;
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-2px);
+        }
+
+        .project-nav-link.prev {
+            text-align: left;
+        }
+
+        .project-nav-link.next {
+            text-align: right;
+        }
+
+        .project-nav-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-nav-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">Vikram Mishra</a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="blog/index.html" class="nav-link">Blog</a></li>
+                    <li><a href="resume.html" class="nav-link">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="images/pace-stool.jpg" alt="Pace Stool" class="hero-image">
+            <div class="hero-content">
+                <h1 class="hero-title">Pace Stool</h1>
+                <p class="hero-subtitle">Where traditional craftsmanship meets modern aesthetics</p>
+            </div>
+        </section>
+
+        <section class="story-section">
+            <div class="story-container">
+                <div class="story-grid">
+                    <div class="story-content">
+                        <span class="story-step">The Vision</span>
+                        <h2 class="story-title">Elevation for Everyone</h2>
+                        <p class="story-text">
+                            Born from a childhood experience of struggling to find the right dining height, the Pace Stool challenges the one-size-fits-all approach to furniture design. By creating an innovative height-adjustment system that integrates with standard planter pots, we've developed a solution that adapts to users of all ages and heights.
+                        </p>
+                        <div class="tech-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Base Height</span>
+                                <span class="spec-value">18 inches (standard dining height)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Adjustment</span>
+                                <span class="spec-value">1-2 inch increments with stackable pots</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Material</span>
+                                <span class="spec-value">Red Oak Hardwood with tung oil finish</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-image">
+                        <img src="images/pace-stool.jpg" alt="Pace Stool Design">
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <img src="images/initial_sketches.jpg" alt="Initial Problem Sketches" class="timeline-image">
+                        <div class="timeline-content">
+                            <h3>Problem Identification</h3>
+                            <p>Exploring the challenges children face with standard-height dining furniture. Most dining chairs are made for average height adults, making it difficult for children to find comfortable seating at the dining table.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Design Solution</h3>
+                            <p>Through design ideation and experimentation, the chosen direction is a kitchen stool that seamlessly integrates with standardized planter pots, allowing for height adjustments while maintaining structural integrity.</p>
+                        </div>
+                        <img src="OSFUR/images/height_concept.png" alt="Mechanism Development" class="timeline-image">
+                    </div>
+                    <div class="timeline-item">
+                        <img src="OSFUR/images/collage_pot.jpg" alt="Pot Selection Process" class="timeline-image">
+                        <div class="timeline-content">
+                            <h3>Component Selection</h3>
+                            <p>After extensive research and testing, the IKEA VITLÖK 13" Metal Planter was selected for its perfect combination of stackability, strength (supporting 150+ lbs), and aesthetic appeal that complements modern kitchen designs.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Final Integration</h3>
+                            <p>The seat was made by creating a 15" square panel from red oak lumber I also attached a pine wooden block on the back of the seat as I intended to turn it on a lathe to a unique design but was unable to access a lathe large enough so I ended up sawing it off later.<br><br>
+
+                                With the new drill press jig I created, I made the 1 inch holes for the legs to fit into and had minimal tearout this time(compared to my first prototype)<br><br>
+                                
+                                Since the first prototype created a lot of strain on the seat, I added stretchers with a unique aesthetic design which also achieved the maximum strength without interfering with each other for the 3 legged design. I made angled 1/2" holes with a hand held drill for the stretchers. while maintaining a clean, modern aesthetic.</p>
+                        </div>
+                        <img src="OSFUR/images/Process_2.jpg" alt="Final Integration" class="timeline-image">
+                    </div>
+                    <div class="timeline-item">
+                        <img src="OSFUR/images/feature-zoom.jpg" alt="Final Integration Detail" class="timeline-image">
+                        <div class="timeline-content">
+                            <h3>Final Details</h3>
+                            <p>Every detail was carefully considered, from the precise joinery to the tung oil finish, creating a piece that's both functional and beautiful. The result is a stool that grows with its user, adapting to different heights while maintaining its elegant form.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="OSFUR/images/background2.jpg" alt="Technical Details">
+                    </div>
+                    <div class="story-content">
+                        <span class="story-step">The Result</span>
+                        <h2 class="story-title">Thoughtful Integration</h2>
+                        <p class="story-text">
+                            The Pace Stool's innovative design includes:
+                            <br><br>
+                            • Compatible with standard IKEA VITLÖK planters
+                            <br>
+                            • Stackable height adjustment system
+                            <br>
+                            • Reinforced structure for stability
+                            <br>
+                            • Clean aesthetic that complements modern kitchens
+                            <br>
+                            • Dual-purpose functionality with planter storage
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-nav">
+            <div class="project-nav-container">
+                <a href="delta.html" class="project-nav-link prev">
+                    <span class="project-nav-label">Previous Project</span>
+                    <h3 class="project-nav-title">Delta Stool</h3>
+                </a>
+                <a href="cooler-robot.html" class="project-nav-link next">
+                    <span class="project-nav-label">Next Project</span>
+                    <h3 class="project-nav-title">The Cooler Robot</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Interactive elements
+        document.querySelectorAll('.zoom-section').forEach(section => {
+            section.addEventListener('mousemove', (e) => {
+                const bounds = section.getBoundingClientRect();
+                const x = e.clientX - bounds.left;
+                const y = e.clientY - bounds.top;
+                
+                const image = section.querySelector('.zoom-image');
+                const xPercent = (x / bounds.width) * 100;
+                const yPercent = (y / bounds.height) * 100;
+                
+                image.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
+</html> 

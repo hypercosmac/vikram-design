@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>NYAS Junior Academy - Vikram.Design</title>
+    <link rel="stylesheet" href="css/fancySelect.css" />
+    <link rel="stylesheet" href="css/uniform.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link media="screen" rel="stylesheet" type="text/css" href="css/screen.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style type="text/css">
+        /* Dark theme base styles */
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #121212;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        /* Main content layout */
+        .nyas-container {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8));
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            color: #e0e0e0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #a0a0a0;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+        }
+
+        /* Projects Grid */
+        .projects-section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 12rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .project-card:nth-child(even) .project-content {
+            direction: ltr;
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .project-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: #1e1e1e;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .project-year {
+            font-size: 1.2rem;
+            color: #64ffda;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .project-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-details li {
+            margin-bottom: 1rem;
+            color: #a0a0a0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .project-details li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #64ffda;
+        }
+
+        .view-project {
+            display: inline-flex;
+            align-items: center;
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-project:hover {
+            transform: translateX(10px);
+        }
+
+        .view-project::after {
+            content: "→";
+            margin-left: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        #nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        #nav ul li a:hover {
+            color: #64ffda;
+        }
+
+        /* Footer */
+        #footer {
+            background: #000 !important;
+            color: #e0e0e0 !important;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 8rem;
+            }
+
+            .project-card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-text {
+                font-size: 1.2rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-logo">
+            <a href="index.html">Vikram Mishra</a>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="nyas-container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">NYAS Junior Academy Journey</h1>
+                <p class="hero-text">A four-year exploration of innovation, research, and global collaboration at the New York Academy of Sciences Junior Academy (2017-2020).</p>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/security-reimagined.jpeg" alt="Security Reimagined Project">
+                </div>
+                <div class="project-content">
+                    <div class="project-year">2020</div>
+                    <h2 class="project-title">Security Reimagined</h2>
+                    <p class="project-description">Led a team in developing innovative security solutions for the digital age, focusing on user-centric design and emerging technologies. Our approach combined advanced cryptography with intuitive user interfaces to create a more secure digital future.</p>
+                    <ul class="project-details">
+                        <li>Designed novel security protocols for everyday applications</li>
+                        <li>Conducted extensive user research and testing</li>
+                        <li>Developed working prototype solutions</li>
+                        <li>Presented findings to industry experts at NYAS</li>
+                    </ul>
+                    <a href="temporary/Security_Reimagined_Final_Solution.pdf" target="_blank" class="view-project">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/advercity.jpg" alt="AdverCity Project">
+                </div>
+                <div class="project-content">
+                    <div class="project-year">2019</div>
+                    <h2 class="project-title">AdverCity</h2>
+                    <p class="project-description">Created an innovative platform revolutionizing urban advertising through sustainable and interactive solutions. Our system transformed traditional advertising spaces into dynamic, environmentally conscious engagement points.</p>
+                    <ul class="project-details">
+                        <li>Developed eco-friendly advertising concepts</li>
+                        <li>Created interactive digital display prototypes</li>
+                        <li>Implemented real-time analytics systems</li>
+                        <li>Designed comprehensive engagement metrics</li>
+                    </ul>
+                    <a href="temporary/AdverCity_Final_Solution.pdf" target="_blank" class="view-project">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/wildfire-prediction.jpg" alt="Wildfire Prediction Project">
+                </div>
+                <div class="project-content">
+                    <div class="project-year">2019</div>
+                    <h2 class="project-title">Predicting Wildfires</h2>
+                    <p class="project-description">Led research in developing predictive models for wildfire detection and prevention using advanced data analytics. Our system combined environmental sensors with machine learning to predict high-risk scenarios.</p>
+                    <ul class="project-details">
+                        <li>Created advanced environmental data analysis systems</li>
+                        <li>Developed ML-based predictive algorithms</li>
+                        <li>Built real-time visualization tools</li>
+                        <li>Presented research at NYAS symposium</li>
+                    </ul>
+                    <a href="temporary/Predicting_Wildfires_Final_Solution.pdf" target="_blank" class="view-project">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/analytic-chronicles.jpg" alt="Analytic Chronicles Project">
+                </div>
+                <div class="project-content">
+                    <div class="project-year">2018</div>
+                    <h2 class="project-title">Analytic Chronicles</h2>
+                    <p class="project-description">Pioneered a data visualization platform making complex analytics accessible and engaging for diverse audiences. Our solution transformed raw data into compelling visual narratives.</p>
+                    <ul class="project-details">
+                        <li>Created interactive data dashboards</li>
+                        <li>Developed innovative storytelling frameworks</li>
+                        <li>Built custom visualization tools</li>
+                        <li>Implemented comprehensive feedback systems</li>
+                    </ul>
+                    <a href="temporary/Analytic_Chronicles_Final_Solution.pdf" target="_blank" class="view-project">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/recycling-styrofoam.jpg" alt="Recycling Styrofoam Project">
+                </div>
+                <div class="project-content">
+                    <div class="project-year">2017</div>
+                    <h2 class="project-title">Recycling Styrofoam</h2>
+                    <p class="project-description">Initiated groundbreaking research into sustainable methods for recycling expanded polystyrene (Styrofoam) materials. Our approach focused on developing eco-friendly solutions for a persistent environmental challenge.</p>
+                    <ul class="project-details">
+                        <li>Pioneered new chemical recycling methods</li>
+                        <li>Created innovative prototype solutions</li>
+                        <li>Performed extensive material testing</li>
+                        <li>Developed comprehensive educational resources</li>
+                    </ul>
+                    <a href="#" class="view-project">View Project Details</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="col-holder">
+                <div class="col">
+                    <p>&copy; 2024 Vikram.Design. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html> 
