@@ -237,6 +237,7 @@
                         <a href="index.html" class="dropdown-toggle">Blog</a>
                         <ul class="dropdown-menu">
                             <li><a href="flow-matching.html">Flow Matching</a></li>
+                            <li><a href="rapid-prototyping.html">Rapid Prototyping</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -250,6 +251,7 @@
                                 <a href="index.html" class="dropdown-toggle">Blog</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="flow-matching.html">Flow Matching</a></li>
+                                    <li><a href="rapid-prototyping.html">Rapid Prototyping</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -303,6 +305,52 @@
                         </a>
                     </div>
                 </article>
+
+                <article class="featured-post" onclick="window.location.href='rapid-prototyping.html';" style="cursor: pointer;">
+                    <div class="floating-elements">
+                        <div class="floating-element" style="top: 30%; left: 20%;"></div>
+                        <div class="floating-element" style="top: 70%; left: 70%;"></div>
+                        <div class="floating-element" style="top: 50%; left: 40%;"></div>
+                    </div>
+                    <img src="../images/rapid-prototype2.jpg" alt="3D printed prototype with electronics" class="featured-image">
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <span class="post-category">Hardware & Design</span>
+                            <span>April 23, 2025</span>
+                        </div>
+                        <h1 class="post-title">How I Learned to Prototype Hardware in Hours (Not Weeks)</h1>
+                        <p class="post-excerpt">
+                            From slow, expensive machining to rapid, iterative 3D printing: my journey of discovering how to build hardware prototypes at lightning speed. Learn how embracing rapid prototyping changed my approach to product development forever.
+                        </p>
+                        <div class="wild-ideas">
+                            <h3>Core Principles</h3>
+                            <div class="idea-grid">
+                                <div class="idea-card">
+                                    <div class="idea-icon">🚀</div>
+                                    <div class="idea-title">Speed Over Polish</div>
+                                    <p>Prioritize quick iterations over perfect finishes for faster learning</p>
+                                </div>
+                                <div class="idea-card">
+                                    <div class="idea-icon">💰</div>
+                                    <div class="idea-title">Resource Efficiency</div>
+                                    <p>Use inexpensive materials and minimal infill for early prototypes</p>
+                                </div>
+                                <div class="idea-card">
+                                    <div class="idea-icon">🔄</div>
+                                    <div class="idea-title">Fast Iterations</div>
+                                    <p>Keep all prototypes visible as a reminder of the learning process</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="rapid-prototyping.html" class="read-more">
+                            Read Full Article
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
@@ -339,32 +387,34 @@
                 });
             });
 
-            const readMoreButton = document.querySelector('.read-more');
+            const readMoreButtons = document.querySelectorAll('.read-more');
             const teslaIcon = document.getElementById('tesla-icon');
 
-            readMoreButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-
-                // Get the button's position
-                const buttonRect = readMoreButton.getBoundingClientRect();
-                const buttonX = buttonRect.left + window.scrollX + buttonRect.width / 2;
-                const buttonY = buttonRect.top + window.scrollY + buttonRect.height / 2;
-
-                // Set the initial position of the Tesla icon
-                teslaIcon.style.left = `${buttonX}px`;
-                teslaIcon.style.top = `${buttonY}px`;
-                teslaIcon.style.display = 'block';
-
-                // Start the animation
-                setTimeout(() => {
-                    teslaIcon.style.transition = 'transform 0.5s ease-in-out';
-                    teslaIcon.style.transform = 'translate(calc(100vw - 60px), -100vh)'; // Move to top right
-                }, 1); // Small delay to ensure the icon is positioned before animation
-
-                // Navigate to the linked page after the animation
-                setTimeout(() => {
-                    window.location.href = readMoreButton.getAttribute('href');
-                }, 1000); // Match this duration with the animation duration
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+                    
+                    // Get the button's position
+                    const buttonRect = button.getBoundingClientRect();
+                    const buttonX = buttonRect.left + window.scrollX + buttonRect.width / 2;
+                    const buttonY = buttonRect.top + window.scrollY + buttonRect.height / 2;
+                    
+                    // Set the initial position of the Tesla icon
+                    teslaIcon.style.left = `${buttonX}px`;
+                    teslaIcon.style.top = `${buttonY}px`;
+                    teslaIcon.style.display = 'block';
+                    
+                    // Start the animation
+                    setTimeout(() => {
+                        teslaIcon.style.transition = 'transform 0.5s ease-in-out';
+                        teslaIcon.style.transform = 'translate(calc(100vw - 60px), -100vh)'; // Move to top right
+                    }, 1); // Small delay to ensure the icon is positioned before animation
+                    
+                    // Navigate to the linked page after the animation
+                    setTimeout(() => {
+                        window.location.href = button.getAttribute('href');
+                    }, 1000); // Match this duration with the animation duration
+                });
             });
         });
     </script>

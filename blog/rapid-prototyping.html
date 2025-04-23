@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How I learned to prototype hardware rapidly using 3D printing and iterative design">
+    <title>How I Learned to Prototype Hardware in Hours (Not Weeks)</title>
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/screen.css">
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Vikram Mishra">
+    <meta name="keywords" content="hardware prototyping, 3D printing, rapid prototyping, CAD, product development">
+    <meta property="og:title" content="How I Learned to Prototype Hardware in Hours (Not Weeks)">
+    <meta property="og:description" content="My journey to faster, cheaper hardware prototyping using 3D printing and iterative design">
+    <meta property="og:image" content="../images/Rapid-prototype.jpg">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .article-container {
+            margin: 2rem auto;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        .highlight-box {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid #ddd;
+        }
+
+        .emphasis {
+            font-weight: bold;
+        }
+
+        .principles-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .principles-list li {
+            margin: 0.7rem 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        .tech-comparison {
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .tech-column {
+            width: 47%;
+            float: left;
+            padding: 0 1.5%;
+        }
+
+        .tech-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-column ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        .article-section {
+            margin: 2rem 0;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .article-section:last-child {
+            border-bottom: none;
+        }
+
+        /* Navigation */
+        header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        nav ul li a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .article-title {
+                font-size: 1.7rem;
+            }
+
+            .article-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .tech-column {
+                width: 100%;
+                float: none;
+                padding: 0;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 160px;
+            border: 1px solid #eee;
+            padding: 0.5rem 0;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            padding: 0.5rem 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <span class="logo"><a href="../index.html">Vikram Mishra</a></span>
+            <nav id="nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="index.html">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="flow-matching.html">Flow Matching</a></li>
+                            <li><a href="rapid-prototyping.html">Rapid Prototyping</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="article-container">
+            <article>
+                <header class="article-header">
+                    <h1 class="article-title">How I Learned to Prototype Hardware in Hours (Not Weeks)</h1>
+                    <p class="article-meta">February 15, 2025 · Vikram Mishra</p>
+                </header>
+
+                <div class="article-content">
+                    <p>
+                        When I was younger, prototyping hardware seemed complicated—metal parts took forever, tools were expensive, and every iteration felt painfully slow. But growing up in India, I quickly learned to see prototyping differently. Instead of ordering parts, I began building things from whatever I had on hand. I realized that moving fast and cheaply was not only possible, it was essential.
+                    </p>
+
+                    <div class="article-section">
+                        <h2>The Journey to Rapid Prototyping</h2>
+                        <p>
+                            After I first got access to 3D printers at college, I discovered something simple: if you have access to a CAD model, you can hold your idea in your hands the same day. This changed everything.
+                        </p>
+                        <p>
+                            Instead of waiting days or weeks for parts, I designed CAD models or even downloaded free STEP files, sliced them for my 3D printer, and within hours, had tangible versions in plastic for less than the cost of a coffee. These quick iterations weren't always pretty—but each one immediately showed me what needed fixing.
+                        </p>
+                    </div>
+
+                    <div class="article-section">
+                        <div class="highlight-box">
+                            <p>
+                                My Standard Approach: <span class="emphasis">Idea → CAD → Print → Test → Iterate.</span><br>Each loop now takes hours, not weeks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>Core Principles for Rapid Prototyping</h2>
+                        <ul class="principles-list">
+                            <li>
+                                <span class="highlight">Start cheap:</span> Use lowest resolution, minimal infill—just enough detail to answer basic questions like, "Does this fit?" "Is this ergonomic?" "Does it look aesthetic?"
+                            </li>
+                            <li>
+                                <span class="highlight">Invest in learning:</span> Spend money on learning, not on unnecessary polish. Filament is inexpensive; wasted time is costly.
+                            </li>
+                            <li>
+                                <span class="highlight">Keep Iterating:</span> Keep prototypes on desks, marked up with notes, reminding you it's okay—even necessary—to iterate openly.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>Beyond Mechanical Parts</h2>
+                        <p>
+                            This approach works for everything—electronics, mechanical designs, enclosures, and more. In electronics, it means quickly wiring circuits on perfboards before committing to custom PCBs. In mechanical design, it means printing simple models first, refining them gradually until they're ready.
+                        </p>
+                        <div class="tech-comparison">
+                            <div class="tech-column">
+                                <h3>Traditional Prototyping</h3>
+                                <ul>
+                                    <li>Precision machined parts</li>
+                                    <li>High initial costs</li>
+                                    <li>Days or weeks per iteration</li>
+                                    <li>Early commitment to designs</li>
+                                </ul>
+                            </div>
+                            <div class="tech-column">
+                                <h3>Rapid Prototyping</h3>
+                                <ul>
+                                    <li>3D printed components</li>
+                                    <li>Low cost per iteration</li>
+                                    <li>Hours between versions</li>
+                                    <li>Fail fast, learn quickly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>A Real-World Example: Farm Weeding Robot</h2>
+                        <p>
+                            I built a small robot to solve the weed problem in orchards. Here's how it evolved:
+                        </p>
+                        
+                        <div style="margin: 2rem 0;">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+                                <img src="../images/Prototype1_part1.jpg" alt="Initial prototype based on a discarded electric lawn mower" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="../images/Prototype1_part2.jpg" alt="First prototype in action" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="../images/Prototype1_part3.jpg" alt="Initial prototype development" style="width: 100%; height: 200px; object-fit: cover;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+                                <img src="../images/Prototype1_part4.jpg" alt="Final version of the first prototype" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="../images/Prototype1_part6.jpg" alt="Featured in buildspace" style="width: 207%; height: 200px; object-fit: cover;">
+                            </div>
+                            <p>
+                                First try: Used an old discarded electric lawn mower and basic parts. Cost: $50. Learned the height of the mower was too high.
+                            </p>
+                        </div>
+                        
+                        <div style="margin: 2rem 0;">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+                                <img src="../images/Prototype2_part1.jpg" alt="Second prototype" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="../images/Prototype2_part2.jpg" alt="Second prototype in field" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="../images/Prototype2_part3.jpg" alt="Second prototype testing" style="width: 100%; height: 200px; object-fit: cover;">
+                            </div>
+                            <p>
+                                Second try: Leaned on the mower frame of a giant manufacturer. Cost: $300. Worked well enough to show my initial customers.
+                            </p>
+                        </div>
+                        
+                        <p>
+                            Total time: 2 weeks. Total cost: $250. Learned more than I would have in 6 months of planning.
+                        </p>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>Why It Works</h2>
+                        <p>
+                            Vendors love seeing real prototypes. It beats long email threads and meetings.
+                        </p>
+                        <p>
+                            I've built hardware both ways. The old way: plan for months, then build. The new way: build this week, learn next week. The new way wins.
+                        </p>
+                        <p>
+                            When money is tight, fast prototypes matter most. Each $50 experiment teaches you what a $5000 plan can't.
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <footer>
+            <div class="article-meta">
+                Published: April 23, 2025 · Vikram Mishra
+            </div>
+            <div>
+                <a href="https://x.com/hypercosmac" target="_blank">Twitter</a> · 
+                <a href="https://www.linkedin.com/in/vikram-mishra/" target="_blank">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
