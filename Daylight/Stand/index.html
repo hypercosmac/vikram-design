@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+      const password = prompt("Enter password:");
+      const correctPassword = "stands2025";
+
+      if (password !== correctPassword) {
+        document.write("Access denied.");
+        window.stop(); // Stops loading the rest of the page
+      }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daylight Monitor Stand Options</title>
