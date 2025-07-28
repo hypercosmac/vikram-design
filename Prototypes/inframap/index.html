@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      InfraMap.ai
+      A premium landing page for InfraMap.ai – a company building real‑time thermal maps for data centres.
+      This site is responsive and uses modern CSS.  All external assets such as fonts and icons are loaded via
+      CDN links.  Images are stored in the images/ folder.  See style.css for styling.
+    -->
+    <title>InfraMap.ai – Real‑Time Thermal Maps for Data Centres</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Ionicons for simple icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="#hero" class="logo">InfraMap<span class="accent">.ai</span></a>
+        <nav class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#technology">Technology</a>
+          <a href="#foundation">Foundation&nbsp;Model</a>
+          <a href="#integrations">Integrations</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title">Making the Invisible&nbsp;Visible</h1>
+        <p class="hero-subtitle">
+          Real‑time thermal mapping for high‑density GPU data centres. Gain insights into
+          hidden hot spots, optimise cooling and ensure reliability.
+        </p>
+        <div class="hero-buttons">
+          <a href="#technology" class="btn btn-primary">Learn More</a>
+          <a href="#contact" class="btn btn-secondary">Request Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section overview">
+      <div class="container section-inner">
+        <div class="text-column">
+          <h2>Why Thermal Maps Matter</h2>
+          <p>
+            As data centres transition to high‑density GPU infrastructure they
+            experience extreme thermal challenges.  Legacy sensor setups only
+            measure temperature at specific points, offering an incomplete
+            picture of room‑scale airflow.  Inadequate monitoring makes it
+            difficult to detect hot spots or evaluate the effectiveness of
+            cooling systems.  Poor airflow management and misconfigured
+            layouts often cause temperature inconsistencies and blocked
+            airways.
+          </p>
+          <p>
+            InfraMap.ai solves these problems by deploying autonomous robots and
+            fixed rigs equipped with infrared and RGB cameras.  We stitch
+            thousands of images into a high‑resolution thermal map—similar to a
+            weather radar—that reveals invisible patterns.  These maps allow
+            operators to see where hot and cold air flow, identify blocked
+            vents and balance cooling loads without guesswork.  Thermal imaging
+            can reveal hot spots and cold spots and even detect overloaded
+            circuits before they cause failures.
+          </p>
+        </div>
+        <div class="image-column">
+          <img src="images/robot2.png" alt="InfraMap robot scanning data centre" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="section technology">
+      <div class="container">
+        <h2>Technology</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">
+              <ion-icon name="hardware-chip-outline"></ion-icon>
+            </div>
+            <h3>Autonomous Robots</h3>
+            <p>
+              Our rugged mobile robots navigate data centres autonomously or
+              operate from fixed rigs.  Equipped with thermal and visual
+              sensors, they scan every aisle and rack to build a full 3D
+              thermal profile.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <ion-icon name="map-outline"></ion-icon>
+            </div>
+            <h3>High‑Resolution Mapping</h3>
+            <p>
+              Multiple images are stitched together to create a room‑scale,
+              high‑resolution thermal map.  This map visualises airflow,
+              temperature gradients and energy waste just like a weather radar.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <ion-icon name="analytics-outline"></ion-icon>
+            </div>
+            <h3>AI‑Powered Analytics</h3>
+            <p>
+              Our models analyse the thermal data to detect patterns, predict
+              failures and alert operators to anomalies such as overheating
+              racks, blocked airflow or under‑cooled zones before they cause
+              outages.
+            </p>
+          </div>
+        </div>
+        <div class="technology-image">
+          <img src="images/heatmap.png" alt="Thermal map visualisation" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Foundation Model Section -->
+    <section id="foundation" class="section foundation">
+      <div class="container section-inner">
+        <div class="text-column">
+          <h2>Building a Foundation<br />for Environmental Insight</h2>
+          <p>
+            InfraMap.ai isn’t limited to spotting hot spots.  Our robots collect
+            diverse thermal and visual data across multiple facilities,
+            contributing to a proprietary dataset that powers a foundational
+            model for environmental understanding.  By training on diverse
+            conditions—from different layouts, cooling systems, and workloads—our
+            models learn to recognise subtle patterns beyond simple anomaly
+            detection.  These representations can integrate with existing
+            foundation models to enhance broader environmental intelligence,
+            enabling predictive maintenance and adaptive control in complex
+            facilities.
+          </p>
+          <p>
+            Our approach uses a general-purpose foundational model trained across 
+            diverse data sources related to data center operations—capturing airflow 
+            behavior, energy usage patterns, and equipment states. Instead of relying 
+            on static rules or siloed systems, our approach enables the model to learn 
+            generalizable patterns and adapt to new environments. The result is a 
+            system that improves over time, helping operators optimize cooling, reduce 
+            energy consumption, and stay ahead of infrastructure challenges.
+          </p>
+        </div>
+        <div class="image-column">
+          <img src="images/robot1.png" alt="Robot collecting data" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section id="integrations" class="section integrations">
+      <div class="container">
+        <h2>Integration &amp; Ecosystem</h2>
+        <p class="intro">
+          InfraMap.ai integrates seamlessly with existing Data Centre
+          Infrastructure Management (DCIM) platforms, Building Management
+          Systems (BMS) and alerting tools.  Our API delivers actionable
+          insights directly into your dashboards, closing the loop between
+          monitoring and corrective action.  Operators can automate
+          cooling adjustments, schedule maintenance and comply with
+          industry regulations—all from the systems they already use.
+        </p>
+        <div class="cards">
+          <div class="card small-card">
+            <div class="card-icon">
+              <ion-icon name="git-compare-outline"></ion-icon>
+            </div>
+            <h3>Open API</h3>
+            <p>
+              Access real‑time thermal maps and alerts programmatically.
+              Export data to your analytics tools or integrate directly
+              into DCIM dashboards.
+            </p>
+          </div>
+          <div class="card small-card">
+            <div class="card-icon">
+              <ion-icon name="cloud-outline"></ion-icon>
+            </div>
+            <h3>Cloud or On‑Prem</h3>
+            <p>
+              Deploy our solution in the cloud for easy scaling or on‑prem for
+              sensitive environments requiring strict data residency.
+            </p>
+          </div>
+          <div class="card small-card">
+            <div class="card-icon">
+              <ion-icon name="shield-checkmark-outline"></ion-icon>
+            </div>
+            <h3>Security &amp; Compliance</h3>
+            <p>
+              InfraMap.ai adheres to industry standards and supports
+              compliance with regulations by providing auditable thermal
+              records and anomaly reports.
+            </p>
+          </div>
+          <div class="card small-card">
+            <div class="card-icon">
+              <ion-icon name="flash-outline"></ion-icon>
+            </div>
+            <h3>Actionable Alerts</h3>
+            <p>
+              Customisable thresholds and smart notifications ensure you
+              react to issues immediately—before they impact uptime.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>
+          Ready to make the invisible visible?  Reach out to discuss how
+          InfraMap.ai can optimise your data centre cooling strategy.
+        </p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your interest! We will get back to you shortly.');">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="Your email" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" required placeholder="Tell us about your data centre…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <p class="copyright">© 2025 InfraMap.ai – All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+          <a href="#" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" aria-label="Email"><ion-icon name="mail-outline"></ion-icon></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,507 @@
+/*
+  InfraMap.ai Landing Page Styles
+  This stylesheet defines the look and feel of the InfraMap.ai landing page.
+  Colours and fonts are declared as CSS variables for easy theme tuning.
+*/
+
+:root {
+  /* Colour palette */
+  --colour-primary: #f25f4c; /* warm orange for accents and buttons */
+  --colour-secondary: #14213d; /* deep navy for cards and highlights */
+  --colour-background: #0a192f; /* dark blue for page background */
+  --colour-surface: #112240; /* medium dark for sections */
+  --colour-text: #e5e5e5; /* light grey for general text */
+  --colour-heading: #ffffff; /* white for headings */
+  --colour-accent: #f3a712; /* golden accent used sparingly */
+
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --container-max-width: 1200px;
+  --section-padding: 4rem;
+  --card-radius: 0.75rem;
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--colour-background);
+  color: var(--colour-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--colour-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--colour-accent);
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* Navigation */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(10, 25, 47, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--colour-heading);
+}
+
+.logo .accent {
+  color: var(--colour-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--colour-text);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 2px;
+  background-color: var(--colour-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url('../images/heatmap.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay to darken the hero background for legibility */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 25, 47, 0.9) 0%,
+    rgba(10, 25, 47, 0.7) 50%,
+    rgba(10, 25, 47, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.2;
+  color: var(--colour-heading);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: rgba(229, 229, 229, 0.85);
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--colour-primary);
+  color: var(--colour-heading);
+}
+
+.btn-primary:hover {
+  background-color: var(--colour-accent);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--colour-primary);
+  color: var(--colour-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--colour-primary);
+  color: var(--colour-heading);
+}
+
+/* Sections */
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--colour-heading);
+  text-align: center;
+}
+
+.section-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.text-column {
+  flex: 1 1 50%;
+  max-width: 600px;
+}
+
+.text-column h2 {
+  text-align: left;
+}
+
+.text-column p {
+  margin-bottom: 1rem;
+  color: rgba(229, 229, 229, 0.9);
+  font-size: 1rem;
+}
+
+.image-column {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-column img {
+  max-width: 100%;
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Technology section */
+.technology {
+  background-color: var(--colour-surface);
+}
+
+.technology .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.technology .card {
+  background-color: var(--colour-secondary);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  flex: 1 1 30%;
+  min-width: 240px;
+  color: var(--colour-text);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.technology .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--colour-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--colour-heading);
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(229, 229, 229, 0.9);
+}
+
+.technology-image {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.technology-image img {
+  max-width: 80%;
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Foundation section */
+.foundation {
+  background-color: var(--colour-background);
+}
+
+.foundation .text-column p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(229, 229, 229, 0.9);
+}
+
+.foundation .image-column img {
+  max-width: 100%;
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Integrations section */
+.integrations {
+  background-color: var(--colour-surface);
+}
+
+.integrations .intro {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: rgba(229, 229, 229, 0.9);
+  font-size: 1rem;
+}
+
+.integrations .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.integrations .card.small-card {
+  flex: 1 1 calc(50% - 2rem);
+  max-width: 260px;
+  background-color: var(--colour-secondary);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.integrations .card.small-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.integrations .card.small-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--colour-heading);
+}
+
+.integrations .card.small-card p {
+  font-size: 0.9rem;
+  color: rgba(229, 229, 229, 0.9);
+  line-height: 1.5;
+}
+
+/* Contact section */
+.contact {
+  background-color: var(--colour-background);
+}
+
+.contact h2 {
+  margin-bottom: 0.5rem;
+}
+
+.contact p {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: rgba(229, 229, 229, 0.9);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--colour-heading);
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: var(--colour-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  border-radius: var(--card-radius);
+  color: var(--colour-heading);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--colour-primary);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--colour-secondary);
+  padding: 2rem 0 1rem;
+  color: rgba(229, 229, 229, 0.8);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a ion-icon {
+  font-size: 1.5rem;
+  color: var(--colour-primary);
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover ion-icon {
+  color: var(--colour-accent);
+}
+
+.citations {
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: rgba(229, 229, 229, 0.6);
+}
+
+.citations a {
+  color: var(--colour-accent);
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-column,
+  .image-column {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .technology .card,
+  .integrations .card.small-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .nav-inner {
+    justify-content: space-between;
+  }
+}
