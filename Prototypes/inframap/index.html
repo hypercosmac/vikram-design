@@ -21,6 +21,8 @@
     <!-- Ionicons for simple icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -73,8 +75,8 @@
           <p>
             InfraMap.ai solves these problems by deploying autonomous robots and
             fixed rigs equipped with infrared and RGB cameras.  We stitch
-            thousands of images into a high‑resolution thermal map—similar to a
-            weather radar—that reveals invisible patterns.  These maps allow
+            thousands of images into a high‑resolution thermal map that reveals 
+            invisible patterns. These maps allow
             operators to see where hot and cold air flow, identify blocked
             vents and balance cooling loads without guesswork.  Thermal imaging
             can reveal hot spots and cold spots and even detect overloaded
@@ -99,7 +101,7 @@
             <h3>Autonomous Robots</h3>
             <p>
               Our rugged mobile robots navigate data centers autonomously or
-              operate from fixed rigs.  Equipped with thermal and visual
+              operate from fixed rigs. Equipped with thermal and visual
               sensors, they scan every aisle and rack to build a full 3D
               thermal profile.
             </p>
@@ -144,7 +146,7 @@
             diverse thermal and visual data across multiple facilities,
             contributing to a proprietary dataset that powers a foundational
             model for environmental understanding.  By training on diverse
-            conditions—from different layouts, cooling systems, and workloads—our
+            conditions from different layouts, cooling systems, and workloads, our
             models learn to recognise subtle patterns beyond simple anomaly
             detection.  These representations can integrate with existing
             foundation models to enhance broader environmental intelligence,
@@ -153,7 +155,7 @@
           </p>
           <p>
             Our approach uses a general-purpose foundational model trained across 
-            diverse data sources related to data center operations—capturing airflow 
+            diverse data sources related to data center operations, capturing airflow 
             behavior, energy usage patterns, and equipment states. Instead of relying 
             on static rules or siloed systems, our approach enables the model to learn 
             generalizable patterns and adapt to new environments. The result is a 
@@ -178,7 +180,7 @@
           insights directly into your dashboards, closing the loop between
           monitoring and corrective action.  Operators can automate
           cooling adjustments, schedule maintenance and comply with
-          industry regulations—all from the systems they already use.
+          industry regulations, all from the systems they already use.
         </p>
         <div class="cards">
           <div class="card small-card">
@@ -220,7 +222,7 @@
             <h3>Actionable Alerts</h3>
             <p>
               Customisable thresholds and smart notifications ensure you
-              react to issues immediately—before they impact uptime.
+              react to issues immediately, before they impact uptime.
             </p>
           </div>
         </div>
@@ -235,20 +237,25 @@
           Ready to reduce your data center downtime?  Reach out to discuss how
           InfraMap.ai can optimise your data center cooling strategy.
         </p>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your interest! We will get back to you shortly.');">
+        <form class="contact-form" id="contact-form">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" required placeholder="Your name" />
+            <input type="text" name="from_name" id="name" required placeholder="Your name" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="Your email" />
+            <input type="email" name="from_email" id="email" required placeholder="Your email" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company (Optional)</label>
+            <input type="text" name="company" id="company" placeholder="Your company" />
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" rows="4" required placeholder="Tell us about your data center…"></textarea>
+            <textarea name="message" id="message" rows="4" required placeholder="Tell us about your data center…"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+          <div id="form-status" class="form-status"></div>
         </form>
       </div>
     </section>
@@ -264,5 +271,45 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Initialize EmailJS
+      (function() {
+        //EmailJS public key
+        emailjs.init('SWJt4CAKTCoqAwbeS');
+      })();
+
+      // Handle form submission
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const submitBtn = document.getElementById('submit-btn');
+        const formStatus = document.getElementById('form-status');
+        
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+        
+        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
+        emailjs.sendForm('service_g1mdd9i', 'template_r72nyqq', this)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            formStatus.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+            formStatus.className = 'form-status success';
+            document.getElementById('contact-form').reset();
+          }, function(error) {
+            console.log('FAILED...', error);
+            formStatus.textContent = 'Sorry, there was an error sending your message. Please try again or contact us directly.';
+            formStatus.className = 'form-status error';
+          })
+          .finally(function() {
+            // Reset button state
+            submitBtn.textContent = 'Send Message';
+            submitBtn.disabled = false;
+          });
+      });
+    </script>
   </body>
 </html>

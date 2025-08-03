@@ -431,6 +431,30 @@ a:hover {
   border-color: var(--colour-primary);
 }
 
+.form-status {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--card-radius);
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-status.success {
+  background-color: rgba(46, 160, 67, 0.2);
+  border: 1px solid #2ea043;
+  color: #2ea043;
+  opacity: 1;
+}
+
+.form-status.error {
+  background-color: rgba(242, 95, 76, 0.2);
+  border: 1px solid var(--colour-primary);
+  color: var(--colour-primary);
+  opacity: 1;
+}
+
 /* Footer */
 .footer {
   background-color: var(--colour-secondary);
