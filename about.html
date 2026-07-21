@@ -192,45 +192,13 @@
 			</section>
 		</div>
 		<footer id="footer">
-			<div class="footer-holder">
-				<div class="footer-frame">
-					<div class="footer-content">
-						<div class="col-holder">
-							<div class="col">
-								<div class="heading">
-									<h3></h3>
-								</div>
-								
-							</div>
-							<div class="col">
-								<div class="heading">
-									<h3>Contact</h3>
-								</div>
-								<address>
-									<p><strong>Vikram Mishra</strong></p>
-									<p>+1 (513) 815-1799</p>
-									<p></p>
-									<p><a href="mailto:vikrammishra824@gmail.com">vikrammishra824@gmail.com</a></p>
-							</div>
-							<div class="col col-contact">
-								<div class="heading">
-									<h3>Socials</h3>
-								</div>
-								<ul class="social">
-									<li class="Twitter"><a target="_blank" href="https://x.com/hypercosmac">Twitter</a></li>
-									<li class="linkedin"><a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="footer-bottom">
-						<div class="holder">
-							<p>© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
-						</div>
-					</div>
-				</div>
+			<div class="social-links">
+				<a target="_blank" href="https://x.com/hypercosmac">Twitter</a>
+				<a target="_blank" href="https://www.linkedin.com/in/vikram-mishra/">LinkedIn</a>
+				<a href="mailto:vikrammishra824@gmail.com">Email</a>
 			</div>
-		</footer>	
+			<p class="footer-copy">© <script>document.write(new Date().getFullYear())</script> VikramDesign</p>
+		</footer>
 	</div>
 	
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -722,6 +690,39 @@
 
 	#wrapper {
 		padding-top: 100px;
+	}
+
+	/* Footer — matches home page style */
+	#footer {
+		padding: 4rem 0;
+		text-align: center;
+		background: #fafafa;
+		border-top: 1px solid #eee;
+		margin-top: 4rem;
+	}
+	#footer .social-links {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin: 0 0 2rem;
+		list-style: none;
+		padding: 0;
+	}
+	#footer .social-links a {
+		color: #111;
+		text-decoration: none;
+		opacity: 0.8;
+		font-size: 0.95rem;
+		transition: all 0.3s ease;
+	}
+	#footer .social-links a:hover {
+		opacity: 1;
+		transform: translateY(-2px);
+	}
+	#footer .footer-copy {
+		margin: 0;
+		font-size: 0.85rem;
+		color: #888;
 	}
 	</style>
 
