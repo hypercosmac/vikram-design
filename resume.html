@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>Resume - Vikram.Design</title>
+	<title>Hardware Engineering &amp; Industrial Design - Vikram.Design</title>
 	<link rel="stylesheet" href="css/fancySelect.css" />
 	<link rel="stylesheet" href="css/uniform.css" />
 	<link rel="stylesheet" href="css/all.css" />
@@ -19,6 +19,26 @@
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8505110363248163"
 	crossorigin="anonymous"></script>
 	<style type="text/css">
+		/* Design tokens */
+		:root {
+			--ink: #333;
+			--ink-strong: #111;
+			--muted: #666;
+			--faint: #999;
+
+			--space-1: 0.5rem;
+			--space-2: 0.75rem;
+			--space-3: 1.1rem;
+			--space-4: 1.5rem;
+
+			/* Logo treatment — quiet, secondary brand marks */
+			--logo-h: 17px;          /* wordmark cap height */
+			--logo-h-symbol: 15px;   /* denser symbol marks, normalized by perceived weight */
+			--logo-gap: 0.6rem;      /* space between mark and company name */
+			--logo-opacity: 0.45;
+			--logo-opacity-hover: 0.78;
+		}
+
 		/* Base styles */
 		body {
 			font-family: 'Space Grotesk', sans-serif;
@@ -28,6 +48,14 @@
 			margin: 0;
 			padding: 0;
 		}
+
+		/* Normalize the legacy table-based wrapper (from screen.css) to block flow
+		   so the layout respects the viewport width and never overflows horizontally
+		   on tablet/mobile. Scoped to this page only. */
+		#wrapper { display: block; }
+		.wrapper-holder { display: block; }
+		#footer .footer-holder { display: block !important; }
+		#footer .footer-frame { display: block !important; width: auto !important; }
 
 		/* Header styles */
 		#header {
@@ -81,7 +109,7 @@
 			margin: 0 auto;
 		}
 
-		/* Skills Grid */
+		/* Experience Grid */
 		.skills-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -102,43 +130,144 @@
 			transform: translateY(0);
 		}
 
-		.category-title {
+		/* Company lockup: quiet logo mark + name, integrated into the heading line */
+		.exp-head {
+			display: flex;
+			align-items: center;
+			gap: var(--logo-gap);
+			min-height: var(--logo-h);
+			margin-bottom: var(--space-3);
+		}
+
+		.exp-mark {
+			height: var(--logo-h);
+			width: auto;
+			max-width: 96px;
+			object-fit: contain;
+			/* flatten every brand mark to one muted monochrome ink so none competes */
+			filter: brightness(0);
+			opacity: var(--logo-opacity);
+			flex: 0 0 auto;
+			transition: opacity 0.25s ease;
+		}
+
+		.exp-mark.is-symbol {
+			height: var(--logo-h-symbol);
+		}
+
+		.skill-category:hover .exp-mark,
+		.skill-category:focus-within .exp-mark {
+			opacity: var(--logo-opacity-hover);
+		}
+
+		.exp-company {
 			font-size: 1.2rem;
 			font-weight: 500;
-			margin-bottom: 2rem;
-			position: relative;
+			color: var(--ink-strong);
+			margin: 0;
+			line-height: 1.2;
 		}
 
-		.category-title::after {
-			content: "";
-			position: absolute;
-			bottom: -10px;
-			left: 0;
-			width: 40px;
-			height: 2px;
-			background: #333;
+		/* Wordmark logos used AS the company identifier (no redundant text name) */
+		.exp-wordmark {
+			display: block;
+			height: 20px;
+			width: auto;
+			max-width: 150px;
+			object-fit: contain;
+			object-position: left center;
+			filter: brightness(0);
+			opacity: 0.9;
+			transition: opacity 0.25s ease;
 		}
 
-		.skill-list {
-			list-style: none;
-			padding: 0;
+		/* Text wordmark (ZAPTrack) — set in the page type for a clean, legible mark */
+		.exp-wordmark-text {
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: -0.005em;
+			text-transform: none;
+			color: var(--ink-strong);
+			line-height: 1.2;
+		}
+
+		.skill-category:hover .exp-wordmark,
+		.skill-category:focus-within .exp-wordmark {
+			opacity: 1;
+		}
+
+		.exp-role {
+			font-size: 1rem;
+			font-weight: 500;
+			color: #333;
+			margin-bottom: 0.25rem;
+		}
+
+		.exp-dates {
+			font-size: 0.75rem;
+			font-weight: 400;
+			color: #999;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			margin-bottom: 0.9rem;
+		}
+
+		.exp-desc {
+			font-size: 0.92rem;
+			font-weight: 300;
+			color: #666;
+			line-height: 1.55;
 			margin: 0;
 		}
 
-		.skill-item {
-			margin-bottom: 1.5rem;
-			font-weight: 300;
+		/* Education — two schools presented side by side with their marks */
+		.education {
+			max-width: 1040px;
+			margin: 3.5rem auto 0;
+			padding: 0 2rem 7rem;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: flex-start;
+			gap: 3rem 4rem;
 		}
 
-		.skill-name {
+		.edu-item {
+			flex: 0 1 280px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.edu-logo {
+			width: auto;
+			object-fit: contain;
+			filter: brightness(0);
+			opacity: 0.78;
+			margin-bottom: 1.25rem;
+			transition: opacity 0.25s ease;
+		}
+
+		.edu-logo.is-uc { height: 52px; }
+		.edu-logo.is-wuppertal { height: 46px; opacity: 0.68; }
+		.edu-logo.is-inventure { height: 48px; opacity: 0.7; }
+
+		.edu-item:hover .edu-logo { opacity: 1; }
+
+		.edu-school {
 			font-size: 1.1rem;
-			margin-bottom: 0.5rem;
+			font-weight: 500;
+			color: var(--ink-strong);
+			margin-bottom: 0.35rem;
+			line-height: 1.3;
 		}
 
-		.skill-description {
+		.edu-detail {
 			font-size: 0.9rem;
+			font-weight: 300;
 			color: #666;
-			line-height: 1.4;
+			line-height: 1.5;
 		}
 
 		/* Traditional Resume Link */
@@ -199,6 +328,8 @@
 			.vertical-line {
 				display: none;
 			}
+
+			.section-heading h2 { font-size: 1.9rem; }
 		}
 
 		/* Navigation */
@@ -227,11 +358,11 @@
 		#footer {
 			width: 100% !important;
 			overflow: hidden !important;
-			display: table-footer-group !important;
+			display: block !important;
 			background: #000 !important;
 			text-align: center !important; /* Center text */
 		}
-		
+
 		.footer-content {
 			max-width: 1170px !important;
 			margin: 0 auto !important; /* Center the footer content */
@@ -283,8 +414,9 @@
 
 		.footer-bottom {
 			border-top: 1px solid rgba(255, 255, 255, 0.1);
-			margin-top: 4rem;
-			padding-top: 2rem;
+			margin-top: 1rem;
+			padding-top:1rem;
+			padding-bottom:1rem;
 			text-align: center;
 		}
 
@@ -294,19 +426,28 @@
 			font-size: 0.9rem;
 		}
 
-		.toolkit-link {
-			display: inline-block;
-			margin-top: 0.5rem;
-			color: #333;
-			text-decoration: none;
-			font-size: 0.9rem;
-			font-weight: 500;
-			transition: all 0.3s ease;
+		/* Section headings (between content sections) */
+		.section-heading {
+			text-align: center;
+			max-width: 1200px;
+			margin: 5rem auto 0;
+			padding: 0 2rem;
 		}
 
-		.toolkit-link:hover {
-			transform: translateX(5px);
-			opacity: 0.7;
+		.section-heading h2 {
+			font-size: 2.4rem;
+			font-weight: 300;
+			letter-spacing: -0.02em;
+			margin: 0 0 0.75rem;
+		}
+
+		.section-heading p {
+			font-size: 1.1rem;
+			font-weight: 300;
+			color: #666;
+			max-width: 640px;
+			margin: 0 auto;
+			line-height: 1.5;
 		}
 	</style>
 </head>
@@ -336,121 +477,96 @@
 			<section id="main">
 			<div class="resume-container">
 				<div class="intro-section">
-					<h1 class="intro-title">Skills & Capabilities</h1>
+					<!--<h1 class="intro-title">Hardware Engineering &amp; Industrial Design</h1>-->
 					<p class="intro-text">
-						I combine design thinking with technical expertise to create innovative solutions 
-						that bridge the physical and digital worlds.
+						Industrial designer and hardware engineer in the San Francisco Bay Area.
+						I take products from early prototype through engineering validation and
+						manufacturing, and I've founded and run a hardware company of my own.
 					</p>
+				</div>
+
+				<div class="section-heading">
+					<h2>Experience</h2>
 				</div>
 
 				<div class="skills-grid">
 					<div class="skill-category">
-						<h2 class="category-title">Design & Prototyping</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">Industrial Design</div>
-								<div class="skill-description">Creating user-centered products with a focus on form, function, and manufacturability</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Rapid Prototyping</div>
-								<div class="skill-description">Expertise in 3D printing, CNC machining, and iterative prototyping methods</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">CAD Modeling</div>
-								<div class="skill-description">Proficient in SolidWorks, Fusion 360, Blender, and Keyshot</div>
-							</li>
-						</ul>
+						<div class="exp-head">
+							<h3 class="exp-company"><img class="exp-wordmark" src="images/logos/sabi.svg" alt="Sabi"></h3>
+						</div>
+						<div class="exp-role">Hardware Engineer &amp; Industrial Designer</div>
+						<div class="exp-dates">Palo Alto, CA · 2026 – Present</div>
+						<p class="exp-desc">Taking product concepts to production-ready hardware: rapid prototyping, engineering validation, design-for-manufacturability, and supplier coordination to de-risk development and time to market.</p>
 					</div>
 
 					<div class="skill-category">
-						<h2 class="category-title">Technology & Development</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">Robotics & Automation</div>
-								<div class="skill-description">Building autonomous robots and smart devices for real-world applications</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Programming</div>
-								<div class="skill-description">Python, Arduino, and embedded systems programming for hardware integration</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">AI Integration</div>
-								<div class="skill-description">Implementing and fine-tuning machine learning models</div>
-							</li>
-						</ul>
+						<div class="exp-head">
+							<img class="exp-mark is-symbol" src="images/logos/daylight.png" alt="" aria-hidden="true">
+							<h3 class="exp-company">Daylight Computer Co.</h3>
+						</div>
+						<div class="exp-role">Hardware Engineer &amp; Industrial Designer</div>
+						<div class="exp-dates">San Francisco, CA · 2025 – 2026</div>
+						<p class="exp-desc">Worked across ergonomics, materials, reliability testing, and scalable production methods with cross-disciplinary teams to turn human-centric insight into a premium consumer device.</p>
 					</div>
 
 					<div class="skill-category">
-						<h2 class="category-title">Electrical Engineering</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">PCB Design</div>
-								<div class="skill-description">Designing PCBs with protection circuits and EMI considerations using KiCad</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Circuit Protection</div>
-								<div class="skill-description">Implementation of TVS diodes and other protection components for robust automotive applications</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">IoT Integration</div>
-								<div class="skill-description">nRF52 and ESP32-based wireless connectivity solutions with custom firmware development</div>
-							</li>
-						</ul>
+						<div class="exp-head">
+							<h3 class="exp-company exp-wordmark-text">zaptrack</h3>
+						</div>
+						<div class="exp-role">Founder &amp; CEO</div>
+						<div class="exp-dates">San Francisco, CA · 2024 – 2025</div>
+						<p class="exp-desc">Built and led an autonomous agricultural robotics startup for organic farming. Piloted mowing robots across two acres of California almond and stone-fruit orchards and secured letters of intent worth roughly $50K/month.</p>
 					</div>
 
 					<div class="skill-category">
-						<h2 class="category-title">Software Development</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">Rapid Prototyping</div>
-								<div class="skill-description">Fast iteration using modern AI-powered tools like Cursor and V0 for efficient development</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Robotics Software</div>
-								<div class="skill-description">Data collection pipelines, model training, and visualization for robotic systems</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Machine Learning</div>
-								<div class="skill-description">Training and implementation of machine learning models for computer vision and robotics</div>
-							</li>
-						</ul>
+						<div class="exp-head">
+							<img class="exp-mark is-symbol" src="images/logos/founders.png" alt="" aria-hidden="true">
+							<h3 class="exp-company">Founders, Inc.</h3>
+						</div>
+						<div class="exp-role">Hardware Contractor</div>
+						<div class="exp-dates">San Francisco, CA · 2024</div>
+						<p class="exp-desc">Helped an early hardware-AI startup scale prototype production for LLM-powered consumer products.</p>
 					</div>
 
 					<div class="skill-category">
-						<h2 class="category-title">Manufacturing & Supply Chain</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">DFM/DFA Reviews & Production Coordination</div>
-								<div class="skill-description">DFM/DFA reviews, injection-mold and CNC coordination (China/Taiwan)</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Quality Assurance & Supplier Communication</div>
-								<div class="skill-description">QA systems (AQL, CAPA, ISTA testing) and supplier communication</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Logistics & Cost Optimization</div>
-								<div class="skill-description">Cost optimization, logistics (FOB / DAP), and 3PL coordination</div>
-							</li>
-						</ul>
+						<div class="exp-head">
+							<img class="exp-mark is-symbol" src="images/logos/pg.png" alt="" aria-hidden="true">
+							<h3 class="exp-company">Procter &amp; Gamble</h3>
+						</div>
+						<div class="exp-role">Industrial Design</div>
+						<div class="exp-dates">Cincinnati, OH · 2022 – 2023</div>
+						<p class="exp-desc">Developed working prototypes for consumer testing using 3D printing and electronics, contributing to home &amp; fabric care upstream research and development.</p>
 					</div>
 
 					<div class="skill-category">
-						<h2 class="category-title">Leadership & Strategy</h2>
-						<ul class="skill-list">
-							<li class="skill-item">
-								<div class="skill-name">Product Development</div>
-								<div class="skill-description">Leading projects from concept to production</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Team Leadership</div>
-								<div class="skill-description">Managing teams and coordinating with stakeholders</div>
-							</li>
-							<li class="skill-item">
-								<div class="skill-name">Design Strategy</div>
-								<div class="skill-description">Developing product strategies aligned with business goals</div>
-								<!--<a href="toolkit.html" class="toolkit-link">view my toolkit ↗</a>-->
-							</li>
-						</ul>
+						<div class="exp-head">
+							<h3 class="exp-company"><img class="exp-wordmark" src="images/logos/sensio.png" alt="Sensio Enterprises"></h3>
+						</div>
+						<div class="exp-role">Industrial Design</div>
+						<div class="exp-dates">Cincinnati, OH · 2022</div>
+						<p class="exp-desc">Designed a modular-size smart ring for a medical and lifestyle design start-up, exploring materials and forms alongside the engineering and business team.</p>
+					</div>
+				</div>
+
+				<div class="section-heading">
+					<h2>Education</h2>
+				</div>
+
+				<div class="education">
+					<div class="edu-item">
+						<img class="edu-logo is-inventure" src="images/logos/inventure.png" alt="Inventure Academy">
+						<div class="edu-school">Inventure Academy</div>
+						<div class="edu-detail">Design, Sciences &amp; CS · 2018 – 2020</div>
+					</div>
+					<div class="edu-item">
+						<img class="edu-logo is-wuppertal" src="images/logos/wuppertal.png" alt="Bergische Universität Wuppertal">
+						<div class="edu-school">Bergische Universität Wuppertal</div>
+						<div class="edu-detail">Product Design &amp; Manufacturing Abroad · 2023</div>
+					</div>
+					<div class="edu-item">
+						<img class="edu-logo is-uc" src="images/logos/uc.png" alt="University of Cincinnati">
+						<div class="edu-school">University of Cincinnati</div>
+						<div class="edu-detail">Industrial Design · 2020 – 2024</div>
 					</div>
 				</div>
 
@@ -472,10 +588,10 @@
 								<address>
 									<p><strong>Vikram Mishra</strong></p>
 									<p>+1 (513) 815-1799</p>
-									<p><a href="mailto:vikram@zaptrack.us">vikram@zaptrack.us</a></p>
+									<p><a href="mailto:vikrammishra824@gmail.com">vikrammishra824@gmail.com</a></p>
 								</address>
 							</div>
-							
+
 						</div>
 					</div>
 					<div class="footer-bottom" style="text-align: center;">
@@ -483,18 +599,18 @@
 					</div>
 				</div>
 			</div>
-		</footer>	
+		</footer>
 	</div>
-	
+
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript" src="js/jquery.placeholder.js"></script>
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/fancySelect.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	
+
 	<script>
-	// Intersection Observer for skill categories
+	// Intersection Observer for experience/education cards
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -506,7 +622,7 @@
 		rootMargin: '0px 0px -50px 0px'
 	});
 
-	// Observe all skill categories
+	// Observe all experience cards
 	document.querySelectorAll('.skill-category').forEach(category => {
 		observer.observe(category);
 	});
