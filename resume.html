@@ -57,6 +57,16 @@
 		#footer .footer-holder { display: block !important; }
 		#footer .footer-frame { display: block !important; width: auto !important; }
 
+		/* header.js injects a shared header.html partial that adds its own top-offset
+		   rules (body margin-top + #wrapper/.wrapper-holder padding-top) meant for pages
+		   using the default #header. This page already runs its own fixed header, so
+		   those duplicate offsets just stack into a huge gap — neutralize them and clear
+		   the fixed header exactly once, via .bar's margin-top below. */
+		body { margin-top: 0 !important; }
+		#wrapper, .wrapper-holder { padding-top: 0 !important; }
+		.bar { margin: 0 0 10px; } /* restore base spacing, then clear the fixed header once */
+		.wrapper-holder > .bar { margin-top: 110px; }
+
 		/* Header styles */
 		#header {
 			position: fixed;
@@ -80,10 +90,25 @@
 		}
 		/* Main content layout */
 		.resume-container {
-			padding-top: 120px;
+			padding-top: 32px;
 			min-height: 100vh;
 			max-width: 1400px;
 			margin: 0 auto;
+		}
+
+		/* Faint technical-sketch watermark — a quiet nod to the industrial-design process,
+		   fixed in the viewport so it reads as a constant backdrop rather than page art. */
+		body::before {
+			content: '';
+			position: fixed;
+			inset: 0;
+			background-image: url('images/bg-technical-sketch.jpg');
+			background-repeat: no-repeat;
+			background-position: center 65%;
+			background-size: 560px auto;
+			opacity: 0.13;
+			pointer-events: none;
+			z-index: -1;
 		}
 
 		/* Introduction Section */
@@ -479,7 +504,7 @@
 				<div class="intro-section">
 					<!--<h1 class="intro-title">Hardware Engineering &amp; Industrial Design</h1>-->
 					<p class="intro-text">
-						Industrial designer and hardware engineer in the San Francisco Bay Area.
+						Industrial designer and hardware engineer in San&nbsp;Francisco.
 						I take products from early prototype through engineering validation and
 						manufacturing, and I've founded and run a hardware company of my own.
 					</p>
