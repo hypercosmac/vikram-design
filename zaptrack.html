@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ZAPTrack — an engineering case study in rapidly prototyping autonomous orchard robots, from farmer discovery and a $50 mower hack to a paid field pilot.">
+    <meta name="theme-color" content="#17251a">
+    <meta property="og:title" content="ZAPTrack — Autonomous Farm Robotics | Vikram Mishra">
+    <meta property="og:description" content="The field notes, prototypes, engineering decisions, and hard-won lessons behind an autonomous orchard robot built from the farm outward.">
+    <meta property="og:image" content="https://vikramdesign.com/images/zaptrack.jpg">
+    <meta property="og:url" content="https://vikramdesign.com/zaptrack.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ZAPTrack — Autonomous Farm Robotics">
+    <meta name="twitter:description" content="From a $50 proof of concept to a paid orchard pilot: the complete engineering story.">
+    <meta name="twitter:image" content="https://vikramdesign.com/images/zaptrack.jpg">
+    <title>ZAPTrack — Autonomous Farm Robotics | Vikram Mishra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --soil: #17251a;
+            --soil-deep: #0c120d;
+            --paper: #f1eee4;
+            --paper-deep: #ded8c8;
+            --ink: #172019;
+            --muted: #676b61;
+            --line: rgba(23, 32, 25, 0.17);
+            --leaf: #b9e769;
+            --leaf-deep: #315d35;
+            --orange: #ff6b24;
+            --white: #fbfaf5;
+            --content: min(1240px, calc(100vw - 64px));
+            --display: 'Space Grotesk', sans-serif;
+            --body: 'Inter', sans-serif;
+            --mono: 'DM Mono', monospace;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            line-height: 1.58;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { display: block; width: 100%; }
+        a { color: inherit; }
+        ::selection { background: var(--leaf); color: var(--soil-deep); }
+
+        .site-header {
+            position: absolute;
+            inset: 0 0 auto;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: var(--content);
+            margin: 0 auto;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.23);
+            color: var(--white);
+            font: 400 0.7rem/1.3 var(--mono);
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+        .site-header a { text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 10px; }
+        .back-link span { transition: transform 180ms ease; }
+        .back-link:hover span { transform: translateX(-4px); }
+        .header-nav { display: flex; gap: 24px; }
+        .header-nav a { opacity: 0.72; transition: opacity 180ms ease; }
+        .header-nav a:hover { opacity: 1; }
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            align-items: end;
+            overflow: hidden;
+            background: var(--soil-deep);
+            color: var(--white);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8,15,9,0.14) 18%, rgba(8,15,9,0.38) 54%, rgba(8,15,9,0.96) 100%);
+        }
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 48%;
+            filter: saturate(0.88) contrast(1.04);
+        }
+        .hero-copy {
+            position: relative;
+            z-index: 2;
+            width: var(--content);
+            margin: 0 auto;
+            padding: 150px 0 60px;
+        }
+        .eyebrow,
+        .label,
+        .number,
+        .meta dt,
+        .tag,
+        .caption,
+        .source-list {
+            font-family: var(--mono);
+            font-size: 0.69rem;
+            line-height: 1.45;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+        .eyebrow { display: flex; align-items: center; gap: 12px; opacity: 0.78; }
+        .eyebrow::before { content: ''; width: 38px; height: 1px; background: currentColor; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1, h2, h3 { font-family: var(--display); font-weight: 500; letter-spacing: -0.045em; }
+        h1 {
+            margin: 22px 0 32px;
+            max-width: 1120px;
+            font-size: clamp(4.5rem, 14vw, 12rem);
+            font-weight: 400;
+            line-height: 0.78;
+        }
+        .hero-deck {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(290px, 0.6fr);
+            gap: 72px;
+            align-items: end;
+        }
+        .hero-deck > p {
+            max-width: 860px;
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(1.4rem, 3vw, 2.9rem);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+        }
+        .meta { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+        .meta div { padding-top: 9px; border-top: 1px solid rgba(255,255,255,0.28); }
+        .meta dt { margin-bottom: 5px; opacity: 0.62; }
+        .meta dd { margin: 0; font-size: 0.82rem; }
+
+        .fact-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: var(--content);
+            margin: 0 auto;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .fact { padding: 28px 22px 30px 0; }
+        .fact + .fact { padding-left: 22px; border-left: 1px solid var(--line); }
+        .fact strong { display: block; margin-bottom: 7px; font: 500 clamp(1.45rem, 2.7vw, 2.3rem)/1 var(--display); letter-spacing: -0.05em; }
+        .fact span { display: block; color: var(--muted); font-size: 0.75rem; }
+
+        .section { padding: 144px 0; }
+        .section + .section { border-top: 1px solid var(--line); }
+        .section-inner, .dark-inner, .footer-inner { width: var(--content); margin-inline: auto; }
+        .section-heading {
+            display: grid;
+            grid-template-columns: 0.42fr 1.58fr;
+            gap: 80px;
+            margin-bottom: 76px;
+        }
+        .section-heading h2 {
+            max-width: 980px;
+            margin-bottom: 0;
+            font-size: clamp(2.7rem, 6vw, 6rem);
+            line-height: 0.95;
+        }
+        .section-heading .lead { max-width: 760px; margin: 28px 0 0; color: var(--muted); font-size: 1.06rem; }
+
+        .brief-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+        .brief-card { min-height: 285px; padding: 34px; background: var(--paper); }
+        .brief-card h3 { margin: 58px 0 13px; font-size: 1.45rem; line-height: 1.12; }
+        .brief-card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+        .discovery-grid {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+        .discovery-photo { min-height: 620px; object-fit: cover; }
+        .discovery-notes { display: grid; grid-template-rows: repeat(3, 1fr); border: 1px solid var(--line); }
+        .discovery-note { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 30px; }
+        .discovery-note + .discovery-note { border-top: 1px solid var(--line); }
+        .discovery-note strong { font-family: var(--display); font-size: 1.25rem; line-height: 1.15; }
+        .discovery-note p { margin: 9px 0 0; color: var(--muted); font-size: 0.86rem; }
+        .number { color: var(--leaf-deep); }
+
+        .dark-section { padding: 144px 0; background: var(--soil); color: var(--white); }
+        .dark-section .label, .dark-section .eyebrow, .dark-section p { color: rgba(251,250,245,0.65); }
+        .loop-line {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            margin-top: 72px;
+            border-top: 1px solid rgba(255,255,255,0.24);
+        }
+        .loop-step { position: relative; padding: 28px 24px 0 0; }
+        .loop-step:not(:last-child)::after { content: '→'; position: absolute; top: 27px; right: 24px; color: var(--leaf); }
+        .loop-step strong { display: block; margin-top: 26px; font: 500 1.2rem/1.1 var(--display); }
+        .loop-step p { max-width: 170px; margin: 10px 0 0; font-size: 0.82rem; }
+
+        .timeline { border-top: 1px solid var(--line); }
+        .milestone {
+            display: grid;
+            grid-template-columns: 0.26fr 0.74fr;
+            gap: 64px;
+            padding: 74px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .milestone-date { color: var(--leaf-deep); }
+        .milestone-date strong { display: block; margin-top: 14px; font: 500 2.2rem/1 var(--display); letter-spacing: -0.05em; }
+        .milestone-body h3 { max-width: 820px; margin: 0 0 20px; font-size: clamp(2rem, 4vw, 4rem); line-height: 0.98; }
+        .milestone-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: 920px; }
+        .milestone-copy p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+        .milestone-media { margin-top: 42px; }
+        .milestone-media img { max-height: 720px; object-fit: cover; background: var(--paper-deep); }
+        .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .media-grid img { height: 430px; object-fit: cover; }
+        .caption { display: flex; justify-content: space-between; gap: 24px; margin-top: 11px; color: var(--muted); text-transform: none; letter-spacing: 0.02em; }
+
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 18px;
+            border: 1px solid var(--line);
+        }
+        .recognition { padding: 26px; min-height: 150px; }
+        .recognition + .recognition { border-left: 1px solid var(--line); }
+        .recognition strong { display: block; margin-top: 24px; font: 500 1.05rem/1.15 var(--display); }
+
+        .system-map {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .system-card { min-height: 290px; padding: 30px; }
+        .system-card + .system-card { border-left: 1px solid rgba(255,255,255,0.2); }
+        .system-card .tag { color: var(--leaf); }
+        .system-card h3 { margin: 76px 0 14px; font-size: 1.35rem; }
+        .system-card p { margin: 0; font-size: 0.85rem; }
+        .vision-figure { margin-top: 72px; }
+        .vision-figure img { aspect-ratio: 16 / 8.8; object-fit: cover; }
+        .vision-figure .caption { color: rgba(255,255,255,0.52); }
+
+        .challenge-list { border-top: 1px solid var(--line); }
+        .challenge {
+            display: grid;
+            grid-template-columns: 0.13fr 0.31fr 0.56fr;
+            gap: 30px;
+            padding: 34px 0;
+            border-bottom: 1px solid var(--line);
+            align-items: start;
+        }
+        .challenge h3 { margin: 0; font-size: 1.25rem; line-height: 1.15; }
+        .challenge p { max-width: 660px; margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+        .outcome-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; }
+        .outcome-photo { min-height: 670px; object-fit: cover; }
+        .outcome-panel { display: flex; flex-direction: column; justify-content: space-between; padding: 42px; background: var(--orange); color: #1c140e; }
+        .outcome-panel blockquote { margin: 0; font: 500 clamp(2rem, 4vw, 4.4rem)/0.98 var(--display); letter-spacing: -0.05em; }
+        .outcome-panel p { margin: 40px 0 0; max-width: 520px; font-size: 0.93rem; }
+        .outcome-panel .label { color: rgba(28,20,14,0.62); }
+
+        .references { padding: 86px 0; border-top: 1px solid var(--line); }
+        .reference-grid { display: grid; grid-template-columns: 0.42fr 1.58fr; gap: 80px; }
+        .source-list { margin: 0; padding: 0; list-style: none; text-transform: none; letter-spacing: 0.02em; }
+        .source-list li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+        .source-list a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+        footer { padding: 48px 0; background: var(--soil-deep); color: var(--white); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
+        footer h2 { max-width: 690px; margin: 0; font-size: clamp(2.3rem, 5vw, 5rem); line-height: 0.94; }
+        .footer-links { display: flex; gap: 22px; font: 400 0.7rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+        @media (max-width: 900px) {
+            :root { --content: min(100% - 36px, 1240px); }
+            .header-nav { display: none; }
+            .hero-copy { padding-bottom: 36px; }
+            .hero-deck, .section-heading, .reference-grid { grid-template-columns: 1fr; gap: 30px; }
+            .meta { max-width: 500px; }
+            .fact-strip { grid-template-columns: repeat(2, 1fr); }
+            .fact:nth-child(odd) { border-left: 0; padding-left: 0; }
+            .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+            .section, .dark-section { padding: 96px 0; }
+            .brief-grid { grid-template-columns: 1fr; }
+            .brief-card { min-height: 0; }
+            .brief-card h3 { margin-top: 34px; }
+            .discovery-grid, .outcome-grid { grid-template-columns: 1fr; }
+            .discovery-photo, .outcome-photo { min-height: 480px; }
+            .loop-line { grid-template-columns: 1fr; }
+            .loop-step { padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.16); }
+            .loop-step:not(:last-child)::after { content: '↓'; top: auto; right: 6px; bottom: -11px; }
+            .loop-step strong { margin-top: 12px; }
+            .loop-step p { max-width: 520px; }
+            .milestone { grid-template-columns: 1fr; gap: 28px; }
+            .recognition-grid { grid-template-columns: 1fr 1fr; }
+            .recognition:nth-child(3) { border-left: 0; }
+            .recognition:nth-child(n+3) { border-top: 1px solid var(--line); }
+            .system-map { grid-template-columns: 1fr 1fr; }
+            .system-card + .system-card { border-left: 0; }
+            .system-card:nth-child(even) { border-left: 1px solid rgba(255,255,255,0.2); }
+            .system-card:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.2); }
+            .challenge { grid-template-columns: 52px 1fr; }
+            .challenge p { grid-column: 2; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: clamp(4.1rem, 24vw, 6.2rem); }
+            .hero-image { object-position: 58% center; }
+            .hero-deck > p { font-size: 1.35rem; }
+            .meta { grid-template-columns: 1fr 1fr; }
+            .fact-strip { grid-template-columns: 1fr; }
+            .fact + .fact, .fact:nth-child(odd) { padding-left: 0; border-left: 0; }
+            .fact:nth-child(n+2) { border-top: 1px solid var(--line); }
+            .section-heading { margin-bottom: 48px; }
+            .discovery-photo, .outcome-photo { min-height: 360px; }
+            .discovery-note { grid-template-columns: 48px 1fr; padding: 24px; }
+            .milestone-copy, .media-grid { grid-template-columns: 1fr; }
+            .media-grid img { height: 320px; }
+            .recognition-grid { grid-template-columns: 1fr; }
+            .recognition + .recognition { border-left: 0; border-top: 1px solid var(--line); }
+            .system-map { grid-template-columns: 1fr; }
+            .system-card:nth-child(even) { border-left: 0; }
+            .system-card:nth-child(n+2) { border-top: 1px solid rgba(255,255,255,0.2); }
+            .system-card { min-height: 0; }
+            .system-card h3 { margin-top: 42px; }
+            .challenge { grid-template-columns: 40px 1fr; gap: 18px; }
+            .outcome-panel { padding: 28px; min-height: 560px; }
+            .footer-inner { display: grid; }
+            .footer-links { flex-wrap: wrap; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="back-link" href="index.html"><span>←</span> Vikram Mishra</a>
+        <nav class="header-nav" aria-label="Case study sections">
+            <a href="#discovery">Discovery</a>
+            <a href="#build">Build log</a>
+            <a href="#engineering">Engineering</a>
+            <a href="#lessons">Lessons</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img class="hero-image" src="images/zaptrack.jpg" alt="ZAPTrack field computer showing live orchard object detections on a mower platform">
+            <div class="hero-copy">
+                <div class="eyebrow">Autonomous farm robotics · 2023–2024</div>
+                <h1>ZAPTrack</h1>
+                <div class="hero-deck">
+                    <p>Building an orchard robot from the farm outward—one cheap, testable machine at a time.</p>
+                    <dl class="meta">
+                        <div><dt>Role</dt><dd>Founder / Engineer</dd></div>
+                        <div><dt>Focus</dt><dd>Robotics + AgTech</dd></div>
+                        <div><dt>Methods</dt><dd>Field research, CAD, CV</dd></div>
+                        <div><dt>Stage</dt><dd>Paid pilot</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <div class="fact-strip" aria-label="Project facts">
+            <div class="fact"><strong>20</strong><span>farms interviewed across multiple operating scales</span></div>
+            <div class="fact"><strong>1</strong><span>successful paid pilot</span></div>
+            <div class="fact"><strong>2 weeks</strong><span>from rough parts to two fieldable iterations</span></div>
+            <div class="fact"><strong>$50K/mo</strong><span>letter-of-intent value captured during validation</span></div>
+        </div>
+
+        <section class="section" id="brief">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div class="label">01 / The brief</div>
+                    <div>
+                        <h2>Organic farming had a scaling problem, not an ideas problem.</h2>
+                        <p class="lead">For organic growers, a single non-organic herbicide application can jeopardize certification, while approved alternatives can be dramatically more expensive. Manual removal works, but it does not scale cleanly with acreage. ZAPTrack began as a search for the smallest machine that could prove a better workflow in the field.</p>
+                    </div>
+                </div>
+                <div class="brief-grid">
+                    <article class="brief-card">
+                        <div class="number">Problem / 01</div>
+                        <h3>Labor-intensive maintenance</h3>
+                        <p>One early orchard conversation surfaced a reported $670,000 annual manual weed-removal burden—large enough to justify testing automation immediately.</p>
+                    </article>
+                    <article class="brief-card">
+                        <div class="number">Constraint / 02</div>
+                        <h3>Protect the crop</h3>
+                        <p>Cultivators and finger weeders can be slow, operator-dependent, and risky around valuable plants. Precision mattered as much as raw coverage.</p>
+                    </article>
+                    <article class="brief-card">
+                        <div class="number">Direction / 03</div>
+                        <h3>Reuse what farms already understand</h3>
+                        <p>The project moved toward familiar mowing hardware plus an autonomy layer—reducing new mechanical invention and concentrating effort on perception, control, and deployment.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="discovery">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div class="label">02 / Customer discovery</div>
+                    <div>
+                        <h2>Talk to the person who owns the problem. Then bring hardware.</h2>
+                        <p class="lead">The archive documents conversations with conventional, drone-enabled, and organic farms in Cincinnati and California. Each pushed the product in a different direction: crop analytics, equipment augmentation, and autonomous physical work.</p>
+                    </div>
+                </div>
+                <div class="discovery-grid">
+                    <img class="discovery-photo" src="zaptrack/images/IMG_3915_highres.jpeg" alt="ZAPTrack team conducting farm customer discovery beside agricultural equipment">
+                    <div class="discovery-notes">
+                        <article class="discovery-note">
+                            <div class="number">01</div>
+                            <div><strong>Measure crop health</strong><p>A 1,000+ acre operation highlighted fertilizer spend and the value of repeated stand-count data for smarter allocation.</p></div>
+                        </article>
+                        <article class="discovery-note">
+                            <div class="number">02</div>
+                            <div><strong>Upgrade existing tools</strong><p>A grower already using a drone wanted better intelligence from equipment she owned—not another disconnected machine.</p></div>
+                        </article>
+                        <article class="discovery-note">
+                            <div class="number">03</div>
+                            <div><strong>Scale organic acreage</strong><p>An organic farmer working one acre of a 100-acre property needed weed control that could grow without eroding the farming method.</p></div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dark-section">
+            <div class="dark-inner">
+                <div class="section-heading">
+                    <div class="label">03 / Build philosophy</div>
+                    <div>
+                        <h2>Every prototype had one job: collapse uncertainty.</h2>
+                        <p class="lead">The process borrowed from the same rapid-prototyping discipline used across my hardware work. Keep fidelity only where the question demands it; spend money on learning; let the ugly prototype expose the next constraint.</p>
+                    </div>
+                </div>
+                <div class="loop-line" aria-label="Rapid prototyping loop">
+                    <div class="loop-step"><div class="number">01</div><strong>Idea</strong><p>Turn a field observation into one falsifiable proposition.</p></div>
+                    <div class="loop-step"><div class="number">02</div><strong>CAD</strong><p>Model only the geometry needed to answer the next question.</p></div>
+                    <div class="loop-step"><div class="number">03</div><strong>Build</strong><p>Print, wire, adapt, or salvage the fastest physical route.</p></div>
+                    <div class="loop-step"><div class="number">04</div><strong>Test</strong><p>Put the machine into dust, grass, heat, and real operator workflows.</p></div>
+                    <div class="loop-step"><div class="number">05</div><strong>Iterate</strong><p>Let evidence—not attachment—choose what survives.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="build">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div class="label">04 / Engineering build log</div>
+                    <div>
+                        <h2>From sensing crops to moving through them.</h2>
+                        <p class="lead">ZAPTrack was not a single robot reveal. It was a sequence of increasingly specific machines, each built to retire a different product or engineering risk.</p>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <article class="milestone">
+                        <div class="milestone-date"><div class="number">Phase 00</div><strong>Mar–Aug<br>2023</strong></div>
+                        <div class="milestone-body">
+                            <h3>Perception before actuation</h3>
+                            <div class="milestone-copy">
+                                <p><strong>Build.</strong> iSight paired a custom drone with a Raspberry Pi 4 and Pixhawk flight controller for invasive-species detection and stand-count reporting. CropEagle explored a lower-cost, high-resolution camera attachment. CropMantis translated the research into an autonomous ground-robot direction.</p>
+                                <p><strong>Why it mattered.</strong> These concepts separated three jobs—observe, understand, act—and clarified that the most acute organic-farm need was not another report. It was removing weeds without chemicals.</p>
+                            </div>
+                            <div class="milestone-media media-grid">
+                                <img src="zaptrack/images/product/Drone.jpeg" alt="Early ZAPTrack drone prototype on a workbench">
+                                <img src="zaptrack/images/product/20230716-152541.jpg" alt="Computer-vision test image with detected weeds outlined in green">
+                                <img src="zaptrack/images/product/cropeagle.jpg" alt="CropEagle high-resolution camera drone attachment concept">
+                                <img src="images/zaptrack-ride-on-camera-rig.png" alt="Ride-on car prototype opened to show the Raspberry Pi, motor wiring, and camera mounting rails">
+                            </div>
+                            <div class="caption"><span>Flight hardware → detection output → camera concept → ride-on sensor rig</span><span>Raspberry Pi 4 · Pixhawk · high-resolution imaging</span></div>
+                        </div>
+                    </article>
+
+                    <article class="milestone">
+                        <div class="milestone-date"><div class="number">Phase 01</div><strong>Apr<br>2024</strong></div>
+                        <div class="milestone-body">
+                            <h3>A two-axis toolhead for precise weed targeting</h3>
+                            <div class="milestone-copy">
+                                <p><strong>Build.</strong> A linear positioning mechanism drew from CNC machines and 3D printers: extrusion rails provided structure, linear rods constrained movement, a lead screw converted motor rotation into controlled travel, and a printed carriage localized the working tool.</p>
+                                <p><strong>Challenge.</strong> Targeted removal demands repeatable positioning without prematurely engineering a full vehicle. Isolating the toolhead let the team learn about motion and packaging before coupling it to autonomy.</p>
+                            </div>
+                            <div class="milestone-media">
+                                <img src="zaptrack/images/product/ZapTrack_Prototype.jpeg" alt="ZAPTrack two-axis linear weed-targeting mechanism with extrusion frame, rods, lead screw, and printed carriage">
+                                <div class="caption"><span>Zapping mechanism prototype</span><span>Extrusion · lead screw · linear guides · printed carriage</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="milestone">
+                        <div class="milestone-date"><div class="number">Phase 02</div><strong>Apr–May<br>2024</strong></div>
+                        <div class="milestone-body">
+                            <h3>The $50 mower hack</h3>
+                            <div class="milestone-copy">
+                                <p><strong>Build.</strong> A used electric lawn mower was electrically and mechanically combined with parts from an RC ride-on car. The donor systems supplied a cutting deck, traction, wheels, power, and steering behavior quickly enough to test the premise on a farm.</p>
+                                <p><strong>Challenge overcome.</strong> The machine moved and cut, but its geometry was wrong: the deck sat too high. That failure was useful. For roughly $50, it converted an abstract clearance concern into a hard packaging requirement.</p>
+                            </div>
+                            <div class="milestone-media media-grid">
+                                <img src="images/Prototype1_part1.jpg" alt="Discarded electric mower used for ZAPTrack's first mobile prototype">
+                                <img src="images/Prototype1_part4.jpg" alt="Exposed drive and mower components during the first ZAPTrack prototype build">
+                            </div>
+                            <div class="caption"><span>Prototype 01 — donor mower + ride-on drivetrain</span><span>Cost ≈ $50</span></div>
+                        </div>
+                    </article>
+
+                    <article class="milestone">
+                        <div class="milestone-date"><div class="number">Phase 03</div><strong>Jun<br>2024</strong></div>
+                        <div class="milestone-body">
+                            <h3>A lower, tougher platform for the orchard</h3>
+                            <div class="milestone-copy">
+                                <p><strong>Build.</strong> The second prototype leaned on a production mower chassis and was assembled with JingXiang Mo in days. A compact sensor mount, low body, and four driven wheels created a more credible machine for a large-farm trial.</p>
+                                <p><strong>Challenge overcome.</strong> Moving from improvised mobility to a purpose-built mower frame improved ground clearance, durability, and the ability to demonstrate on uneven orchard terrain—without designing every mechanical subsystem from zero.</p>
+                            </div>
+                            <div class="milestone-media media-grid">
+                                <img src="images/Prototype2_part1.jpg" alt="Second ZAPTrack mower platform during assembly">
+                                <img src="images/Prototype2_part2.jpg" alt="Second ZAPTrack robot with sensor mast in a California orchard">
+                            </div>
+                            <div class="caption"><span>Prototype 02 — pilot-intent orchard platform</span><span>Cost ≈ $300 · built in days</span></div>
+                        </div>
+                    </article>
+
+                    <article class="milestone">
+                        <div class="milestone-date"><div class="number">Phase 04</div><strong>Jul<br>2024</strong></div>
+                        <div class="milestone-body">
+                            <h3>From custom robot to deployable autonomy layer</h3>
+                            <div class="milestone-copy">
+                                <p><strong>Build.</strong> ZAPTrack sourced a mowing base from a manufacturing partner, then focused its own work on making that platform autonomous. The vehicle interface could be driven by manipulating three signals, shrinking the integration surface.</p>
+                                <p><strong>Milestone.</strong> The team completed a $100 paid pilot on one acre, with broader testing across two acres of California almond and stone-fruit orchards, and reframed the company around software and integration that could be assembled onto incoming hardware in about one day.</p>
+                            </div>
+                            <div class="milestone-media">
+                                <img src="images/zaptrack_hero.png" alt="ZAPTrack autonomy platform concept for orchard navigation and precision agriculture">
+                                <div class="caption"><span>Product direction</span><span>Standardized base · three-signal control · one-day integration target</span></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="dark-section" id="engineering">
+            <div class="dark-inner">
+                <div class="section-heading">
+                    <div class="label">05 / System engineering</div>
+                    <div>
+                        <h2>The robot became a stack, not a sculpture.</h2>
+                        <p class="lead">Each layer could evolve on its own: a commercially sourced base for dependable motion, a small electrical control interface, onboard perception, and task planning for orchard work.</p>
+                    </div>
+                </div>
+                <div class="system-map">
+                    <article class="system-card"><div class="tag">01 / Mobility</div><h3>Production mower base</h3><p>Use a partner-built chassis to inherit traction, deck geometry, and serviceable hardware instead of re-solving the entire vehicle.</p></article>
+                    <article class="system-card"><div class="tag">02 / Interface</div><h3>Three control signals</h3><p>Minimize the autonomy-to-vehicle boundary so an incoming platform can be instrumented and tested quickly.</p></article>
+                    <article class="system-card"><div class="tag">03 / Perception</div><h3>Camera + edge compute</h3><p>Run live orchard imagery through an onboard computer to identify trunks, rows, and other field objects near the machine.</p></article>
+                    <article class="system-card"><div class="tag">04 / Action</div><h3>Mow, survey, target</h3><p>Share one mobile platform across mowing, disease observation, harvest data, and precise weed-removal experiments.</p></article>
+                </div>
+                <figure class="vision-figure">
+                    <img src="images/zaptrack.jpg" alt="Onboard ZAPTrack perception computer labeling orchard objects in a live camera feed">
+                    <figcaption class="caption"><span>On-vehicle perception rig during orchard development</span><span>Live camera feed with object detections</span></figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div class="label">06 / Challenges resolved</div>
+                    <div><h2>Six constraints changed the machine.</h2></div>
+                </div>
+                <div class="challenge-list">
+                    <article class="challenge"><div class="number">01</div><h3>Which problem was worth automating?</h3><p>Interviews spanned fertilizer optimization, aerial scouting, invasive-species detection, and weeding. The product narrowed toward weed removal only after growers exposed the severity and frequency of the task.</p></article>
+                    <article class="challenge"><div class="number">02</div><h3>How do you test without hardware capital?</h3><p>Use discarded and commodity systems as engineering modules. A mower, a ride-on toy drivetrain, simple wiring, and fast fabrication answered the mobility question for tens—not thousands—of dollars.</p></article>
+                    <article class="challenge"><div class="number">03</div><h3>Would the geometry work between trees?</h3><p>The first mower was visibly too tall. Instead of hiding the miss, the next iteration treated height, width, sensor placement, and under-canopy travel as primary architecture inputs.</p></article>
+                    <article class="challenge"><div class="number">04</div><h3>How do you survive field reality?</h3><p>The build moved quickly from a workshop assembly to orchard trials. Uneven ground, vegetation, dust, lighting, and transport exposed issues a benchtop test could not.</p></article>
+                    <article class="challenge"><div class="number">05</div><h3>What should be custom?</h3><p>The manufacturing-partner platform shifted effort away from commodity mobility and toward the differentiated layer: control integration, perception, planning, and farm-specific workflows.</p></article>
+                    <article class="challenge"><div class="number">06</div><h3>Could the business scale with the machine?</h3><p>The technical demonstration earned demand, including a roughly $50K-per-month LOI. It also exposed a strategic mismatch: a premium product without an established premium segment or channel was difficult for an early-stage company to carry.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="lessons">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div class="label">07 / Outcome + reflection</div>
+                    <div>
+                        <h2>The prototype proved the work. The market refined the company.</h2>
+                        <p class="lead">ZAPTrack reached the thing early hardware rarely reaches: a paying customer in the actual operating environment. The larger lesson was that technical feasibility, customer pain, and a scalable distribution path must mature together.</p>
+                    </div>
+                </div>
+                <div class="outcome-grid">
+                    <img class="outcome-photo" src="images/Prototype2_part3.jpg" alt="ZAPTrack team with the second field robot at an orchard pilot">
+                    <div class="outcome-panel">
+                        <div class="label">Founder reflection</div>
+                        <div>
+                            <blockquote>Start cheap. Learn in public. Make the next machine earn its complexity.</blockquote>
+                            <p>The premium-first approach created ambition, but not the channel required to support it. Reusing existing mower platforms pointed to the more durable idea: meet buyers through equipment they already know, then deliver value through autonomy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recognition-grid" aria-label="Project recognition">
+                    <div class="recognition"><div class="number">Jan 2023</div><strong>Startup Weekend</strong></div>
+                    <div class="recognition"><div class="number">Mar 2023</div><strong>Cincinnati Business Achievement Award</strong></div>
+                    <div class="recognition"><div class="number">Aug 2023</div><strong>Next Innovation Scholarship</strong></div>
+                    <div class="recognition"><div class="number">Jun 2024</div><strong>Founders Village Tech Weekend pitch winner</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="references">
+            <div class="section-inner reference-grid">
+                <div class="label">Project sources</div>
+                <ol class="source-list">
+                    <li><a href="blog/rapid-prototyping.html">“How I Learned to Prototype Hardware in Hours (Not Weeks)” — process and prototype costs</a></li>
+                    <li><a href="https://www.linkedin.com/posts/vikram-mishra_compass-ai-wearable-that-gives-you-perfect-activity-7225408870628663296-hrtw" target="_blank" rel="noopener noreferrer">Founder build log — farm discovery, LOI, iterations, integration, and paid pilot ↗</a></li>
+                    <li><a href="https://www.linkedin.com/posts/vikram-mishra_built-this-farm-mowing-robot-with-jingxiang-activity-7209726094164271104-eaWP" target="_blank" rel="noopener noreferrer">Prototype 02 field-build post ↗</a></li>
+                    <li><a href="https://www.linkedin.com/posts/zaptrack_computer-vision-in-orchards-activity-7233168489346142208-3fxr" target="_blank" rel="noopener noreferrer">ZAPTrack orchard computer-vision post ↗</a></li>
+                    <li><a href="https://www.linkedin.com/posts/vikram-mishra_what-ive-learned-building-a-hardware-startup-activity-7272119482167222272-Y3dE" target="_blank" rel="noopener noreferrer">Founder retrospective — premium strategy and channel learning ↗</a></li>
+                </ol>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <h2>Built in the field.</h2>
+            <div class="footer-links">
+                <a href="index.html">Portfolio</a>
+                <a href="blog/rapid-prototyping.html">Process essay</a>
+                <a href="https://www.linkedin.com/in/vikram-mishra/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
