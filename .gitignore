@@ -1,0 +1,25 @@
+# Local filesystem and editor metadata
+.DS_Store
+Thumbs.db
+.claude/
+.codex/
+.vscode/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Private concepts and internal production documents
+/Daylight/
+/Prototypes/
+/HUMANLOOP_PORTFOLIO_DELIVERABLES.md
+/HUMANLOOP_VEO3_PROMPTS.md
+
+# Editable design sources and saved third-party website exports
+*.ai
+*.psd
+/inspiration.html
+/inspiration_files/
